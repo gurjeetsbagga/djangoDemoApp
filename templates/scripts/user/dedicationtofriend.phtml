@@ -1,0 +1,153 @@
+<?php
+exit("dasdasd");
+function fetch_highest_res($videoid) {
+    $image_qualities = array('mqdefault');
+//in the order of preference
+
+
+
+    foreach ($image_qualities as $image_quality) {
+        if (@getimagesize(('http://i.ytimg.com/vi/' . $videoid . '/' . $image_quality . '.jpg'))) {
+            $imgurl = "http://i.ytimg.com/vi/$videoid/$image_quality.jpg";
+            return $imgurl;
+            break; //exiting
+        }
+    }
+}
+
+function truncate($str, $len) {
+    $tail = max(0, $len - 10);
+    $trunk = substr($str, 0, $tail);
+
+    $trunk .= strrev(preg_replace('~^..+?[\s,:]\b|^...~', '...', strrev(substr($str, $tail, $len - $tail))));
+    if (strlen($str) > $len + 1) {
+        return $trunk . "<br/><span class='readmore'>......read more</span>";
+    } else {
+        return $trunk;
+    }
+}
+
+$dedicatedUserDetail = $this->dedicatedUserDetails['0'];
+//echo "<pre>".print_r($dedicatedUserDetail,1);
+if (!empty($dedicatedUserDetail['dedicationbyuser']['profile_image_link'])) {
+        $userProfileImage = $dedicatedUserDetail['dedicationbyuser']['profile_image_link'];
+    } else {
+        $userProfileImage = '';
+    }
+    
+echo "<div class='ded'>
+        <div class='dedh'>
+            <div class='dedh_lcontainer'>
+                <div class='profimg'>
+                    <a href = \"{$dedicatedUserDetail['dedicationbyuser']['first_name']}\" style = \"background-image:url('{$userProfileImage}');\"></a>
+                </div>                   
+            </div>
+            
+            <div class='dedh_rcontainer'>
+                <div class='deta-block'>
+                    <div class='dedh_hblockl' style='padding:5px 0;'>
+                        <div >
+                            <span style='float:left;' class='profname'><a href=\'{$dedicatedUserDetail['dedicationbyuser']['username']}\">{$dedicatedUserDetail['dedicationbyuser']['first_name']}</a></span>
+                            <span style='float:left;margin-left: 5px;' class='dedprofname'>></span>";
+                            
+                            foreach ($dedicatedUserDetail['dedicationtouser'] as $dedicatioToUserDetail) {
+//        echo "<pre>".print_r($dedicatioToUserDetail,1);exit();
+                                if (!empty($dedicatioToUserDetail['profile_image_link'])) {
+                                    $touserProfileImage = $dedicatioToUserDetail['profile_image_link'];
+                                } else {
+                                    $touserProfileImage = '';
+                                }
+                              
+                                echo "<a href='".$dedicatioToUserDetail['usename']."'>
+                                    <img style='margin-left:5px; border-radius: 3px' height='22' width='22' src='".$touserProfileImage."'/>
+                                </a>";
+                            }
+                           echo "<input type='hidden' class='currentuserauth' value='". $dedicatedUserDetail['dedicationbyuser']['id']."'/>
+                        </div>
+
+                    </div>
+
+                    <div class='dedh_hblockr'>
+                    </div>
+                    <div class='dedh_hblockb'>
+                        <div class='dedicated_user_block'> 
+                            <div class='dedicated_user_block_txt'>".truncate(ucfirst($dedicatedUserDetail['dedication']['message']), 180)."
+                                <span class='dediccreated'>".$dedicatedUserDetail['dedication']['created_date']."</span></div>
+
+                        </div>
+
+                    </div>
+                </div>  
+
+            </div>
+        </div>
+        <div class='dedf'>
+            <div class='dedic-block'>
+                <div class='dedic-block-data'>
+                    <div class='dedic-block-data-r'>
+                        <div class='data' id='XNMMrbHMiNM'>
+                            <div>";
+                              
+                                // $json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/XNMMrbHMiNM?v=2&alt=jsonc"));
+                                echo '<img class="dedic-block-data-img" src="' . fetch_highest_res($dedicatedUserDetail['dedication']['url']) . '">';
+                                
+                             echo "<div class='dedic-block-uhvr'>
+
+                                    <div class='dedic-block-uhvrb'>
+                                        <div class='dedic-block-uhvrb-lbl'>
+                                            ".$dedicatedUserDetail['dedication']['vidoe_title']." 
+                                        </div>
+                                        <i class='dedic-block-uhvrbplbn'></i>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class='video' id=''></div>
+                        </div>
+
+                    </div>
+                    <div class='clearfx'></div>
+                    <div class='dedic-block-data-info'>
+                    </div>
+                </div>
+            </div>
+            <div class='disq-block'>";
+                foreach ($dedicatedUserDetail['dedicationbyusercomment'] as $comment) {                      
+             echo "<div class='hr'></div>
+                  <div class='disqli'>
+                  <div class='ldisq'><img src='".$comment['User']['ProfileImage']['profile_image_link']."' style='width:26px;'/></div>
+                  <div class='rdisq'><span class='cmnt'>".$comment['comment']."</span>
+                  <span class='cmntdttm'>".date('D d-m-Y H:i:a', strtotime($comment['created']))."</span>
+                  </div>
+                  </div>";
+                 }
+         echo ".</div>            
+        </div>
+               <div>
+                    <div class='usrcmntbxa'>
+                        <div class='writebx write txth txta'>Add comment ..</div>
+                    </div>
+                    <div class='usrcmntbxb'>
+                        <div class='lusrcmntbx'>
+                            <form>
+                                <div class='writebx write txth txtb divtxtar' contenteditable='true'>Add comment ..</div>
+                                <input class='inwrite' type='hidden' value=''/>
+                            </form>
+                        </div>
+                        <div class='rusrcmntbx'>
+                            <div class='trusrcmntbx'>
+                                <img src='". $dedicatedUserDetail['dedication']['profile_image_link']."' style='width:55px;'/>
+        
+                            </div>
+                            <div class='brusrcmntbx'>
+                                <ul>
+                                    <li class='btn postbtn'><span>Post</span></li>                      
+                                    <li class='btn cnclbtn'><span>Cancel</span></li>
+                                    <li class='btn attachbtn'><span>Attach</span></li>                        
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class='upldblck'></div>
+    </div>";
+        ?>

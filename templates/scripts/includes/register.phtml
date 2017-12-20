@@ -1,0 +1,56 @@
+<div class = "loginformc">
+    <div id = "oinreg"></div>
+    
+    <div id = "inreg">
+          <h1>Register me!</h1>
+        <?php
+        echo $this->form->create('Usera', array('url' => array('controller' => 'users', 'action' => 'register'),
+            'id' => 'loginforma',
+            'class' => 'loginformca'
+        ));
+        ?>
+       
+        <div id="loginpagebox" class="loginpagebox">
+            
+            <div id="lgnpcbox" class="lgnpcbox supbox">
+                
+                <div id="llgnpcbo" class="llgnpcbo" >
+                    <!--<label class="nametext">Username</label>-->
+                   
+                    <?php echo $this->Form->input('username', array('label' => '','placeholder'=>'UserName:' , 'class' => 'txtbox', 'id' => 'Sign_Up_uname_TextBox')); ?>
+                    <div class="errorspan" id="uerror"></div>
+                    <!--<label class="nametext">First name</label>-->
+
+                    <?php echo $this->Form->input('first_name', array('label' => '', 'placeholder'=>'First Name:', 'class' => 'txtbox', 'id' => 'Sign_Up_fname_TextBox')); ?>
+                    <div class="errorspan" id="ferror"></div>
+                    <!--<label class="nametext">Last name</label>-->
+
+                    <?php echo $this->Form->input('last_name', array('label' => '', 'placeholder'=>'Last Name:', 'class' => 'txtbox', 'id' => 'Sign_Up_last_TextBox')); ?>
+
+                    <div class="errorspan" id="lerror"></div>
+                    <!--<label class="nametext">Email</label>-->
+                    <?php echo $this->Form->input('email', array('label' => '','placeholder'=>'Email:', 'class' => 'txtbox', 'type' => 'email', 'id' => 'Sign_Up_Email_TextBox')); ?>
+                    <div class="errorspan" id="emailerror"></div><div class="usrerror" id="usrerror"></div>
+
+                    <!--<label class="nametext">Password</label>-->
+
+                    <?php echo $this->Form->input('password', array('label' => '','placeholder'=>'Password:', 'class' => 'txtbox', 'id' => 'Sign_Up_Password_TextBox')); ?>
+                    <?php echo $this->Form->input('confirm-password', array('label' => '','placeholder'=>'Confirm Password:', 'class' => 'txtbox', 'id' => 'Sign_Up_Password_TextBox_Confirm')); ?>
+
+                    <div class="errorspan" id="passwordlengtherror"></div>
+
+                    <div class="lgnsupdiv addedbtn" id="activebtndiv" style='margin:5px 0; float: right;'>
+                        <label id="actvtproflbl" class="">
+                            <input id="actvtprof" type='submit' value="Register" class="btn btn-sbmt actvtprof" />
+                    </div>
+                    <div class="mainerrordiv" id="mainerror"></div>
+                    <input type="hidden" value="<?php echo sha1("Recess240") ?>" name="newuser" />
+                    <input type="hidden" value="" class="tz" name="tz" />
+                    <input type="hidden" id ="superror" value=""/>
+                </div> 
+            </div>
+        </div>
+        <?php echo $this->form->end(); ?>
+        <div><a href="#" ><img class="imgclose" src="images/closebtn.png"></img></a></div>
+    </div>
+</div>

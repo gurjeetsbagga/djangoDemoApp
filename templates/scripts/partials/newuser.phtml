@@ -1,0 +1,359 @@
+<?php
+$newuserprofile = $this->newuserprofile[0];
+
+$fname = isset($newuserprofile['fname']) ? $newuserprofile['fname'] : '';
+$lname = isset($newuserprofile['lname']) ? $newuserprofile['lname'] : '';
+$occupation = isset($newuserprofile['occupation']) ? $newuserprofile['occupation'] : '';
+$day = isset($newuserprofile['day']) && $newuserprofile['day'] > 0 ? $newuserprofile['day'] : '';
+$month = isset($newuserprofile['month']) && $newuserprofile['month'] > 0 ? $newuserprofile['month'] : '';
+$year = isset($newuserprofile['year']) && $newuserprofile['year'] > 0 ? $newuserprofile['year'] : '';
+$gender = isset($newuserprofile['gender']) && $newuserprofile['gender'] > 0 ? $newuserprofile['gender'] : '';
+$profile_image_link = isset($newuserprofile['profile_image_link']) ? $newuserprofile['profile_image_link'] : '';
+//exit($profile_image_link);
+//echo Zend_Debug::dump($newuserprofile);
+?>
+<div id='newusernoupbx' class='newusernoupbx'>
+    <div class="noupbx">
+        <div class='newusernoupbxhdr'><h2>Please update Profile. </h2><span id="noupbxlblskp" class='noupbxlblskp'>Skip</span></div>
+        <div class="noupbxin">
+            <div class="profnoupbx">
+                <form id="profnoupbxfrm" >
+                    <div class="newusernoupbxhvr">
+                        <div>
+                            <div>edit</div>
+                            <div>close</div>
+                        </div>                            
+                    </div>
+                    <div class='noupbxt'>
+                        <!--<div class="noupbxinhdr"></div>-->
+                        <div class="noupbxlbl" id="noupbxlbl"><h2> + update you profile</h2></div>
+                        <div>
+                            <div class="profnoupbxdv">
+                                <ul>
+                                    <li>
+                                        <input class="profnoupbxdvfn" id="profnoupbxdvfn" value="<?php echo $fname; ?>" type="text" placeholder="first name"/> 
+                                        <input class="profnoupbxdvln" id="profnoupbxdvln" value="<?php echo $lname; ?>" type="text" placeholder="last name"/> 
+                                    </li>
+                                    <li>
+                                        <input class="profnoupbxdvoc" id="profnoupbxdvoc" value="<?php echo $occupation; ?>" type="text" placeholder="occupation"/> 
+                                    </li>
+                                    <li>
+                                        <input class="profnoupbxdvagd" id="profnoupbxdvagd" value="<?php echo $day; ?>" type="text" placeholder="day"/>    
+                                        <input class="profnoupbxdvagm" id="profnoupbxdvagm" value="<?php echo $month; ?>" type="text" placeholder="month"/>    
+                                        <input class="profnoupbxdvagy" id="profnoupbxdvagy" value="<?php echo $year; ?>" type="text" placeholder="year"/>    
+                                    </li>
+                                    <li class="profnoupbxdvligen">
+                                        <input class="profnoupbxdvgenf" <?php echo $gender == 1 ? 'checked' : false; ?>" id="profnoupbxdvgenf" name="gender"  value="1" type="radio" /> Female   
+                                        <input class="profnoupbxdvgenm" <?php echo $gender == 2 ? 'checked' : false; ?>" id="profnoupbxdvgenm" name="gender"  value="2" type="radio" /> Male    
+                                        <input class="profnoupbxdvgenn" <?php echo $gender == 3 ? 'checked' : 'false'; ?>" id="profnoupbxdvgenn" name="gender"  value="3" type="radio" /> None    
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='noupbxinbtndv' id="noupbxinbtndv"><input disabled="true" type="submit" class='disablebutton' value='submit' /></div>
+                </form>
+            </div>
+            <div class="imgnoupbx"><form id="noupbxtfrm">
+                    <div class="newusernoupbxhvr"></div>
+                    <div class='noupbxt'>
+                        <!--<div class="noupbxinhdr"></div>-->
+                        <div class="noupbxlbl" id="noupbxlbl"><h2>+ Add your new profile images</h2></div> 
+                        <div class="noupbxlblimg" id="noupbxlblimg">
+                            <img height="" width="" src="<?php echo $profile_image_link ?>" />
+                        </div>
+                        <div id="noupbxlblupim" class="noupbxlblupim"><input name="profileimage" type="file" value ="upload" /></div>
+                    </div>
+                    <div class='noupbxinbtndv'>
+                        <input disabled="true" type="submit" class='disablebutton' value='submit' /></div>
+                </form>
+            </div>
+            <div class="mainnoupbx mainnoupbx_active">
+                <form id="newusernoupbxhvrfrm">
+                    <div class="newusernoupbxhvr"></div>
+                    <div class='noupbxt'>
+                        <!--<div class="noupbxinhdr"></div>-->
+                        <div class="noupbxlbl" id="noupbxlbl">
+                            <h2>+ Invite People </h2>                        
+                        </div> 
+                        <div class="noupbxtb" id="noupbxtb"><span>0</span> people added.</div>
+                        <div class='noupbxlbldv'>   
+                            <div class="noupbxlblt">
+
+                                <div class="noupbxlbltem" id="noupbxlbltem">
+                                    <ul></ul>
+                                    <input class="noupbxlblteminp" type="text" placeholder="email of friend"/></div>
+                                <!--<div class="noupbxlbltbtn"><input class="disablebutton" type="button" value="send email"/></div>-->
+                            </div>
+                            <!--<div class="noupbxlblbor"></div>-->
+                            <!--                        <div class="noupbxlblb"><h2>+ Add Friends  </h2></div>
+                                                    <div class="noupbxlblbff"><input type="text" placeholder="search friends in app.com"/></div>-->
+                        </div>
+                    </div>
+                    <div class='noupbxinbtndv' id="noupbxinbtndvc"><input id="noupbxinbtndvcinp" disabled="true" type="submit" class='disablebutton' value='Send mail' /></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>    
+<div class="clearfx"></div>
+<script type='text/javascript'>
+    var firstname = $("#profnoupbxdvfn");
+    var firstnameval = $("#profnoupbxdvfn").val();
+    var lastname = $("#profnoupbxdvln");
+    var lastnameval = $("#profnoupbxdvln").val();
+    var occupation = $("#profnoupbxdvoc");
+    var occupationval = $("#profnoupbxdvoc").val();
+    var day = $("#profnoupbxdvagd");
+    var dayval = $("#profnoupbxdvagd").val().length;
+    var month = $("#profnoupbxdvagm");
+    var monthval = $("#profnoupbxdvagm").val().length;
+    var year = $("#profnoupbxdvagy");
+    var yearval = $("#profnoupbxdvagy").val().length;
+    var gender = $("input[type=radio]");
+    var genderval = $("input[type=gender]:checked").length;
+    var NEWUSEREMAIL = new Array();
+
+
+    $(gender).on('click', function() {
+        console.log($(this).val());
+        if ($(this).val() !== genderval && $(this).is(':checked')) {
+            $("#profnoupbxfrm").find('input[type=submit]').attr('disabled', false).addClass("btn btn-sbmt").removeClass("disablebutton");
+        } else {
+            $("#profnoupbxfrm").find('input[type=submit]').attr('disabled', true).addClass("disablebutton").removeClass("btn btn-sbmt");
+        }
+    });
+    $("#profnoupbxfrm").on('keyup', 'input[type=text]', function() {
+//        console.log(gender + " " + genderval + " " + gender.val());
+        if ((firstname.val() !== firstnameval && firstname.val().length > 0) ||
+                (lastname.val() !== lastnameval && lastname.val().length > 0) ||
+                (occupation.val() !== occupationval && occupation.val().length > 0) ||
+                (
+                        (day.val() !== dayval && day.val().length === 2) &&
+                        (month.val() !== monthval && month.val().length === 2) &&
+                        (year.val() !== yearval && year.val().length === 4)
+                        ) ||
+                (gender.val() !== genderval && gender.is(':checked'))
+                ) {
+
+            $("#profnoupbxfrm").find('input[type=submit]').attr('disabled', false).addClass("btn btn-sbmt").removeClass("disablebutton");
+        } else {
+            $("#profnoupbxfrm").find('input[type=submit]').attr('disabled', true).addClass("disablebutton").removeClass("btn btn-sbmt");
+        }
+    });
+    $(".noupbxlblteminp").click(function() {
+
+    });
+    $("#noupbxlbltem  ul ").on('click', 'li > span', function() {
+        var removeItem = $(this).next("label").text();
+//        console.log(removeItem);
+        NEWUSEREMAIL = $.grep(NEWUSEREMAIL, function(n) {
+            return n !== removeItem;
+        });
+        $(this).parent("li").remove();
+        var ellength = $(".noupbxlbltem").find("ul").children("li").length;
+        $("#noupbxtb span").html(ellength);
+        $("#noupbxtb").css('color', 'green');
+
+//        console.log(ellength);
+        if (ellength < 5) {
+            if ($("#noupbxlbltem .noupbxlblteminp").length < 1) {
+                $("#noupbxlbltem").append("<input class='noupbxlblteminp' type='text' placeholder='email of friend'/>");
+            }
+            $(".noupbxlbltem .noupbxlblteminp").attr('disabled', false).css('background-color', '#fff').attr('placeholder', 'email of friend');
+        }
+        if (ellength === 0) {
+            $("#noupbxinbtndvc input[type=submit]").attr('disabled', true).addClass("disablebutton").removeClass("btn btn-sbmt");
+        }
+    });
+    $(".noupbxlbltem").on('keyup', '.noupbxlblteminp', function(event) {
+
+        $(this).parent("#noupbxlbltem").find(".errorair").remove();
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        var email = $(this).val();
+        var ellength = $(this).parent(".noupbxlbltem").find("ul").children("li").length;
+        if (ellength === 5) {
+            $("#noupbxtb").css('color', 'red');
+            $(this).val("");
+        }
+        if (keycode === 13) {
+            if (validateEmail(email) && (ellength < 5)) {
+//            if (!$(this).hasClass('noupbxlblteminpded')) {
+                if (email) {
+                    $(this).parent(".noupbxlbltem").find("ul").append("<li><span>x</span><label>" + email + "</label></li>");
+                    NEWUSEREMAIL.push(email);
+                    console.log(NEWUSEREMAIL);
+                    ellength = $(this).parent(".noupbxlbltem").find("ul").children("li").length;
+                    $("#noupbxtb span").html(ellength);
+                }
+                $(this).val("");
+//                $(this).addClass('noupbxlblteminpded');
+//                $(this).prev("input").remove();
+//                $(this).after("<input class='noupbxlblteminp' type='text' placeholder='Add more email of friend'/>");
+//            }
+                if (ellength === 5) {
+                    $("#noupbxtb").css('color', 'red');
+                    $(this).remove();
+                    $(this).parent("#noupbxlbltem").append("<div class=''>Successfuly Added 5 people.</div>")
+                    //$(this).val("").attr('disabled', 'true').css('background-color', '#eee').attr('placeholder', 'No more added');
+                }
+            } else {
+                $(this).parent("#noupbxlbltem").append("<div class='errorair'>Not valid mail</div>")
+            }
+            $(this).val("");
+        }
+        console.log(ellength);
+        if (ellength > 0) {
+            $("#noupbxinbtndvc input[type=submit]").attr('disabled', false).addClass("btn btn-sbmt").removeClass("disablebutton");
+        }
+    });
+    $(".noupbxlbltem").on('keyup', '.noupbxlblteminpa', function() {
+        $(this).removeClass('noupbxlblteminpded');
+        var email = $(this).prev("noupbxlblteminp").val();
+        if (!$(this).hasClass('noupbxlblteminpded')) {
+            $(this).addClass('noupbxlblteminpded');
+            $(this).parent().append("<input class='noupbxlblteminpa' type='text' placeholder='email of friend'/>");
+        }
+//        $(this).prev("input").remove();
+        $(this).parent(".noupbxlbltem   ").find("ul").append("<li><span>x</span>" + email + "</li>");
+//        $(this).parent().append("<input class='noupbxlblteminp' type='text' placeholder='email of friend'/>");
+
+    });
+    $("#profnoupbxfrm").on('submit', 'input[type=submit]', function() {
+        if ((firstname.val() !== firstnameval && firstname.val().length > 0) ||
+                (lastname.val() !== lastnameval && lastname.val().length > 0) ||
+                (occupation.val() !== occupationval && occupation.val().length > 0) ||
+                (
+                        (day.val() !== dayval && day.val().length === 2) &&
+                        (month.val() !== monthval && month.val().length === 2) &&
+                        (year.val() !== yearval && year.val().length === 4)
+                        ) ||
+                (gender.val() !== genderval && gender.is(':checked'))
+                ) {
+        	$.ajax({
+                type: 'POST',
+                url: 'user/update',
+                data: {
+                    type:'updateprofile',
+                    firstname: firstname.val(),
+                    lastname: lastname.val(),
+                    occupation: occupation.val(),
+                    day: day.val(),
+                    month: month.val(),
+                    year: year.val(),
+                    gender: gender.val(),
+                },
+                success: function() {
+                    $(this).parents(".profnoupbx").find(".noupbxlbl").css('background-color', 'green');
+                    $("#profnoupbxfrm").find("#noupbxlbl").css("background-color", "grey");
+                    $("#profnoupbxfrm").find("#noupbxlbl > h2").css("color", "fff");
+                },
+            });
+            return false;
+        } else {
+            return false;
+        }
+        //validate($(this),firstname,lastname,occupation,day,month,year);
+    });
+    $("#noupbxlblupim > input[type=file]").change(function() {
+
+        var file = this.files[0];
+        name = file.name;
+        size = file.size;
+        type = file.type;
+        if (file.name.length < 1) {
+            warning('Image not selected');
+        }
+        else if (file.size > 50000000) {
+            warning("File is to big");
+        }
+        else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg') {
+            warning("File doesnt match png, jpg or gif");
+        }
+
+        var formData = new FormData($('#noupbxtfrm')[0]);
+        $.ajax({
+            type: "POST",
+            url: "getuploadedimagepreview/",
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                var response = $.parseJSON(data)[0];
+                $("#noupbxlblimg").html("<img src = \'" + response.mediumurl + "\'>");
+                $("#noupbxtfrm").find('input[type=submit]').attr('disabled', false).addClass("btn btn-sbmt").removeClass("disablebutton");
+                // $("#imagePreview > .imagePreviewh > ul").append("<li><img src = \'" + response.mediumurl + "\'></li>");
+                //$("#dedicationform").append("<input type=\"hidden\" value =\"" + response.name.filename + "\" >");
+
+            },
+            error: function() {
+                $("#noupbxtfrm").find('input[type=submit]').attr('disabled', true).addClass("disablebutton").removeClass("btn btn-sbmt");
+                alert('error');
+            }
+        });
+        return false;
+    });
+    $("#noupbxtfrm").submit(function() {
+        var formData = new FormData($('#noupbxtfrm')[0]);
+        $.ajax({
+            type: "POST",
+            url: "getuploadedimage/",
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                if (data) {
+                    $("#noupbxtfrm").find('input[type=submit]').attr('disabled', false).addClass("btn btn-sbmt").removeClass("disablebutton");
+                    $("#noupbxtfrm").find("#noupbxlbl").css("background-color", "grey");
+                    $("#noupbxtfrm").find("#noupbxlbl > h2").css("color", "fff");
+                }
+            },
+            error: function() {
+                $("#noupbxtfrm").find('input[type=submit]').attr('disabled', true).addClass("disablebutton").removeClass("btn btn-sbmt");
+                alert('error');
+            }
+        });
+        return false;
+    });
+    $("#newusernoupbxhvrfrm").submit(function() {
+        if (NEWUSEREMAIL.length > 0) {
+            $.ajax({
+                type: "POST",
+                url: "invitepeople/",
+                data: {newuseremail : NEWUSEREMAIL},
+                success: function(data)
+                {
+                    if(data){
+                        
+                    }
+                },
+                error: function() {
+                    alert('error');
+                }
+            });
+            return false;
+        }
+    });
+    $("#lcontent").on('click','#noupbxlblskp',function(){
+        $(this).parents("#newusernoupbx").remove();
+    });
+    $(".imgnoupbx,.profnoupbx,.mainnoupbx").click(function(e) {
+        // e.preventDefault();
+        $(".noupbxlblbac").css('border', '1px solid #eee').removeClass('noupbxlblbac').addClass('noupbxlblbinac');
+        $(this).css('border', '1px solid #ccc').addClass('noupbxlblbac').removeClass('noupbxlblbinac');
+    });
+    $(".imgnoupbx,.profnoupbx,.mainnoupbx").click(function(e) {
+        $(".newusernoupbxhvrac").slideDown('slow').removeClass('newusernoupbxhvrac').addClass('newusernoupbxhvrinac');
+    });
+
+    function validateEmail(email) {
+        var re = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        return re.test(email);
+    }
+</script>

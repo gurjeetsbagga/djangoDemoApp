@@ -1,0 +1,15 @@
+<?php
+$comment = $this->comments ['0'];
+$profile_image_link = ! empty ( $comment ['profile_image_link'] ) ? $comment ['profile_image_link'] : '/images/user.gif';
+// echo "<pre>".print_r($comment,1);
+echo "<div class='disqli'>
+		<span class='deletecms'>x</span><input class='commentid' type='hidden' value='" . $comment ['id'] . "'/>
+		<div class='ldisq'><img  src='" . $profile_image_link . "' style='width:26px;height:26px;border-radius: 2px 2px 2px 2px;'/></div>
+                            <div class='rdisq'><span class='cmnt'>" . $comment ['comment'] . "</span>
+                                <span class='cmntdttm'>" . date ( 'D d-m-Y H:i:a', strtotime ( $comment ['created'] ) ) . "</span>
+                                    
+                            </div>
+                            
+                            
+</div>";
+?>

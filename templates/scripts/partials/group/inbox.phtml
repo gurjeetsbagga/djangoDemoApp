@@ -1,0 +1,128 @@
+<?php
+$events = $this->inbox;
+$unread_count =0;
+foreach ($events as $event) {
+    if ($event['seen'] == 2) {
+        ++$unread_count;
+    }    
+}
+/*
+  <pre>Array
+  (
+  [0] => Array
+  (
+  [id] => 3
+  [from_id] => 2
+  [to_id] => 9
+  [text] => hello
+  [group_id] => 1
+  [seen] => 2
+  [created] => 0000-00-00 00:00:00
+  )
+ */
+?>
+<style type="text/css">
+    .ginbmn{
+        border-bottom: 1px solid #666;
+        margin-bottom: 2px;
+        display: inline-block;
+        width: 100%;
+        background-color: skyblue;
+    }
+    .ginbmn > ul{
+        width: 100%;
+    }
+    .shchkm{        
+        color:#111 !important;
+        font-weight: bold !important;      
+    }
+    .ginbmn >ul > li{
+        cursor: pointer;
+        float: left;
+        width: 33%;
+        text-align: center;
+        color: #888;
+        line-height: 21px;
+    }
+    .ginbmn >ul > li:hover{
+        background-color:#79b9e1;
+    }
+    .ginbmn >ul > li:first-child{
+        width: 10%;
+        color:#888;
+        font-weight: normal;
+        border-left: none;
+    }
+    .ginbmn >ul > li:nth-child(2){
+        width: 25%;
+    }.ginbmn >ul > li:nth-child(3){
+        width: 50%;
+    }
+    
+    .ginbmn >ul > li:last-child{
+        width: 10%;
+        float: right;
+        display: inline-block;
+    }
+    .ginbmn >ul >li>input{
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 2px;
+        width: 97%;
+    }
+    .clsgin{
+        background-color:#79b9e1;
+         color: #fff;
+    display: block;
+    text-align: center;
+    }
+</style>
+<div class='ginbmn'>
+    <ul>
+        <li data-notify="inbox" class="<?php if ($events[0]['seen'] == 1) {
+    echo 'shchkm';
+} ?>" >All</li>
+        <li data-notify="unread" class="<?php if ($events[0]['seen'] == 2) {
+    echo 'shchkm';
+} ?>" >(<?php echo $unread_count ?>)Unread</li>
+        <li><input type="text" value='' placeholder='search' /></li>
+        <li><span class="clsgin" value="close">x</span></li>
+    </ul>
+</div>
+<div class='gtinwrap'>
+<?php
+    
+foreach ($events as $event) {
+//    echo "<pre>".  print_r($event['seen'],1);
+    ?>
+        <div class="wrapper
+             <?php
+                                     if ($event['seen'] == 2) {
+                                         echo 'nread';
+                                     }else{
+                                         echo 'read'.$event['seen'];
+                                     }
+                                     ?>">
+            <div class='wrapperbx'>
+                <a style="background-image: url('<?php echo "/images/user.gif" ?>');background-size: 35px 35px;background-position:center; " href='/profile/<?php echo $event['user_id'] ?>'></a>
+                <ul>
+                    <li>
+                        <a href='/profile/<?php echo $event['user_id'] ?>'><?php echo $event['fname'] ?></a>
+                        <span><?php echo$this->TimeAgo($event['created']) ?></span>
+                        <div  class='ombx'>                    
+                            <div class='mbx close ltr  '>
+                                <?php echo $this->TruncateMessage($event['text'], 90) ?>                        
+                            </div> 
+                            <input type="hidden" class='cmsg' value="<?php echo $event['text'] ?>" />
+                            <input type="hidden" class='frmmsg' value="<?php echo $event['from_id'] ?>" />
+                            <input type="hidden" class='gid' value="<?php echo $event['group_id'] ?>" />
+                            <input type="hidden" class='mid' value="<?php echo $event['id'] ?>" />
+                            <input class='repme' type='text' value='' placeholder='write..'/>
+                        </div>                
+                    </li>
+                </ul>
+            </div>
+        </div>
+<?php } ?>
+</div>
+<?php exit; ?>

@@ -1,0 +1,73 @@
+<div class="loginbx" id="loginbx">
+	<div class="inloginbx">
+		<div class="lloginbx">
+			<div class="hindexbox">
+				<div class="lindexboxbanner">
+                    <?php /* 	<h2 style="color:green"><span>Recent Users..</span></h2> <?php */ ?>
+                    <ul class="p_img_bx_old" id="p_img_bx">
+						<li class='banner' style=''>
+							<h1>Let the world know about you.</h1>
+
+							<div class='banner-info'>
+								<div class='in-banner-info'>Collect Your Life's Best Thing and
+									Share with Others.</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="rloginbx">
+			<!--<form method="POST" class ="lgnpcbo" id="lgnpcbo" action="<?php echo $this->linkTo("auth/auth"); ?>">-->
+            <?php
+			echo $this->LoginForm;
+			// echo $this->form->create('User', array('action'=>'login', 'id' => 'signin', 'class' => 'signin'));
+			?>   
+            <!--</form>-->
+		</div>
+	</div>
+</div>
+<div class="indexboxh"></div>
+<div class="indexbox">
+	
+	<div class="rindexbox">
+		<div class="indexloginbox">
+                    <!--get user current 2 dedication
+                    <div class='searchdedi'><input class="searchdedifdinp" type="text" placeholder="search user dedication" /></div>
+                        <?php
+                        if (isset ( $this->getdedication )) {
+                                echo $this->getdedication;
+                        }
+                        ?>
+                    -->
+                    <label class="mdtx">Login using</label>
+                    <?php echo $this->partial("partials/apilogin.phtml"); ?>
+            </div>
+	</div>
+	<div class='middleline'></div>
+	<div class="lindexbox">
+		<div class="lindexboxdv">
+			<div class="joinushdr lindexbox-a">
+				<label class="mdtx">Create account</label>
+
+			</div>
+			<div class="joinbx">
+                <?php echo $this->RegistrationForm;?>
+            </div>
+
+		</div>
+	</div>
+	<!--lindexbox-->
+</div>
+<div class="bottomindexbox" style="width: 1000px; margin: 0 auto"></div>
+<!--indexbox-->
+<!--echo $this->Facebook->login(array('perms' => 'email,publish_stream')); -->
+<script type="text/javascript">
+// close popup window and refresh page for access token
+if(window.opener)
+{
+  window.opener.location.replace(window.opener.location.href);
+  window.opener.focus();
+  window.close();
+}
+</script>

@@ -1,0 +1,15 @@
+/* 
+    Document   : IE.css
+    Created on : Sep 28, 2013, 12:29:12 AM
+    Author     : baggga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.ltlhbox
+{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50990000,endColorstr=#50990000); 
+    zoom: 1;
+}
+

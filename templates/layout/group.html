@@ -1,0 +1,92 @@
+<?php
+echo $this->doctype();
+if (!empty($_SESSION['Default']['usersession']['currentstatus'])) {
+    $cs = json_decode($_SESSION['Default']['usersession']['currentstatus']);
+    $currentstatus = "'" . $cs[0]->currentstatus . "'";
+}
+?>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png"  href="images/icon.png">
+
+        <?php
+        // SEO
+        echo $this->headTitle($this->title);
+        echo $this->headMeta()->appendName('keywords', 'dedication, status, missu');
+
+        // js files
+        echo $this->headScript()->appendFile($this->baseUrl('/js/jquery-1.10.js'));
+
+
+        echo $this->headLink()->appendStylesheet('/css/class.css');
+        echo $this->headLink()->appendStylesheet('/css/style.css');
+
+        if (isset($_SESSION['Default']['usersession']['id'])):
+            echo $this->headLink()->appendStylesheet('/css/main.css');
+
+            echo $this->headScript()->appendFile($this->baseUrl('/js/mainfun.js'));
+            echo $this->headScript()->appendFile($this->baseUrl('/js/main.js'));
+
+        endif;
+
+
+        echo $this->headScript();
+        ?>
+        <script src="/js/loginfun.js"></script>
+        <script src="/js/login.js"></script>
+
+    </head>
+    <body>
+        <div id="status"></div>
+        <div id="container">
+            <div id="header">
+                <?php
+                echo $this->flashMessages('error');
+                $this->loadSkin($this->skin);
+                ?>
+                <div class="oindexheader">
+                    <div class="indexcontainer">
+                        <div class="indexheader">
+                            <div class="lindexheader icon">
+
+                                <a href="<?php echo BASE_PATH ?>">
+                                    <?php if (isset($_SESSION['Default']['usersession']['currentstatus']) && !empty($_SESSION['Default']['usersession']['currentstatus'])) { ?>
+                                        <img src="<?php echo $_SESSION['Default']['usersession']['profileImageLink'] ?>" /><span><?php echo $_SESSION['Default']['usersession']['fname'] . "&nbsp" . $_SESSION['Default']['usersession']['lname'] ?></span>
+                                        <?php
+                                    } else {
+                                        echo "emoera.com";
+                                    }
+                                    ?>
+                                </a>
+                                <div class='mindexheader'>
+                                    <ul>
+                                        <li><?php echo $currentstatus; ?></li>
+                                    </ul>                                    
+                                </div>
+                            </div>
+                            <?php if (isset($_SESSION['Default']['usersession']['id'])): ?>
+                                <div class='rindexheader'>
+                                    <ul>
+                                        <li><a href="/" class=" mtab usehm">Hm</a></li>
+                                        <li><a href="/profile/<?php echo $_SESSION['Default']['usersession']['id'] ?>" class=" mtab useprof">My profile</a></li>
+                                        <li><a href="/groups" class=" mtab usegp">Grp</a></li>
+                                        <li><a href="/logout" class=" mtab useset">Lot</a>
+                                            <!--                                                          <ul class="usesetbx">
+                                                                                                              <li><a href="/account" class="usesetpa">Account</a></li>
+                                                                                                              <li><a href="/profile" class="usesetmprof">Manage Profile</a></li>
+                                                                                                              <li><a href="/logout" class="usesetex">logout</a></li>
+                                                                                                      </ul>-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content"><?php echo $this->layout()->content; ?></div>
+            <div class="footer"></div>
+        </div>
+    </body>
+</html>    

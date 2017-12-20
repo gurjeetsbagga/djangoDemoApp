@@ -1,0 +1,119 @@
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>
+<style type='text/css'>
+    .mikblock,.feedblock{
+        width: 270px;
+        font-size: 11px;
+        display: inline-block;
+        border: 1px solid #eee;        
+        border-radius: 5px 5px 0px 0px;
+        background-color: #fff;
+        border: 1px solid rgb(202, 217, 230);
+        box-shadow: 0px 0px 5px 0px rgb(221, 221, 221);
+    }
+    .feedhblock,.mikhblock{
+        background: none repeat scroll 0% 0% rgb(202, 217, 230);
+        font-weight: bold;
+        padding: 10px;
+    }
+    .mikblock{
+        margin-top: 20px;
+    }
+    .mikublock,.feedublock{
+        clear: both;
+        display: inline-block;
+        padding: 5px 10px;
+        border-bottom: 1px #eee dotted;
+    }
+    .feedmblock{
+        height: 200px;
+        overflow-y: auto;
+    }
+    .feedublock:hover{
+        background-color: #eee;
+    }
+    .mikulblock{
+        width: 39px;
+        float: left;
+    }
+    .feedulblock{      
+        text-align: center;
+        width: 39px;
+        float: right;   
+    }
+    .feedurblock{
+        float: left;
+        width: 192px
+    }
+    .mikurblock{
+        margin-left: 39px;
+        width: 218px
+    }
+    .mikulrblock{
+        float: left;
+        width: 160px;
+        padding-left:10px; 
+    }
+    .mikurrblock{
+        float: right;
+        width: 35px;
+        padding-top:10px; 
+    }
+    .mikurrblock li{
+        float: left;
+        padding:0 4px 0 0;
+    }
+</style>
+<div class='feedblock'>
+    <div class='feedhblock'>
+        <span>Last feeds</span>
+    </div>
+    <div class='feedmblock'>
+        <?php for ($m = 0; $m < 12; $m++) { ?>
+            <div class='feedublock'>
+                <div class='feedulblock'>
+                    <img src='images/girl1.jpg' style='width:35px;'>
+                </div>
+                <div class='feedurblock'>
+                    <div class='feedulrblock'>
+                        <div><b><a href="#">Gurjeet Singh</a></b> dedicated songs 'hum tum pe marte hai' to <a href="#">swati</a></div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <div class='feedbblock'>
+    </div>
+</div>
+<div class='mikblock'>
+    <div class='mikhblock'>
+        <span>People you may know</span>
+    </div>
+    <div class='mikmblock'>
+        <?php for ($m = 0; $m < 4; $m++) { ?>
+            <div class='mikublock'>
+                <div class='mikulblock'>
+                    <img src='images/girl1.jpg' style='width:35px;'>
+                </div>
+                <div class='mikurblock'>
+                    <div class='mikulrblock'>
+                        <div>Gurjeet Singh</div>
+                        <div>2 people in common</div>
+                    </div>
+                    <div class='mikurrblock'>
+                        <ul>
+                            <li>x</li>
+                            <li>Add</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <div class='mikbblock'>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class='usrfdpc myphotos' >
+    <ul>
+        <li>					
+            <div class='mimg'>						
+                <img src="hr.jpg">
+            </div>
+            <div class='mimgdsc'>
+                <ul>
+                    <li><label>mine</label></li>
+                    <li>
+                        <span class='mimged'>modified:12th june 2015</span>
+                        <span class='mimgcls'>remove</span>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>					
+            <div class='mimg'>						
+                <button class='mimgabtn' id="mimgabtn">+ Add Image</button>
+                <input class='hidden mimgabtnfl' type='file' value=''/>
+                <div></div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".usrconl").on("click","#mimgabtn",function(){            
+            $(this).trigger( $(this).next(".mimgabtnfl").click(function(){
+                var src= "";
+//                var input = event.target;
+//		var reader = new FileReader();
+//                    var that = $(this);
+//		reader.onload = function(){
+//			var dataURL = reader.result;                         
+//			src = dataURL;
+//		};
+//		
+//		reader.readAsDataURL(input.files[0]);
+                
+                $.ajax({
+                    url:'/getalbum',
+                    type:'POST',
+                    data:{
+                        link:src
+                            },
+                    success:function(data){
+                        $(this).append("<div class='cnt-tp-lyr'></div>")
+                        $(".usrconl .cnt-tp-lyr").html(data);
+                    },
+                    error:function(){
+
+                    }
+                });
+            }));           
+        });
+        
+        $(".mimgabtnfl").change(function(event){
+            	var input = event.target;
+		var reader = new FileReader();
+                    var that = $(this);
+		reader.onload = function(){
+			var dataURL = reader.result;                         
+			that.parents(".mimg").append("<img src='"+dataURL+"'/>");
+		};
+		
+		reader.readAsDataURL(input.files[0]);
+
+        });
+    });
+</script>

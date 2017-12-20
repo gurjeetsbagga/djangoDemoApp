@@ -1,0 +1,8 @@
+<?php
+$replyMessage = $this->replyMessageDetail;
+//echo "<pre>".  print_r($replyMessage,1);exit;
+?>
+<div class='clearfx' style="margin: 1px;border-top:1px dashed #ccc;  ">
+    <a href='<?php echo BASE_PATH ?>/profile/<?php echo $replyMessage[0]['id'] ?>' style="background-image: url('<?php echo $replyMessage[0]['profile_image_link'] ?>');width:25px; height:25px;display:block;float:right;" ></a>
+    <p class='rtr' style='padding-right:30px;'><?php echo $replyMessage['message']; ?></p>
+</div>

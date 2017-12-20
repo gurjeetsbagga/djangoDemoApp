@@ -1,0 +1,50 @@
+<div class='ginbmn'>
+    <ul>
+        <li data-notify="inbox" class="<?php if ($events[0]['seen'] == 1) {
+    echo 'shchkm';
+} ?>" >All</li>
+        <li data-notify="unread" class="<?php if ($events[0]['seen'] == 2) {
+    echo 'shchkm';
+} ?>" >(<?php echo $unread_count ?>)Unread</li>
+        <li><input type="text" value='' placeholder='search' /></li>
+        <li><span class="clsgin" value="close">x</span></li>
+    </ul>
+</div>
+<div class='gtinwrap'>
+<?php
+$events = $this->photos;
+//echo "<pre>".  print_r($events,1);exit;
+/*
+ *    [id] => 1
+            [title] => bday bash
+            [start_time] => 2015-12-16 00:00:00
+            [end_time] => 2015-12-17 00:00:00
+            [address] => kl  qwqwqw
+            [contactnumber] => qwlk
+            [oraganiser_id] => 1
+            [modified] => 2015-12-14 00:00:00
+        )
+ */
+foreach($events as $event){
+?>
+<div class='wrapper'>
+    <div>
+        <ul>
+            <li><?php echo $event['title'] ?></li>
+            <li>
+                <?php echo $event['start_time'] ?>
+            </li>
+        </ul>
+    </div>
+    <div>
+       <ul>
+            <li><?php echo $event['address'] ?></li>
+            <li>
+                <?php echo $event['contactnumber'] ?>
+            </li>
+        </ul>
+    </div>
+</div>
+<?php }?>
+</div>
+<?php exit; ?>

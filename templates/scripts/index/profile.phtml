@@ -1,0 +1,161 @@
+<div class='ubx'>
+    <div class='uhdr'>
+        <div class="uhdrcon">
+            <div class='luhdr' style="background-image: url('/images/9/girl4.jpg')">
+                <!--div class="luhdrnm ">
+                    <label class=''><?php echo $this->user['fname']." ".$this->user['lname'] ?><span class='lwhdrnm'>(<?php echo $this->user['fname'] ?>)</span></label>
+                    <div class='luhdrst'>
+                        <i>
+                        <?php
+                        $currentstatus = "<a href='#'>share your status</a>";
+                     if(!empty($this->user['currentstatus'])){
+                     $cs  =  json_decode($this->user['currentstatus']);   
+                      $currentstatus = "'".$cs[0]->currentstatus."'";
+                    }                                                    
+                echo $currentstatus;
+                ?>
+                        </i>
+                    </div>
+                </div-->                    
+                <div class='ludrbtm tp'>
+                    
+                    <div class='scprf'>
+                        <ul>
+                             <?php if(isset($this->user['fblink']) && !empty($this->user['fblink'])){ ?>
+                            <li class='scprfa'><a href=''><img src='/images/fb.png'/></a></li>
+                                
+                             <?php } 
+                            if(isset($this->user['twitterlink']) && !empty($this->user['twitterlink'])){ ?>
+                            <li class='scprfb'><a href=''><img src='/images/twitter.png'/></a></li>
+                             <?php } 
+                            if(isset($this->user['instagramlink']) && !empty($this->user['instagramlink'])){ ?>
+                            <li class='scprfc'><a href=''><img src='/images/instagram.png'/></a></li>
+                             <?php } 
+                            if(isset($this->user['linkedinlink']) && !empty($this->user['linkedinlink'])){ ?>
+                            <li class='scprfc'><a href=''><img src='/images/linkedin.png'/></a></li>
+                        <?php } 
+                         ?> 
+                        </ul>
+                        <div class="ludrtht ">
+                            <ul
+                            <?php if(isset($this->user['email']) && !empty($this->user['email'])){ ?>
+                                <li><strong>email :&nbsp;</strong><?php echo $this->user['email'] ?></li>
+                            <?php } 
+                            if(isset($this->user['phone_number']) && !empty($this->user['phone_number'])){ ?>
+                                <li><strong>Call me :&nbsp;</strong>
+                                <?php echo $this->user['phone_number'] ?></li>
+                            <?php } 
+                            if(isset($this->user['current_city']) && !empty($this->user['current_city'])){ ?>
+                                <li><strong>Currently living :&nbsp;</strong>
+                            <?php echo $this->user['current_city'] ?>
+                                </li>
+                             <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='ruhdr'>
+             <div class='bblr' style="background-image: url('http://i.ytimg.com/vi/7HDqDgYnX9c/mqdefault.jpg')"  ></div>
+                <!-- --->
+                    <div class="ruhdr-r">
+                                                <div id="PIF6tCE39Gc" style="width: 272px; position: relative; z-index: 0; float: right;">
+                            <div>
+                                    <img src="http://i.ytimg.com/vi/7HDqDgYnX9c/mqdefault.jpg" class="ruhdr-block-data-img"><!--                        <img class="dedic-block-data-img" src="http://i1.ytimg.com/vi/cZGQkzeg6kE/default.jpg" />-->
+                                    <!--<a class="dedic-block-hvrimg" href='' style='background-image:url("https://lh3.googleusercontent.com/-64CWplLUOFA/AAAAAAAAAAI/AAAAAAAAAeQ/3HiwG4X3yJE/photo.jpg?sz=300")'></a>-->
+                                <div class="dedic-block-uhvr">
+                                                                    
+                                    <div class="dedic-block-uhvrb">
+                                        <div class="dedic-block-uhvrb-lbl">
+                                                                                        </div>
+                                        <i class="dedic-block-uhvrbplbn"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="" class="video"></div>
+                        </div>
+                     </div>
+                <!-- -->
+            </div>
+        </div>
+    </div>
+    <div class='usrmnu' id='usrmnu'>
+        <ul>
+            <li data-id="myphotos" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ;background-color: #85144b;" class="active">Photos</li>
+            <li data-id="myfriends" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: #2ECC40;" >Friends</li>
+            <li data-id="mycontact" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: #0074D9;">contacts</li>
+            <li data-id="myliving" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: #001f3f;" >Living</li>
+            <li data-id="mysibling" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: rgb(255, 65, 54);" >Siblings</li>
+            <li data-id="myeducation" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: rgb(240, 18, 190);" >Education</li>
+            <li data-id="myprofessional" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ; background-color: rgb(177, 13, 201);" >Professional</li>
+            <li data-id="mysetting" style="font-weight: normal;color: #fff;background-image: url('/images/video.png') ;background-color: rgb(255, 133, 27);" >Account</li>
+        </ul>
+    </div>
+    <div id='usrcon'>
+        <div class='usrconl'>
+                <?php
+                echo $this->partial('partials/userprofile/mysetting.phtml',array('user'=>$this->user));
+                ?>
+        </div>
+        <div class='usrconr' ><img src='<?php echo $this->user['profileImageLink'] ?>'/></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#usrmnu").on("click","li",function(){
+            var that = $(this);
+            $(".usrconl > div").css("display","none");
+            
+            if(!that.hasClass("active")){
+                $.ajax({
+                    url:"/getmyprofile",
+                    method:'POST',
+                    data:{
+                        type:that.attr("data-id")
+                    },
+                    success:function(data){
+                        that.addClass("active"); 
+                        $("#usrcon > .usrconl").append(data);
+                        
+                    },                                 
+                    error:function(){
+                        
+                    }
+                });
+                return false;
+            }else{
+                $("."+that.attr("data-id")).css("display","block");
+            }
+        });
+        
+        
+ 
+         $(".usrconl").on("submit","#userabtfrm",function(){
+          
+               $.ajax({
+                url:'/update',
+                method:'POST',
+                data:{
+                    type:'profile',
+                    fname:$(this).find("input[name='fname']").val(),
+                    lname:$(this).find("input[name='lname']").val(),
+                    phone_number:$(this).find("input[name='phone_number']").val(),
+                    day:$(this).find("input[name='birth_day']").val(),
+                    month:$(this).find("input[name='birth_month']").val(),
+                    year:$(this).find("input[name='birth_year']").val(),
+                    gender:$(this).find("input[name='gender']").val(),
+                    city:$(this).find("input[name='city']").val(),
+                    state:$(this).find("input[name='state']").val(),
+                    aboutme:$(this).find("textarea[name='aboutme']").val()              
+                },
+                success:function(data){
+                    console.log(data);
+                },
+                error:function(){
+                    
+                }
+            });
+            return false;
+         });
+    });
+</script>

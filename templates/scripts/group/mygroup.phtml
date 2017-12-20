@@ -1,0 +1,925 @@
+<?php
+$notifications = $this->notifications;
+$mygroup = $this->mygroups;
+$mygroup = $mygroup[0];
+$mygroupMembers = $this->mygroupMembers;
+//echo "<pre>" . print_r($mygroupMembers, 1); exit("hell view");
+?>
+<div class='clscontainer'>
+    <ul>
+        <li>
+            <div class='clscontent'>
+                    <!--div class='clsnm'><?php echo $mygroup['name']; ?></div-->
+                <div class='clsbx'>
+                    <div class='lclsbx'>
+                        <div class='clspc' style='background-size:300px 70px;background-image:url("<?php echo $mygroup['sbgrp_profile_image_link'] ?>")'>																	
+                        </div>		
+                        <div class='almbrs'>
+                            <h2><?php echo count($mygroupMembers) ?> Members</h2>
+                            <input type='text' placeholder='search mates..' />
+                        </div>
+                        <div class='clsppl'>
+                            <ul>
+                                <?php
+//                                    echo "<pre>".print_r($mygroupMembers['members'],1);exit;
+                                foreach ($mygroupMembers['members'] as $mygroupMember) {
+                                    ?>
+                                    <li class="ls_<?php ///echo $mygroupMember['loginstatus']  ?>">
+                                        <div class='clsfrd'>
+                                            <a href='/profile/<?php echo $mygroupMember['user_id'] ?>' style="background-image:url('<?php echo $mygroupMember['profile_image_link'] ?>');background-position:center;" /></a>
+                                            <div class='clfrddtl'>
+                                                <div>
+                                                    <a class='nm' href='/profile/<?php echo $mygroupMember['user_id'] ?>'><?php echo $mygroupMember['fname'] ?></a>
+                                                    <span class='tm'><?php echo $this->TimeAgo($mygroupMember['lastlogin']) ?></span>
+                                                </div>
+                                                <input type='text' placeholder='Say  Hi!!' />
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='rclsbx'>
+                        <div class='clswrtbx'>
+                            <div class='clstxtar'>
+                                <textarea contenteditable="true" class="wrtdvh deditoblockminbwrtdv" placeholder="How you feel ?" id="deditoblockminbwrtdv"></textarea>
+                            </div>
+                            <div class='clsntfbx'>
+                                <div class='clsntf'>
+                                    <ul>
+                                        <li><div><small data-notify="inbox"><?php echo count($notifications['inbox']) ?></small> inbox <strong>+</strong></div></li>
+                                        <li><div><small data-notify="event"><?php echo $notifications['events']['count']; ?></small> events <strong>+</strong></div></li>
+                                        <li><div><small data-notify="ticks"><?php // echo count($notifications['ticks'])        ?></small> tick-me <strong>+</strong></div></li>
+                                    </ul>
+                                    <div id='gtwrap'></div>
+                                </div>
+                                <ul>
+                                    <?php
+                                    if (!empty($notifications['photos'])) {
+                                        foreach ($notifications['photos'] as $notifphotos) {
+                                            ?>
+                                            <li>
+                                                <a href='#profile'><img src='<?php echo $notifphotos['url']; ?>' style='height:50px;width:50px;'/></a>
+                                            </li>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <li>
+                                            <a href='#profile'><img src='/img/girl5.jpg' style='height:50px;width:50px;'/></a>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='clstb'>
+                            <?php
+// echo "******88S88";
+                            /**
+                             * WORKING FILE
+                             */
+                            $dedicatedUserDetails = $this->dedicatedUserDetails;
+// echo "<pre>" . print_r($dedicatedUserDetails, 1);exit("hello");
+// if (empty($dedicatedUserDetails)) {
+// echo $this->partial('partials/newuser.phtml', array('newuserprofile' => $this->newUserProfile));
+// }`
+// echo "<pre>" . print_r($dedicatedUserDetails, 1);exit('sss');
+// foreach ($dedicatedUserDetails as $dedicatedUserDetail) {
+                            $myprofileImage = $this->data['profileImageLink'];
+                            $firstName = 'fname';
+                            $username = 'fname';
+                            $message = 'message';
+                            $url = 'url';
+                            $profileImage = 'profile_image_link';
+                            $videoTitle = 'video_title';
+
+                            if (!empty($dedicatedUserDetails)) :
+                                foreach ($dedicatedUserDetails as $dedicatedUserDetail) {
+
+                                    if (empty($dedicatedUserDetail ['dedicationbyuser'] [$profileImage])) {
+                                        $dedicatedUserDetail ['dedicationbyuser'] [$profileImage] = $myprofileImage;
+                                    }
+
+                                    $dedicated_image_links = unserialize($dedicatedUserDetail ['dedication'] ['dedicated_image_link']);
+                                    if ((isset($dedicatedUserDetail ['dedication'] [$url]) && !empty($dedicatedUserDetail ['dedication'] [$url])) && (isset($dedicated_image_links) && !empty($dedicated_image_links))) {
+                                        $width = "100%";
+                                    }
+                                    ?>
+                                    <div class='ded dedid<?php echo $dedicatedUserDetail['dedication']['id'] ?>'>
+                                        <div class='dedsetting'>x</div>
+                                        <input type='hidden' class='dedid'
+                                               value='<?php echo $dedicatedUserDetail['dedication']['id'] ?>' />
+                                        <div class='dedf'>
+                                            <div class="dedfu"><div class='dedh_hblockl'>
+                                                    <div class="dedh_hblocklt">
+                                                        <span style="margin-left: 5px;" class='profname'><a
+                                                                href='<?php echo $dedicatedUserDetail['dedicationbyuser'][$username]; ?>'><?php echo $dedicatedUserDetail['dedicationbyuser'][$firstName]; ?></a></span>
+                                                        <span style="margin-left: 0px;" class='dedprofname'></span>
+                                                        <span id='dngststs' data-utime="<?php echo $dedicatedUserDetail['dedication']['created'] ?>" class='dediccreated timestamp'><?php echo $this->TimeAgo($dedicatedUserDetail['dedication']['created']); ?></span>
+                                                        <input type='hidden' class='currentuserauth'
+                                                               value='<?php echo $dedicatedUserDetail ['dedicationbyuser'] ['id']; ?>' />
+                                                    </div>                                    
+                                                </div>
+                                                <div class='dedic-block'>
+                                                    <?php // if (!empty($dedicatedUserDetail['dedication'][$url])) {   ?>
+
+                                                    <div class="dedic-block-data">
+                                                        <div class="dedic-block-data-l">
+                                                            <div class='dedh'>
+                                                                <div style="clear:both;position:relative;">
+                                                                    <div class='dedh_lcontainer'>
+                                                                        <div class='profimg'>
+                                                                            <a href = "<?php echo $dedicatedUserDetail ['dedicationbyuser'] [$firstName] ?>" style = "background-image:url('<?php echo empty($dedicatedUserDetail['dedicationbyuser'][$profileImage]) ? 'images/user.gif' : $dedicatedUserDetail['dedicationbyuser'][$profileImage]; ?>');"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='dedh_rcontainer'>
+                                                                        <div class='deta-block'>
+                                                                            <div class="dedh_hblocklb">
+                                                                                <ul>                                  
+                                                                                    <?php
+                                                                                    $el = '';
+                                                                                    if (isset($dedicatedUserDetail ['dedicationtouser']) && !empty($dedicatedUserDetail ['dedicationtouser'])) {
+                                                                                        foreach ($dedicatedUserDetail ['dedicationtouser'] as $dedicatioToUserDetail) {
+                                                                                            $dedicatedUserDetail ['dedicationbyuser'] [$profileImage] = $dedicatioToUserDetail [$profileImage];
+                                                                                            $el .= "<li><a href='" . $dedicatioToUserDetail ['fname'] . "'><!--img class='deduserimage'  style='box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.15); position:absolute;margin-left:5px; border-radius: 3px' height='22' width='22' src='" . $dedicatioToUserDetail [$profileImage] . "'/--></a></li>";
+                                                                                        }
+                                                                                    }
+                                                                                    if (isset($dedicatedUserDetail ['dedicationtounknowuser']) && !empty($dedicatedUserDetail ['dedicationtounknowuser'])) {
+                                                                                        $dedicationtounknowusers = $dedicatedUserDetail ['dedicationtounknowuser'];
+                                                                                        foreach ($dedicationtounknowusers as $dedicationtounknowuser) {
+                                                                                            // $dedicatedUserDetail['dedicationbyuser'][$profileImage] = $dedicationToUserDetail[$profileImage];
+                                                                                            $el .= "<li><a href='" . $dedicationtounknowuser . "'>" . $dedicationtounknowuser . "</a></li>";
+                                                                                        }
+                                                                                    }
+                                                                                    echo $el;
+                                                                                    ?>
+                                                                                </ul>
+                                                                                <div class='dedicated_user_block_txt'><?php echo!empty($dedicatedUserDetail['dedication'][$message]) ? "<span class='lapstrophe'>\"</span>" . $this->TruncateMessage(ucfirst($dedicatedUserDetail['dedication'][$message]) . "<span class='rapstrophe'>\"</span>", 180) : ''; ?></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="dedh_hblockr"></div>
+                                                                        <div class="dedh_hblockb">
+                                                                            <div class="dedicated_user_block">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="clearfx"></div>
+                                                            <div></div>
+                                                        </div>
+                                                        <div class="dedic-block-data-r">
+                                                            <?php if (!empty($dedicatedUserDetail['dedication'][$url])) { ?>
+                                                                <div
+                                                                    style="width: 272px; position: relative; z-index: 0; float: right;margin-right: 5px"
+                                                                    class="data" id="<?php echo $dedicatedUserDetail['dedication'][$url]; ?>">
+                                                                    <div>
+                                                                        <?php
+                                                                        // $json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/XNMMrbHMiNM?v=2&alt=jsonc"));
+                                                                        echo '<img class="dedic-block-data-img" src="' . $this->Resolution($dedicatedUserDetail ['dedication'] [$url]) . '">';
+                                                                        ?>
+                                        <!--                        <img class="dedic-block-data-img" src="http://i1.ytimg.com/vi/cZGQkzeg6kE/default.jpg" />-->
+                                                                            <!--<a class="dedic-block-hvrimg" href='' style='background-image:url("<?php echo $dedicatedUserDetail['dedicationbyuser'][$profileImage]; ?>")'></a>-->
+                                                                        <div class="dedic-block-uhvr">
+
+                                                                            <div class='dedic-block-uhvrb'>
+                                                                                <div class="dedic-block-uhvrb-lbl">
+                                                                                    <?php echo $dedicatedUserDetail['dedication'][$videoTitle]; ?>
+                                                                                </div>
+                                                                                <i class='dedic-block-uhvrbplbn'></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="video" id=""></div>
+                                                                </div>
+                                                            <?php } ?>
+                                                            <?php
+                                                            // $dedicated_image_links = unserialize($dedicatedUserDetail['dedication']['dedicated_image_link']);
+                                                            // echo "<pre>".print_r($dedicated_image_links,1);echo "hello";
+                                                            if (isset($dedicated_image_links) && !empty($dedicated_image_links)) {
+                                                                ?>
+                                                                <div class="dedic-block-image-data">
+                                                                    <ul>
+                                                                        <?php
+                                                                        echo $this->createCollage($dedicated_image_links);
+                                                                        ?>
+                                                                    </ul>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class="clearfx"></div>
+                                                    </div>
+
+                                                    <div class="dedic-block-data-info"></div>
+
+                                                    <?php
+                                                    // }
+                                                    // echo "<pre>".print_r($dedicatedUserDetail,1);
+                                                    ?>               
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mscontainer">
+                                            <div class='disq-block'>
+                                                <ul>
+                                                    <?php
+                                                    // $dedicatedUserDetail['dedicationbyusercomment'] = 4;
+                                                    if (!empty($dedicatedUserDetail ['dedicationbyusercomment'])) {
+// 			$comments = array_slice ( $dedicatedUserDetail ['dedicationbyusercomment'], - 2, 2, true );
+// 			echo "<pre>".print_r($dedicatedUserDetail,1);
+                                                        foreach ($dedicatedUserDetail ['dedicationbyusercomment'] as $comment) {
+                                                            $commentprofileimage = $comment [$profileImage];
+                                                            $commentcomment = $comment ['comment'];
+                                                            $commentcreated = $comment ['created'];
+                                                            $commentid = $comment ['id'];
+                                                            ?>  
+
+                                                            <li class='disqli'>
+                                                                <span class='deletecms'>x</span>
+                                                                <input class='commentid' type='hidden' value='<?php echo $commentid; ?>' />
+                                                                <div class='ldisq'>
+                                                                    <img src='<?php echo!empty($commentprofileimage) ? $commentprofileimage : '/images/user.gif'; ?>'
+                                                                         style='width: 26px; height: 26px; border-radius: 2px 2px 2px 2px;' />
+                                                                </div>
+                                                                <div class='rdisq'>
+                                                                    <span class='cmnt'><?php echo $commentcomment; ?></span> <span
+                                                                        class='cmntdttm'><?php echo date('D d-m-Y H:i:a', strtotime($commentcreated)); ?></span>
+                                                                </div> 
+                                                            </li>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class='usrcmntbxb'>
+
+                                                <div class='rusrcmntbx'>
+                                                    <div class='trusrcmntbx'>
+                                                        <img 
+                                                            src='<?php echo!empty($myprofileImage) ? $myprofileImage : '/images/user.gif'; ?>'
+                                                            style='border-radius: 4px 4px 4px 4px; height: 27px;' />
+
+                                                    </div>
+                                                    <!--div class='brusrcmntbx'>
+                                        <ul>																																																																		
+                                            <li class='btn postbtn'><span>Post</span></li>                      
+                                            <li class='btn cnclbtn'><span>Cancel</span></li>                       
+                                        </ul>
+                                    </div-->
+                                                </div>
+                                                <div class='lusrcmntbx'>
+                                                    <form>
+                                                        <div id="" class='replybx writebx write txth txtb divtxtar'
+                                                             contenteditable='true'></div>
+                                                        <input class='inwrite' type='hidden' value='' /> <input
+                                                            class='inwriteid' type='hidden'
+                                                            value='<?php echo $dedicatedUserDetail['dedication']['id']; ?>' />
+                                                        <input class='touserid' type='hidden'
+                                                               value='<?php echo $dedicatedUserDetail['dedication']['id']; ?>' />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!--div class='usrcmntbxa writebx write txta'>write..</div-->
+                                            <!--div class='usrcmntbxa'>
+                                         <div class='usrcmntbxadiv writebx write txth txta'>write..</div>
+                                     </div-->
+                                        </div>
+                                    </div>
+
+                                    <div class="upldblck"></div>
+                                <?php } endif; ?>
+                            <script>
+                                var arr = new Array("/img/album/1.jpeg", "/img/album/2.jpg", "/img/album/3.jpg", "/img/album/4.jpeg", "/img/album/5.jpg", "/img/album/7.jpeg", "/img/album/8.jpg");
+                                var inarr = new Array(arr[1], arr[2], arr[3], arr[4]);
+                                var i = 0;
+                                $.fn.fadeLoop = function ()
+                                {
+                                    var that = this;
+
+                                    if ($(this).hasClass('activeImg')) {
+                                        $(this).data('fadeTimer', setTimeout(function () {
+                                            var img = $(that);
+                                            $('.activeImg1').css("display", "block")
+                                            console.log('ss');
+                                            var val = img.attr('src');
+                                            var j = $.inArray(val, arr);
+                                            var i = j;
+                                            if (j === null || j === arr.length - 2) {
+                                                j = 0;
+                                            }
+                                            console.log('asd');
+
+                                            if ($('.activeImg2').hasClass('show')) {
+                                                Img1 = $('.activeImg2');
+                                                Img2 = $('.activeImg1');
+                                            } else {
+                                                Img1 = $('.activeImg1');
+                                                Img2 = $('.activeImg2');
+                                            }
+                                            $(Img2).addClass('show').removeClass('hide').css("opacity", "10").attr("src", arr[++j]).fadeIn(1000, function () {
+                                                $(Img1).addClass('hide').removeClass('show').attr("src", arr[i]).css({opacity: 1}).fadeOut(1000);
+                                            }).fadeLoop();
+                                        }, 3000));
+                                    }
+                                };
+
+                                $(function () {
+                                    var defaultimglayer = $(".data img");
+                                    var ImgWidth = $(defaultimglayer).width();
+                                    var ImgHeight = $(defaultimglayer).height();
+
+                                    var posX = '';
+                                    if ($(defaultimglayer).position()) {
+                                        posX = $(defaultimglayer).position();
+                                    }
+
+                                    var leftImagPosition = posX.left;
+                                    var topImagPosition = posX.top;
+                                    //        $(".dedic-block-uhvr").css({
+                                    //            top: 114, //topImagPosition + 3,
+                                    //            left: leftImagPosition + 3,
+                                    //            height: 39, //ImgHeight,
+                                    //            width: 266//ImgWidth + 5
+                                    //        });
+                                    $(".dedic-block-uhvrbplbn").on("click", "", function () {
+                                        var el = $(this).parents(".data");
+                                        $(el).html();
+                                    });
+                                    $(".reframe img").hover(function () {
+                                        var ImgWidth = $(this).width();
+                                        var ImgHeight = $(this).height();
+                                        var posX = $(this).position();
+                                        var leftImagPosition = posX.left;
+                                        var topImagPosition = posX.top;
+                                        $(this).parent(".reframe").next(".reframelayer").css({
+                                            top: topImagPosition,
+                                            left: leftImagPosition,
+                                            height: ImgHeight,
+                                            width: ImgWidth
+                                        });
+                                        //   clearTimeout($(this).data('fadeTimer'));
+                                        //    $(this).stop(true).css('opacity', 1);
+                                    }, function () {
+                                        $(this).parent(".reframe").next(".reframelayer").css({
+                                            top: 0,
+                                            left: 0,
+                                            height: 0,
+                                            width: 0
+                                        });
+                                    });
+                                    var i = 0;
+                                    $('.data').on('click', '.dedic-block-uhvrbplbn', function () {
+                                        //$(function() {
+                                        clearTimeout($(".activeImg").data('fadeTimer'));
+                                        $(".activeImg").stop(true).css('opacity', 1);
+                                        // });
+                                        $(".activeImg").removeClass("activeImg activeImg1 activeImg2").addClass("inactiveImg").css({
+                                            width: 90, height: 90
+                                        }).css("display", "none");
+                                        $(".activeVideo").removeClass("activeVideo").addClass("inactiveVideo").css(
+                                                "display", "none"
+                                                );
+                                        var activeImg1 = $(this).parents(".dedic-block").find(".reframe img:first").addClass("activeImg activeImg1").removeClass("inactiveImg");
+                                        var activeImg1src = $(this).parents(".dedic-block").find(".reframe img:first").addClass("activeImg activeImg1").removeClass("inactiveImg").attr('src');
+                                        var activeImg2src = $(this).parents(".dedic-block").find(".reframe img:nth(1)").addClass("activeImg activeImg2 overlay").removeClass("inactiveImg").hide().attr('src');
+                                        $(".activeImg2").css({
+                                            width: 180,
+                                            height: 180});
+                                        $(".activeImg1").addClass('show').fadeIn(1000, function () {
+                                            $(this).css({
+                                                width: 180,
+                                                height: 180}, 500);
+                                        });
+                                        clearTimeout(activeImg1.data('fadeTimer'));
+                                        activeImg1.stop(true).css('opacity', 1);
+                                        activeImg1.fadeLoop();
+                                        var img = $(".data img");
+                                        var ImgWidth = $(img).width() + 1;
+                                        var ImgHeight = $(img).height() + 1;
+                                        var posX = $(img).position();
+                                        var leftImagPosition = posX.left + 2;
+                                        var topImagPosition = posX.top + 2;
+                                        var videoid = $(this).parents(".data").attr('id');
+                                        // alert(videoid);
+                                        $(this).parents(".data").find('.video').html('<iframe src="http://www.youtube.com/embed/' + videoid + '?rel=0&autoplay=1" width="' + ImgWidth + '" height="' + ImgHeight + '" frameborder="0" allowfullscreen="true">').css({
+                                            left: leftImagPosition,
+                                            top: topImagPosition
+                                        }).addClass("activeVideo");
+                                    });
+
+                                    //        $(".lusrcmntbx").on('click', function() {
+                                    //            $(this).addClass('stopwriting').removeClass('startwriting');
+                                    //            $(this).find('.txth').animate({
+                                    //                height: "80px"
+                                    //
+                                    //            }, 200, "linear", function() {
+                                    //
+                                    //            });
+                                    //        });
+                                    //        $(".lusrcmntbx").on('focusout', function() {
+                                    //            if ($(this).hasClass('stopwriting')) {
+                                    //                $(this).removeClass('startwriting').addClass('stopwriting');
+                                    //                $(this).find('.txth').animate({
+                                    //                    height: "25px"
+                                    //
+                                    //                }, 200, "linear", function() {
+                                    //
+                                    //                });
+                                    //            }
+                                    //        });
+                                    $('.mscontainer').on('click', '.deletecms', function () {
+
+                                        var dedicationid = $(this).parents('.disq-block').next('.usrcmntbxb').find('.inwriteid').val();
+                                        var commentid = $(this).next('.commentid').val();
+                                        var el = $(this).parents(".disqli");
+                                        $.ajax({
+                                            url: '/comment/deletecomment/',
+                                            type: "POST",
+                                            cache: false,
+                                            //                    dataType: 'json',
+                                            data: {commentid: commentid, dedicationid: dedicationid},
+                                            success: function (results) {
+                                                if (results) {
+                                                    el.fadeOut();
+                                                }
+                                            }
+                                        });
+
+
+                                    });
+                                    $('#lcontent').on('keypress', '.replybx', function (event) {
+                                        var keycode = (event.keyCode ? event.keyCode : event.which);
+                                        //            alert(keycode);
+                                        var el = $(this);
+                                        $(this).next('.inwrite').val($(this).text());
+                                        var message = $(this).next('.inwrite').val();
+                                        var dedicationid = $(this).nextAll('.inwriteid').val();
+                                        //            var touserid =$(this).nextAll('.touserid').val();
+                                        if (keycode == '13') {
+                                            $.ajax({
+                                                url: '/addcomment',
+                                                type: "POST",
+                                                cache: false,
+                                                //                    dataType: 'json',
+                                                data: {
+                                                    replycomment: message,
+                                                    dedicationid: dedicationid
+                                                },
+                                                success: function (data) {
+                                                    el.html('');
+                                                    el.parents('.usrcmntbxb').prev(".disq-block").append(data);
+                                                }
+                                            });
+                                        }
+                                    });
+                                    $(".dedicated_user_block_txt").on("click", function () {
+                                        var el = $(this).parents(".dedfu").html();
+                                        $(this).parents(".ded").prepend("<div id='ppcnt' class='ppcnt'><div style='position:absolute;background-color:rgba(1,1,1,0.6);height:" + window.height + ";left:0;right:0;bottom:0;top:0;z-index:9990'></div><div style='z-index:9999;padding:10px;border:1px solid #111;background-color:#fff;position:fixed' class='pp'>" + el + "</div></div>");
+                                        $(".pp").css({
+                                            left: "25%",
+                                            width: "700px",
+                                            top: "200px"
+                                        });
+                                    });
+                                    $('#lcontent').on('click', '.ded > .dedsetting', function (event) {
+
+                                        var el = $(this);
+                                        var dedicationID = el.next(".dedid").val();
+
+                                        $.ajax({
+                                            url: 'removededication',
+                                            type: 'POST',
+                                            data: {
+                                                dedicationId: dedicationID
+                                            },
+                                            success: function (data) {
+                                                if (data) {
+
+                                                    el.parents(".dedid" + dedicationID).fadeOut();
+                                                } else {
+                                                    el.parents(".dedid" + dedicationID).fadeOut();
+                                                }
+                                            },
+                                            error: function () {
+                                                alert("Not Deleted");
+                                            },
+                                        });
+
+                                    });
+                                    $(".dedic-block-image-data ").on("click", "a", function () {
+                                        $("#container").append("<div style='position:absolute;top:0;height:" + $(document).height() + "px;width:" + $(document).width() + "px;right:0;background-color:rgba(1,1,1,0.5)'></div><div style='position:absolute;top:28%;left:28%' class='dbidimg'><img src='" + $(this).find('li').css('background-image').replace(/^url\(["']?/, '').replace(/["']?\)$/, '') + "'/><div class='dbiddsc'></div></div>");
+                                        $.get($(this).attr('href'), function (data) {
+                                            $(document).find(".dbiddsc").html(data);
+                                        });
+                                        window.history.pushState("object", "Your New Title", "/getphotos?id=42");
+                                        window.history.forward();
+                                        return false;
+                                    });
+                                });
+                            </script>
+                            <?php // exit();   ?>    
+                        </div>
+                        <div class='promotions'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var oldText;
+        var SendInbox;
+        $(document).on("click", ".clsgin", function () {
+            $(this).parents("#gtwrap").html("");
+        });
+
+        $(document).on("click", ".mbx", function () {
+            var el = $(this);
+
+            if (el.parents(".wrapper").hasClass('nread')) {
+                $.ajax({
+                    url: '/messageseen',
+                    type: 'POST',
+                    data: {
+                        'mid': el.parent().find(".mid").val(),
+                        'gid': el.parent().find(".gid").val(),
+                        'fid': el.parent().find(".frmmsg").val(),
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        // if(response){
+//                            console.log(el.val());
+                        // $(this).before("<p class='rtr'>"+$(this).val()+"</p>");
+                        //  $(this).val("");
+                        // }
+                    }
+                });
+            }
+
+            if ($(this).hasClass('close')) {
+                oldText = $(this).html();
+                console.log("kkkkk " + oldText);
+                $(this).removeClass('nread').removeClass('close').addClass('open').html($(this).parent().find('.cmsg').val());
+            } else {
+                $(this).removeClass('open').addClass('close').html(oldText);
+            }
+        });
+
+        $(document).on('keyup', '.repme', function (e) {
+            var keyCode = e.keyCode;
+            var el = $(this);
+            if ((keyCode === 13) && (el.val().length > 0)) {
+                $.ajax({
+                    url: '/sendtext',
+                    type: 'POST',
+                    data: {
+                        'msg': el.val(),
+                        'gid': el.parent().find(".gid").val(),
+                        'toid': el.parent().find(".frmmsg").val(),
+                    },
+                    success: function (response) {
+                        // if(response){
+//                            console.log(el.val());
+                        el.parent().find(".mbx ").after(response);
+                        el.val("");
+                        // $(this).before("<p class='rtr'>"+$(this).val()+"</p>");
+                        //  $(this).val("");
+                        // }
+                    }
+                });
+
+            }
+        });
+
+        /**
+         * 
+         */
+        $(".clsntf li:eq(0),.clsntf li:eq(1)").click(function () {
+            var el_this = $(this);
+            var type = el_this.find("small").attr("data-notify");
+            getMessageDetail(type);
+        });
+        $(document).on("click", ".ginbmn > ul >li", function () {
+            var el = $(this);
+            el.parent().find(".shchkm").removeClass("shchkm");
+            el.addClass("shchkm");
+            var type = el.attr('data-notify');
+            // getMessageDetail(type);
+        });
+        $(document).on('click', function (e) {
+            if ( !$(e.target).hasClass('clsntf')) {
+            $("#gtwrap").html("");
+            }
+        });
+        function getMessageDetail(type) {
+            var img = "<img src='/images/loading.gif' />";
+            $(".gtinwrap").html(img);
+            $.ajax({
+                url: '/getnotif',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    'type': type,
+                    //                    'id': $(this).find("small").attr("data-notify-id")
+                },
+                success: function (response) {
+                    //                    console.log(response);
+                    $("#gtwrap").html(response);
+                }
+            });
+        }
+
+    });
+
+
+</script>
+<style type='text/css'>
+    ul,li{
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    a{			
+        text-decoration:none
+    }
+    .almbrs{
+        text-align:center;
+        color:#555;
+        margin:10px 0;
+    }
+    .almbrs > input[type='text']{
+        border: 1px solid #eee;
+        border-radius: 2px;
+        font-size: 12px;
+        margin: 10px 0;
+        padding: 4px 12px;
+        text-align: left;
+        width: 200px;
+    }
+    .clscontainer{
+        margin: 0px auto;
+        width:980px;
+        display: inline-block;
+        position: relative;
+    }
+    .clscontent{
+    }
+    .clscontent > ul > li{
+
+    }
+    .clspc{
+        height:70px;
+        width:100%;
+    }
+    .clsppl{
+        margin-top:10px;
+    }
+    .clsppl > ul > li{
+        display:inline-block;
+        height:45px;
+        overflow:hidden;
+        float: left;
+        width:100%;
+        border-top:1px solid skyblue;
+    }
+
+    .clsfrd{
+        clear:both;
+    }
+    .clfrddtl .nm{
+        display:block;
+        font-size:12px;
+        float:left;
+        width:70%;
+        color:#666;
+    }
+    .clfrddtl .tm{
+        display:block;
+        font-size:10px;
+        color:#999;
+        float:right;
+    }
+    .clfrddtl input{
+        border: 1px solid #eee;
+        border-radius: 3px;
+        float: right;
+        font-size: 10px;
+        height: 20px;
+        line-height: 20px;
+        margin:4px 19px;
+        padding: 0 5px;
+        width: 28%;
+    }
+    .clfrddtl{
+        display:inline-block;
+        width:78%;
+        padding:0px 5px;
+    }
+    .clsfrd > a{
+        float:left;
+        height: 45px;
+        width: 45px;
+        display: block;
+    }
+    .clsfrd > a >img{
+        width:45px;
+        height:45px;
+    }
+    .almbrs{
+        font-size:14px;
+    }
+    .clswrtbx{
+        padding: 10px 0 10px 10px;
+        border-bottom: 1px solid #eee;        
+        border-right: 1px solid #eee;
+        background-color: #f8f8f8;
+        display: inline-block;
+    }
+
+    .clswrtbx textarea{
+        border: 1px solid #ccc;
+        padding: 4px 1%;
+        resize: none;
+        width: 320px;
+        height: 82px;
+    }
+    .lclsbx{
+        width:250px;
+        float:left;
+        box-shadow:1px 0 2px rgba(1,1,1,0.5);
+    }
+    .rclsbx{
+        float:right;
+        width:729px;
+    }
+    .clstb{
+        float:left;
+        width:582px;
+        margin-left:20px;
+    }
+
+    .promotions{
+        float:right;
+        width:250px;
+    }
+    .clstbhdrb{
+        margin:2px 0;
+        padding:2px;
+        border:1px solid #eee;
+        display:inline-block;
+    }
+    .clscig{
+
+    }
+    .clstxtar{
+        width:328px;
+        float: left;
+    }
+    .clsntfbx{
+        float: right;
+        padding: 0 15px;
+    }
+    .clsntfbx li {
+        text-align: center;
+    }
+    .clsntfbx > ul {
+        clear: both;
+    }
+    .clsntfbx > ul > li{
+        float: left;        
+        width:50px;
+        height: 50px;
+        padding: 1px;
+        border: 1px solid #eee;
+        overflow: hidden;
+    }
+    .clsntf{
+        position: relative;
+        clear:both;
+        color: #ccc;
+        font-weight: normal;
+        cursor: pointer;
+        display: inline-block;
+        transition: 0.2s;
+    }
+    .clsntf > ul > li:last-child{
+        border-right: none;
+    }
+    .clsntf > ul > li{
+        border-right: 1px solid #ccc;
+        float: left;
+        margin: 4px 2px;
+        width: 80px;
+    }
+    .clsntf > ul li:hover{        
+        color: #666;
+    }
+    .clsntf strong{
+        color: grey;
+        cursor: pointer;
+        float: right;
+        font-size: 12px;
+        font-weight: normal;
+        margin-right: 7px;
+        padding: 0 4px;
+        vertical-align: top;
+    }
+    .ombx{
+        display: inline-block;
+        max-height: 170px;
+        overflow-y: auto;
+        width: 100%;
+    }
+    .mbx{
+        border-top: 1px dashed #eee;
+        clear: both;
+        color: #666;
+        font-size: 10px;
+        padding: 2px 5px;
+    }
+    .nread{
+        background-color: lightyellow;
+    }
+    .wrapper{
+        padding: 1px;
+        clear: both;
+        color:#ccc;
+        overflow:hidden;
+        border-bottom: 1px solid #ccc;
+
+    }
+    .wrapper:last-child{
+        border-bottom: none;
+    }
+    .wrapperbx{
+        display: inline;
+    }
+    .wrapperbx > ul{
+        float: left;
+        margin-left:0;
+        padding: 2px;
+        width: 240px;
+        height: 100%;
+        background-color: #fff;
+    }
+
+    .wrapperbx > a{
+        display:block;
+        float:left;
+        width:35px;
+        height:35px;
+        background-repeat: no-repeat;
+        /*border-right:1px solid #eee;*/
+    }
+    .wrapperbx ul > li > a{
+        display: inline;
+        float: left;
+    }
+    .wrapperbx li > span{
+        display: inline;
+        float: right;
+        font-size: 10px;
+    }
+    .wrapper li{
+        display: block;
+    }
+    #gtwrap{        
+        box-shadow: 1px 2px 5px rgba(1, 1, 1, 0.1);
+        display: inline;
+        left: 0;       
+        position: absolute;
+        top: 20px;
+        width: 298px;
+        z-index: 999;
+        background-color: #fff;
+        text-align: center;
+    }
+    .gtinwrap{
+        max-height: 360px;
+        overflow: auto;
+    }
+    .repme{
+        margin: 2px 0 0;
+        padding: 2px 5px;
+        width: 95%;
+        border:1px solid #eee;
+        font-size: 11px;
+    }
+    .repme:hover{
+        border:1px solid skyblue;
+    }

@@ -1,0 +1,177 @@
+<?php
+/*
+ *
+ *
+ */
+?>
+<style>
+    .profileblock{
+        padding: 10px;
+        display: inline-block;
+        margin: 10px 0;
+
+    }
+    .profileblockm{
+
+    }
+    .profileblockml{
+        float: left;
+        width: 200px;
+    }
+    .profileblockml ul{
+
+    }
+
+    .profileblockml li:first-child{
+        border-top:1px solid #eee; 
+    }
+    .profileblockml li:hover{
+        background-color: #eee;
+    }
+    .profileblockml li{
+        cursor: pointer;
+        width: 150px;
+        padding: 10px 10px;
+        font-size: 14px;
+        border-right: 1px solid #eee; 
+        border-bottom: 1px solid #eee; 
+    }
+    .profileblockmr{
+        margin-left:200px;
+        width: 680px;
+    }
+    .profileblockmrl{
+        padding-top: 25px;
+        float: left;
+        width: 510px;
+    }.profileblockmrr{
+        float: right;
+    }
+    .profileblockmrlabouta,.profileblockmrlaboutb,
+    .designation,.companyname,.companylocation{    
+        background-color: white;
+        border: 1px solid rgb(228, 228, 228);       
+        color: rgb(64, 64, 64);
+        cursor: text;
+        padding: 10px;
+        position: relative;
+        vertical-align: top;
+    }
+
+    .profileblockmrlabouta{       
+        width: 450px;
+    }
+    .profileblockmrlaboutb{        
+        margin-top: 20px;
+        width: 450px;
+        height: 75px;
+    }
+    .designation,.companyname,.companylocation{
+        width: 400px;
+        height: 16px;
+        margin-bottom: 10px;
+    }
+    .addmorework{
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        background-color: rgb(255, 255, 255);
+        background-image: -moz-linear-gradient(center top , transparent, transparent);
+        color: rgb(64, 64, 64);
+        border: 1px solid rgba(0, 0, 0, 0.15);
+
+        border-radius: 2px 2px 2px 2px;
+        cursor: default;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        margin-right: 16px;
+        height: 28px;
+        line-height: 28px;
+        width: 75px;
+        outline: 0px none;
+        padding: 0px 8px;
+        cursor: pointer;
+    }
+</style>
+<div class='profileblock'>
+    <div class='profileblockh'>
+
+    </div>
+    <div class='profileblockm'>
+        <div class='profileblockml'> 
+            <ul>
+                <li class='profileblockmlliabout'>About</li>
+                <li class='profileblockmlliwork'>Work</li>
+                <li class='profileblockmlliedu'>Education</li>
+                <li class='profileblockmllicontact'>Contact</li>
+                <li class='profileblockmlliothrprofile'>other profile</li>
+            </ul>
+        </div>
+        <div class='profileblockmr'>
+            <div class='profileblockmrl'>
+                <div class='profileblockmrlabout'>
+                    <div class='profileblockmrlabouta' contenteditable='true'>how you feel today ?</div>
+                    <div class='profileblockmrlaboutb' contenteditable='true'>Describe about you</div>
+                </div>
+                <div class='profileblockmrlwork' style='display:none;'>
+                    <div class='profileblockmrlworka'>
+                        <div class='designation' contenteditable='true'>your Designation</div>
+                        <div class='companyname' contenteditable='true'>Company name</div>
+                        <div class='companylocation' contenteditable='true'>Company location</div>
+                        <div class='addmorework'>+ Add more</div>
+                    </div>
+                </div>
+                <div class='profileblockmrledu' style='display:none;'></div>
+                <div class='profileblockmrlcontact' style='display:none;'></div>
+                <div class='profileblockmrlothrprofile' style='display:none;'></div>
+            </div>
+            <div class='profileblockmrr'>
+                <img src='../images/girl.jpg' style='width:160px;'/>
+            </div>
+        </div>
+    </div>
+    <div class='profileblockf'>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('.profileblockmlliabout').on('click', function() {
+            $('.profileblockmrlabout').css('display', 'block');
+            $('.profileblockmrlwork').css('display', 'none');
+            $('.profileblockmrledu').css('display', 'none');
+            $('.profileblockmrlcontact').css('display', 'none');
+            $('.profileblockmrlothrprofile').css('display', 'none');
+        });
+        $('.profileblockmlliwork').on('click', function() {
+            $('.profileblockmrlwork').css('display', 'block');
+            $('.profileblockmrlabout').css('display', 'none');
+            $('.profileblockmrledu').css('display', 'none');
+            $('.profileblockmrlcontact').css('display', 'none');
+            $('.profileblockmrlothrprofile').css('display', 'none');
+        });
+        $('.profileblockmlliedu').on('click', function() {
+            $('.profileblockmrledu').css('display', 'block');
+            $('.profileblockmrlabout').css('display', 'none');
+            $('.profileblockmrlwork').css('display', 'none');
+            $('.profileblockmrlcontact').css('display', 'none');
+            $('.profileblockmrlothrprofile').css('display', 'none');
+        });
+        $('.profileblockmllicontact').on('click', function() {
+            $('.profileblockmrlcontact').css('display', 'block');
+            $('.profileblockmrlabout').css('display', 'none');
+            $('.profileblockmrlwork').css('display', 'none');
+            $('.profileblockmrledu').css('display', 'none');
+            $('.profileblockmrlothrprofile').css('display', 'none');
+        });
+        $('.profileblockmlliothrprofile').on('click', function() {
+            $('.profileblockmrlothrprofile').css('display', 'block');
+            $('.profileblockmrlabout').css('display', 'none');
+            $('.profileblockmrlwork').css('display', 'none');
+            $('.profileblockmrledu').css('display', 'none');
+            $('.profileblockmrlcontact').css('display', 'none');
+        });
+        $('.addmorework').on('click',function(){
+            
+        });
+    });
+</script>

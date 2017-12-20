@@ -1,0 +1,125 @@
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+<style type='text/css'>
+     #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      .controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+</style>
+    <div id="map-canvas"></div>
+
+<?php 
+
+function truncate($str, $len) {
+    $tail = max(0, $len - 10);
+    $trunk = substr($str, 0, $tail);
+    
+    $trunk .= strrev(preg_replace('~^..+?[\s,:]\b|^...~', '...', strrev(substr($str, $tail, $len - $tail))));
+    if (strlen($str) > $len + 1) {
+        return $trunk . "<i class='readmore'>....read more</i><div class='readrtx' style='display:none'>".$str."</div>";
+    } else {
+        return $trunk;
+    }
+}
+//echo "<pre>".print_r($this->doingphotos,1);exit;
+$currentstatus = $this->status;
+$doing = $this->doing;
+$doingphotos = $this->doingphotos;
+$with = $this->with;
+$modified = $this->modified;
+
+$dedicatedUserDetails = count ( $this->dedicatedUserDetails ) > 0 ? $this->dedicatedUserDetails : null;
+$newUserProfile = count ( $this->newUserProfile ['profile_image_link'] ) > 0 ? $this->newUserProfile ['profile_image_link'] : null;
+$DedicationForm = count ( $this->_DedicationForm ) > 0 ? $DedicationForm : null;
+// echo "<pre>".print_r($dedicatedUserDetails,1);exit;
+?>
+<!--<div class="hcontent">
+	<div class="hcontentt">
+		<div class="hcontenttin">
+			<div class="hcontenttr">
+				<div class="hcontenttrdv">
+					<span class="hcontenttrdvspnt"></span> 
+                                        <a href='<?php echo $doingphotos; ?>'><img src='<?php echo $doingphotos; ?>'/></a>
+                                     
+                                        <span class="hcontenttrdvspnb">
+						<h2><?php
+						
+echo ! empty ( $doing ) ? $doing : "Tell us where you are busy?";
+						echo isset ( $with ) ? $with : " with whoom";
+						?>
+                                                </h2>
+					</span>
+					<div style="" class="crntlyimdv">
+						<span class="hcontenttrsttm"><?php echo !empty($modified) ? $modified : ""; ?></span>
+					</div>
+				</div>
+				<div id="hcontenttrdvpp" class="hcontenttrdvppact"></div>
+			</div>
+			<div class="hcontenttl mstxth">
+				<form class="mcrntstts" id="mcrntstts">
+					<div class="mcrntsttsbx">
+						<a class="mstxth" href="" style="background-image: url('<?php echo $newUserProfile; ?>')" width='25px' /></a>
+						<div class="mcrntsttsbxtx ">
+							<span class="mstxth"><?php echo !empty($currentstatus) ?  truncate($currentstatus,"255") : "Write your current status "; ?></span>
+						</div>
+					</div>
+				</form>
+				<div id="hcontenttldvpp" class="hcontenttldvppact"></div>
+			</div>
+		</div>
+	</div>
+	<div class="hcontentb">
+		<div class="hcontentbr">
+			<image src ="//i1.ytimg.com/vi/gYWQbv8kUmk/mqdefault.jpg"/>
+		</div>
+		<div class="hcontentbl">
+			<img src="/images/cover.jpg" />
+		</div>
+	</div>
+</div>-->
+<div class="incontent">
+	<div class="lcontent" id="lcontent">
+<?php echo $this->partial('user/lcontent.phtml', array('dedicatedUserDetails' => $dedicatedUserDetails, 'newUserProfile' => $newUserProfile,'data'=>$this->data)); ?>
+    </div>
+	<div class="rcontent">
+<?php
+echo $this->partial('user/uploadingdedicationheader.phtml')
+// $this->partial('user/uploadingdedicationheader.phtml', array('DedicationForm' => $DedicationForm)); ?>
+    </div>
+</div>
+    <?php echo $this->partial('user/chat.phtml', array('friendlist' => $this->friends,'myData' => $this->data)); ?>

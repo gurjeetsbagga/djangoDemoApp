@@ -1,0 +1,57 @@
+<div class="chntnr">
+    <div class='chbx'>
+        <div class='chulst'>
+            <ul>
+                <?php
+                if(!empty($friendlist)){
+                ?>
+                <li class=''>
+                    <div>
+                        <input type='text' value='' placeholder="Search Friend" />
+                    </div>
+                </li>
+                    <?php  
+                foreach($friendlist as $friend){ ?>
+                <li class=' chfl_<?php echo $friend['friendid'] ?>'>
+                    <div>
+                        <ul>
+                            <li>
+                                <img src=""/>
+                            </li>
+                            <li>
+                                <label><?php echo $friend['name'] ?></label>
+                                <span>
+                                    <?php 
+                                        $lasttime = $friend['modified'];
+                                        echo $this->LastTimeOnline($lasttime);
+                                    ?>
+                                </span>
+                            </li>
+                        </ul>
+                        <input type='hidden' value="<?php echo $friend['friendid']; ?>" class='mfid' />
+                    </div>
+                </li>
+                <?php }}else{ ?>
+                <li>
+                    <div>
+                        <ul>
+                            <li>
+                                <img src=""/>
+                            </li>
+                            <li>
+                                <label><a href=''>find Friend</a></label>
+                                <span>
+                                    <?php 
+                                        
+                                        echo $this->LastTimeOnline();
+                                    ?>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                    <?php } ?>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,558 @@
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$friendlist =  $this->friendlist;
+//echo "<pre>".print_r($this->myData,1);exit;
+?>
+<style type='text/css'>
+    .chatblock{
+        background-color: #fff;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 150px;
+        display: inline-block;
+        border: 1px solid #eee;
+        font-size: 11px;
+        color: gray;
+        z-index: 9999;
+    }
+    .chatblockh{
+        width: 140px;
+        padding: 2px 5px;
+        display: inline-block;
+        background-color: #eee;
+        border-bottom: 1px solid #ece 
+    }
+    .chatblockhal{
+        float: left;
+        width: 30px;
+        text-align: center;
+    }
+    .chatblockhar{
+        width: 98px;
+        padding-left: 2px;
+        margin-left: 37px;
+    }
+    .chatblockharwrtdva{
+        display: inline-block;
+    }
+    .chatblockharwrtdva li,.chatwindowh li{
+        float: left;
+    }
+    .chatblockharwrtdvb{
+        float: none;
+        padding: 0 2px;
+        border: 1px solid #eee;
+        background-color: #fff;
+        width: 100px;
+        position: relative;
+        height: 22px;
+        border: medium none;
+        line-height: 18px;
+        margin-right: 14px;
+    }
+    .chatblockusrname{
+        width: 135px;
+        font-size: 80%;
+    }
+    
+    .chatblockresizebtn,.chatwindowresizebtn,.chatwindowclosebtn{
+    border: 1px solid transparent;
+    cursor: pointer;
+    float: right;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 0 2px;
+    padding: 3px 7px;
+    text-align: center;
+    }
+    .chatblockresizebtn:hover,.chatwindowresizebtn:hover,.chatwindowclosebtn:hover{
+        background-color: skyblue;
+        border: 1px solid #999;
+        color: #111;
+        transition: 0.3s;
+    }
+    .chatblockm{
+        overflow-y: auto;
+        height: 255px;
+        padding: 2px;
+    }
+    .chatblockmu{
+        clear: both;    
+        font-family: 'Arial',sans-serif;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /*border-bottom: 1px solid rgba(0, 0, 0, 0.12);*/
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        background: none repeat scroll 0% 0% rgb(255, 255, 255);
+        font-size: 11px;
+    }
+    .chatblockmu{
+        padding: 2px 0 0 0;
+    }
+    .chatblockmu:hover{
+        background-color: skyblue;
+        color:#111;
+        transition: 0.3s;
+    }
+    .chatblockmurb{
+        transition: right 0.218s ease 0s, opacity 0.218s ease 0s, max-width 0.218s ease 0s, color 0.218s ease 0s;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-transform: capitalize;
+        overflow: hidden;
+    }
+    
+    .chatblockmul{
+        float: left;
+        width: 40px;
+    }
+    .chatblockmur{
+        margin-left: 40px;
+        width: 145px;
+    }
+    .chatwindow{        
+        display: inline-block;
+        padding: 0;
+        width: 225px;
+        margin-right: 20px;
+            
+            
+    }
+    .chatwindowusrname{
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+    width: 164px;
+    }
+    .chatwindowusrname a{
+        color:#111;
+    }
+    .chatwindowusrname a:hover{
+        color:navy;
+        transition: 0.3s;
+    }
+    .chatwindowo{
+        border-left: 1px solid #666;
+        border-right: 1px solid #666;
+    }
+    .chatwindowh{
+        border-top: 1px solid #666;
+        border-left: 1px solid #666;
+        border-right: 1px solid #666;
+        color: gray;
+         background-color: #fff;
+        height: 25px;
+        padding: 4px;
+        line-height: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-collapse: collapse;
+        font-size: 80%;
+    }
+    .chatwindowm{
+        position: relative;
+    }
+    .chatwindowm{
+         background-color:rgba(225,225,225,0.9);
+        height: 190px;
+        font-size: 11px;
+    }
+    .chatwindowmwrtdv span{
+border-radius: 4px;
+    display: block;
+    line-height: 9px;
+    margin: 1px 1px 1px 35px;
+    max-width: 100%;
+    padding: 2px 4px;
+    }
+    .chatwindowfwrtdv{
+        float: right;
+        font-size: 11px;
+        height: 40px;
+        width: 173px;
+    }
+    .chatwindowmwrtdv img{
+          width: 31px;
+  margin: 2px;
+  float: left;
+  vertical-align: top;
+  border-radius: 3px;
+    }
+    .chatwindowf{
+         background-color: #fff;
+         display: inline-block;
+    }
+    .chatwindowf a{
+    background-position: 5px 10px;
+    background-repeat: no-repeat;
+    background-size: auto 32px;
+    border-top: 1px solid #ccc;
+    display: inline-block;
+    float: left;
+    height: 55px;
+    width: 40px;
+    }
+    .chatwindowm,.chatwindowfwrtdv{
+       
+        overflow-y:auto; 
+        padding: 5px;
+        border-top: 1px solid #ccc;
+        direction: ltr;
+        text-align: left;        
+        line-height: 14px;
+        opacity: 1;
+        transition: opacity 0.218s ease 0s;
+        word-wrap: break-word;
+        border-collapse: collapse;
+        color: #262626;
+        font-family: arial,sans-serif;
+    }
+    #cht{
+        bottom: 0px;
+        position: fixed;
+        right: 140px;
+        height: 290px;
+    }
+    .me{
+        text-align: right;
+    }
+    .friend{
+        text-align: left;
+    }
+    .conversation{
+        height: 100%;
+        width: 100%;
+    }
+    .chatwindowmlyr{
+    overflow-y: auto;
+    overflow-x: no-content;
+    width: 100%;
+    }
+    .chatwindowmwrtdv{
+          position: absolute;
+       bottom:4px;
+       width: 98%;
+       overflow: hidden;
+    }
+</style>
+<div class='chatblock'>
+     <?php
+       if(!isset($friendlist) || empty($friendlist)){
+           ?>
+        <div class='chatblockh'> 
+        <div class='chatblockhal'>
+            <img src='images/girl1.jpg' style='width:35px;'>
+        </div>
+        <div class='chatblockhar'>
+            <div class='chatblockharwrtdva'>
+                <ul>
+                    <li class='chatblockusrname'>Gurjeet Singh</li>
+                </ul>
+            </div>
+            <div><a href="#">Find friends</a></div>
+        </div>
+        </div>
+        <?php
+        }else{ ?>
+    <div class='chatblockh'> 
+        <div class='chatblockhal'>
+            <img src='<?php echo $this->myData ['profileImageLink'] ?>' style='width:25px;'>
+        </div>
+        <div class='chatblockhar'>
+            <div class='chatblockharwrtdva'>
+                <ul>
+                    <li class='chatblockusrname'><?php echo $this->myData ['fname'] ?></li>
+                    <li class='chatblockresizebtn'>-</li>
+                    <li class='chatblockclosebtn'></li>
+                </ul>
+            </div>               
+        </div>
+        <input class='chatblockharwrtdvb' placeholder='Search..' />
+    </div>
+    <div class='chatblockm'>
+        <?php       
+       foreach($friendlist as $friend){
+           $friendName = $friend['fname'];
+           
+           ?>
+        <div class="chatblockmu chatblockmu_<?php echo $friend['id']?>">
+            <div class='chatblockmul'>
+                <img src='<?php
+                echo !empty($friend['profile_image_link'])? $friend['profile_image_link']:"/images/user.gif";
+                ?>' style='width:25px;'/>
+            </div>
+            <div class='chatblockmur'>
+                <div class='chatblockmurb'>
+                    <label><?php echo $friendName ?></label>
+                </div>
+                <div>
+                    <?php $lasttime = (isset($friend['lastlogin']) && !empty($friend['lastlogin'])) ? $friend['lastlogin'] : "";
+                                        echo $this->LastTimeOnline($lasttime); ?>
+             </div>
+            </div>
+            <input class="chtoid" type="hidden" value="<?php echo $friend['id'] ?>" />
+            <input class="chtonm" type="hidden" value="<?php echo $friendName ?>" />
+            <input class="chtcls" type="hidden" value="chatblockmu_<?php echo $friend['id']?>" />
+        </div>
+        <?php } ?>
+    </div>
+     <?php } ?>
+    <div class='chatblockf'>
+    </div>
+        
+</div>
+<div id='cht'>
+    <?php /*
+    <div class='chatwindow'>
+        <div class='chatwindowh'>
+            <ul>
+                <li class='chatwindowusrname'><a href='#'>Gurjeet Singh</a></li>
+                <li class='chatwindowresizebtn'>-</li>
+                <li class='chatwindowclosebtn'>x</li>
+            </ul>
+        </div>
+        <div class='chatwindowo'>
+            <div class='chatwindowm'>
+                <div class='chatwindowmwrtdv' contenteditable='true'>
+                    
+                </div>
+            </div>
+            <div class='chatwindowf'>
+                <div class='chatwindowfwrtdv' contenteditable='true'>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+      <?php */ ?> 
+</div>
+<input type='hidden' value='265' class='chatblockmanager'>
+<script>
+    $(document).ready(function() {
+        
+        var openChatBox = 0;
+        var chatwinWidth=0;
+        $('.chatblockharwrtdvb').on('click', function() {
+            $(this).text('');
+            $(this).animate({width: "140px"}, 500);
+        });
+        $('.chatblockresizebtn').on('click', function() {
+            if ($(this).hasClass('open')) {
+                $(this).addClass('close').removeClass('open');
+                $(this).text('-');
+                $('.chatblockm').css('display', 'block');
+                $(this).parents(".chatwindowh").css({
+                    position:"relative",
+                
+                });
+            } else {
+                $(this).addClass('open').removeClass('close');
+                $(this).text('+');
+                $('.chatblockm').css('display', 'none');
+                $(this).parents(".chatwindowh").css({
+                    position:"absolute",
+                    bottom:"0"
+                });
+            }
+        });
+        
+        $('.chatblockmu').on('click', function() {
+            
+            //            var divw = document.createElement('div');
+            //            divw.className = 'chatwindow';
+            //            var divwh = document.createElement('div');
+            //            divwh.className = 'chatwindowh';
+            //            var divwo = document.createElement('div');
+            //            divwo.className = 'chatwindowo';
+            //            var divwm = document.createElement('div');
+            //            divwm.className = 'chatwindowm';
+            //            var divwdv = document.createElement('div');
+            //            divwdv.className = 'chatwindowmwrtdv';
+            //            var divwf = document.createElement('div');
+            //            divwf.className = 'chatwindowf';
+            //            var divwfwdv = document.createElement('div');
+            //            divwfwdv.className = 'chatwindowfwrtdv';
+            //
+            ////                var right = parseInt($('.chatblockmanager').val());
+            ////                if (right > 900) {
+            ////
+            ////                } else {
+            ////                    right = right + 235;
+            ////                }
+            ////                $('.chatblockmanager').val(right);
+            //
+            ////                divw.style.right = right + 'px';
+            //            divwdv.setAttribute('contenteditable', 'true');
+            //            divwfwdv.setAttribute('contenteditable', 'true');
+            //
+            //            var ulchatwindow = document.createElement('ul');
+            //            var liusername = document.createElement('li');
+            //            var liminimize = document.createElement('li');
+            //            var licancel = document.createElement('li');
+            //
+            //            liusername.className = 'chatwindowusrname';
+            //            liminimize.className = 'chatwindowresizebtn';
+            //            licancel.className = 'chatwindowclosebtn';
+            //
+            //            ulchatwindow.appendChild(liusername);
+            //            ulchatwindow.appendChild(liminimize);
+            //            ulchatwindow.appendChild(licancel);
+            //
+            //            divwh.appendChild(ulchatwindow);
+            //
+            //            var achatwindownamelink = document.createElement('a');
+            //            liusername.appendChild(achatwindownamelink);
+            //            liminimize.appendChild(document.createTextNode('-'));
+            //            licancel.appendChild(document.createTextNode('x'));
+            //
+            //
+            //            achatwindownamelink.setAttribute('href', '#');
+            //            achatwindownamelink.appendChild(document.createTextNode('Gurjeet Singh'));
+            //
+            //            liusername.appendChild(achatwindownamelink); // Add name to left div
+            //
+            //            divw.appendChild(divwh);
+            //            divw.appendChild(divwo);
+            //
+            //            divwo.appendChild(divwm);
+            //            divwo.appendChild(divwf);
+            //
+            //            divwm.appendChild(divwdv);
+            //            divwf.appendChild(divwfwdv);
+            //            document.getElementById('cht').appendChild(divw);
+            
+            var toname =  $(this).find(".chtonm").val();
+            var toid    = $(this).find(".chtoid").val();
+            var Img =   $(this).find(".chatblockmul img").attr("src");
+            
+            var el = '<div class="chatwindow chatwindow_'+toid+'"><div class="chatwindowh"><ul><li class="chatwindowusrname"><a href="#">'+toname+'</a></li><li class="chatwindowresizebtn">-</li><li class="chatwindowclosebtn">x</li></ul></div><div class="chatwindowo"><div class="chatwindowm"><div class="chatwindowmlyr"><div class="chatwindowmwrtdv"><div></div></div></div></div><div class="chatwindowf"><a href="" style="background-image:url();"></a><div contenteditable="true" class="chatwindowfwrtdv"></div><input class="chtxtid" type="hidden" value="" /><input class="chtoid" type="hidden" value="'+toid+'" /></div></div></div>';
+            
+            if((toname.length > 0) && (toid.length > 0) && openChatBox < 5){
+                chatwinWidth = $("#cht").width();
+                chatwinWidth = parseInt(chatwinWidth)+450;
+               
+                var windowWidth = $(document).width();
+                 
+                if($(this).hasClass("active")){
+                    
+                }else if(chatwinWidth < windowWidth){
+                        $("#cht").append(el);
+                         $(this).addClass("active");
+                }
+            }
+        });
+        $('#cht').on("click", '.chatwindowresizebtn', function() {
+            var el = $(this).parents('.chatwindow');
+            if ($(this).hasClass('open')) {
+                $(this).addClass('close').removeClass('open');
+                $(this).text('-');
+                el.find('.chatwindowo').css('display', 'block');
+                 $(this).parents(".chatwindowh").css({
+                    position:"relative"
+                });
+            } else {
+                $(this).addClass('open').removeClass('close');
+                $(this).text('+');
+                el.find('.chatwindowo').css('display', 'none');
+               
+                $(this).parents(".chatwindowh").css({
+                    position:"absolute",
+                    bottom:"0"
+                });
+            }
+        });
+        
+        ticker();
+        function ticker(){
+            setInterval(function(){
+                fetchMessage();
+            },3000);
+        }
+        
+        function fetchMessage(){
+            $.ajax({
+                url:'/getchat',
+                type:'post',
+                success:function(resu){
+                    console.log(resu);
+                 if(resu.length>0){
+                     var data = JSON.parse(resu);
+                     
+                     data = JSON.parse(data); 
+                        $.each(data, function(index,value) {
+                            var el =   $("#cht").find(".chatwindow_"+data[index].myid).find(".chatwindowmwrtdv");
+                            
+                            var appendel = "<div class='friend'><img src='http://www.gurjeetbagga.com/images/"+data[index].myid+"/pic.jpg' /><span class='friend'>"+data[index].text+"</span></div>";
+                            if(el.find("div").last().hasClass("friend")){
+                               $(el).find("div").last("friend").append("<span>"+data[index].text+"</span>");
+                            }else{
+                                el.append(appendel);
+                            }
+                            $(el).parent(".chatwindowmlyr").css("height",$(el).height()+90);
+                        });
+                    }
+                },
+                error:function(){
+                    
+                }
+            });
+        }
+        
+        $('#cht').on('click', '.chatwindowclosebtn', function() {
+        var Id = $(this).parents(".chatwindow").find(".chtoid").val() ;  
+        
+        $(this).parents('.chatwindow').remove();
+           $(".chatblockm").find(".chatblockmu_"+Id).removeClass("active");
+             chatwinWidth = parseInt(chatwinWidth) - 450;
+        });
+        $('#cht').on('keypress', '.chatwindowfwrtdv', function(event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            $(this).next("input").val($(this).text());
+            var text = $(this).text();
+            if(text.length < 1){
+                return;
+            }
+            if (keycode === 13) {                
+                $(this).text('');
+                var el = $(this).parents('.chatwindowo').find('.chatwindowmwrtdv');
+                
+                var appendel = '<div class="me"><span>' + text + '<b>&nbsp;:me&nbsp;</b></span></div>';
+                if(el.find("span").last().hasClass("me")){
+                   $(el).find("span").last(".me").append('<span>' + text + '</span>');
+                }else{
+                    el.append(appendel);
+                }
+                
+                $(this).parents('.chatwindowmwrtdv').scrollTop($(this).parents('.chatwindowmwrtdv').height());
+              $(el).parent(".chatwindowmlyr").css("height",$(el).height()+90);
+                  $.ajax({
+                    url:'/sendchat',
+                    type:'JSON',
+                    method:"POST",
+                    data:{
+                        text:$(this).next(".chtxtid").val(),
+                        toid:$(this).next(".chtxtid").next(".chtoid").val(),
+                    },
+                    success:function(){
+                        $(this).next(".chtxtid").val("");
+                    },
+                    error:function(){
+                        console.log("error in chat");
+                    }
+                });
+            }
+            
+        });
+    });
+</script>

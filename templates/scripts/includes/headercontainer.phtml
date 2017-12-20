@@ -1,0 +1,767 @@
+<?php
+/*
+ *
+ *
+ */
+//pr($data);
+?>  
+<style type="text/css">
+    body{
+        margin: 0;
+        padding: 0;
+
+        background-color: whitesmoke;
+    }
+    #content,#container{
+        margin: 0 auto;
+        width: 1000px;
+        display: block;
+    }
+    #content{
+        position: relative;
+        display: inline-block;
+    }
+    /*
+    pages
+    */
+    root { 
+        display: block;
+    }
+
+    a{
+        text-decoration: none;
+        transition: color 0.218s ease 0s;
+    }
+    ul,li{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        list-style: none;
+    }
+
+    .container{
+        width: 1000px;
+        margin: 0 auto;
+        color: rgb(115, 115, 115);
+        font-family: 'Arial',sans-serif; 
+        font-size: 11px;
+    }
+    .mcontainer{
+        clear: both;
+        display:block;
+        padding: 25px 5px;
+        width: 900px;
+        margin:10px auto;
+    }
+    .hcontainer{
+        height: 200px;
+        width: 900px;
+        display: block;
+        margin: 10px auto;    
+        border: 1px solid #eee;
+        padding: 0;   
+        background-color: #fff;
+        border-radius: 5px 5px 5px 5px;  
+        border: 1px solid rgb(221, 221, 221);
+        box-shadow: 0px 0px 5px 0px rgb(221, 221, 221);
+    }
+    .divtxtar{
+        cursor: text;
+        font: 13px/1.4 Roboto,arial,sans-serif;
+        word-wrap: break-word;
+        outline: 0px none;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: rgb(64, 64, 64);
+        white-space: normal;
+        visibility: visible;        
+        border: 1px solid #eee;
+    }
+    .blhtxtar{
+        width: 450px;
+        max-height: 38px;
+        min-height: 35px;       
+    }
+    .blhtosugnm{
+        width: 450px;
+        max-height: 368px;
+        min-height: 55px;       
+    }
+    .lcontainer{
+        width: 350px;
+        float: right;
+    }
+    .rcontainer{
+        /*width: 579px;*/
+        float: left;
+    }
+    .rhbox{
+        float: right;
+        width: 200px;
+    }
+    .lhbox{
+        float: left;
+        width: 700px;
+        padding:0;
+    }
+    .lhbox .hboxli:first-child{
+        border-top:none; 
+    }
+    .lhbox .hboxli{
+        padding: 12px 10px;
+        line-height: 25px;
+        border-top: 1px solid #fff; 
+        cursor: pointer;
+        color: #555;
+    }
+    .hboxlia{
+        text-transform: capitalize;
+        float: left;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: MuseoSlab500,Helvetica,Arial;
+    }
+    .hboxliab:hover{
+        color: green;
+    }
+    .lhbox .hboxli:hover:first-child{
+        border-radius: 5px 0px 0px 0px;
+    }
+    .lhbox .hboxli:hover{
+        background-color: whitesmoke;
+    }
+    .lhbox .hboxli:hover:last-child{
+
+        border-radius: 0px 0px 0px 5px;
+    }
+    .lhbox .hboxli:hover .hboxlia{    
+        color: green;
+    }
+    .lhbox .hboxli:hover .hboxlib{
+        color:#427fed;
+        font-weight: bold;
+    }
+    .hboxlib{
+        font-size: 11px;
+        display: inline;
+        padding-left: 5px;
+        padding-bottom: 6px;
+    }
+    .tlhbox{
+        display: inline-block;
+    }
+    .mlhbox{
+    }
+    .blhbox{
+        margin-left: 185px;
+    }
+    .usrprofimg{
+        text-align: center;
+        position: relative;
+        height: 200px;    
+        padding:20px 20px 0 20px;
+    }
+    .usrprofimg img{
+        padding:2px;
+        border: 1px solid #eee;
+    }
+    .ltlhboxop{
+        /*    width: 170px;
+            height: 200px;
+            position: absolute;
+            background-color: #111;
+            opacity: 0.8;
+            z-index: -1;
+            border: 5px 5px 5px*/
+    }
+    .ltlhbox li:hover{
+        /*background: none repeat scroll 0% 0% rgb(0, 83, 135);*/
+    }
+    .ltlhbox{
+        float: left;
+        width: 160px;
+        height: 200px;
+        color: #fff; 
+        background-color: rgb(202, 217, 230);
+        opacity: 0.8;
+    }
+    .rtlhbox{
+        margin-left: 200px;
+    }
+
+</style>
+<div class='rhbox'>
+    <div class='usrprofimg'>
+        <div class="usrprofimgop"></div>
+        <img src='<?php echo $data[0]['ProfileImage']['profile_image_link'] ?>' style='width:160px;'/>
+    </div>
+</div>
+<div class='lhbox'>
+    <div class='tlhbox'>
+        <div class='ltlhbox'>
+            <div class="ltlhboxop"></div>
+            <ul>
+                <li class='hboxli'>
+                    <div class='hboxlia'>
+                        <span>Friends</span>
+                    </div>
+                    <div class='hboxlib'>
+                        <span>90</span>
+                    </div>
+                </li>
+                <li class='hboxli'>
+                    <div class='hboxlia'>
+                        <span>dedicate me</span>
+                    </div>
+                    <div class='hboxlib'>
+                        <span>14</span>
+                    </div>
+                </li>
+                <li class='hboxli'>
+                    <div class='hboxlia'>
+                        <span>Follower</span>
+                    </div>
+                    <div class='hboxlib'>
+                        <span>45</span>
+                    </div>
+                </li>
+                <li class='hboxli'>
+                    <div class='hboxlia'>
+                        <span>Message</span>
+                    </div>
+                    <div class='hboxlib'>
+                        <span>1,245</span>
+                    </div>
+                </li> 
+            </ul>
+            <?php
+            echo $this->Form->input('name', array('class' => 'ui-autocomplete',
+                'id' => 'autocomplete'));
+            ?>
+        </div>
+
+        <div class='rtlhbox'>
+            <div class='deditoblock'>
+                <div class='deditoblockh'>
+                    <?php //echo $this->form->create('dedication', array('url' => array('controller' => 'moodlines', 'action' => 'addLine')));   ?>
+                    <div class='deditoblockhtraoa'>
+                        <div class='deditoblockhtraa wrtbsic'>
+                            <img src='images/l.png' style='width:16px;'/><span>I say what I want to say and do what I want to do. There's no in between. People will either love you for it or hate you for it...</span><img src='images/r.png' style='width:16px;'/>
+                        </div>
+                    </div>
+                    <div class='deditoblockhtraob'>
+                        <div  class='deditoblockhtrab  deditoblockhtramna wrtdvha'contenteditable='true'>How you feel today?</div>
+                        <?php echo $this->form->input('line', array('class' => 'deditoblockhtramnain', 'type' => 'hidden')); ?>
+                        <div class='deditoblockhtrain'>
+                            <ul>                          
+                                <li class='btn postbtn postbtnmna' type='submit'><span>Post</span></li>                      
+                                <li class='btn  cnclbtn cnclbtnmna'><span>Cancel</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php // echo $this->form->end();   ?>
+                </div>
+                <div class='deditoblockm'>
+                    <div class='deditoblockmina'>
+                        <div class='wrtdv wrtdvh deditoblockminawrtdv' contenteditable='true'>
+                            dedicate songs or write something for your love ones..
+                        </div>
+                    </div>
+                    <div class='deditoblockminb'>
+                        <?php echo $this->form->create('dedication', array('url' => array('controller' => 'dedications', 'action' => 'sendDedication'))); ?>
+                        <div class='deditoblockmto'>
+                            <div class='dedicbox'><span class="addpplspn">+ Dedicate to</span><input id="tag" value='' /></div>                         
+                            <div class='dedicboxlblnm'><span></span></div>
+                            <div id="autofrndnamediv"><ul id="autofrndnameul"></ul></div>
+                            <?php echo $this->form->input('about', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvin', 'value' => '')); ?>
+                            <input type='hidden' value='' name='' />
+                        </div> 
+                        <div id="deditoblockminbwrtdv" class='wrtdv wrtdvh deditoblockminbwrtdv' contenteditable='true'></div>                       
+                        <?php echo $this->form->input('about', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvin', 'value' => '')); ?>
+
+                        <div class='deditoblockf'>
+                            <div class='deditoblockfin'>
+                                <ul>
+                                    <li class='btn attachbtn attachbtnmn'><span>Attach</span></li> 
+                                    <li><?php echo $this->form->input('', array('type' => 'file', 'class' => 'attchfilebtn')); ?></li>
+                                    <li class='btn postbtn postbtnmn' type='submit'>Post</li>                      
+                                    <li class='btn  cnclbtn cnclbtnmn'><span>Cancel</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <?php echo $this->form->end(); ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='mlhbox'></div>
+    <!--    <div class='blhbox'>        
+            <div class='blhdedito'>
+                <div contentEditable='true' class='divtxtar blhtosugnm'>
+                    How u feel today?
+                </div>          
+            </div>
+        </div>-->
+    <style type='text/css'>
+        .deditoblock{
+            width: 475px;
+            margin: 0 auto;
+            font-size: 12px;           
+            color: #999;
+            background-color: #fff;
+            display: inline-block;
+        }
+        .deditoblockh{
+            margin-top: 10px;
+            color:#111;
+            outline-offset: -2px;
+            display: inline-block;
+            width: 100%;
+        }
+        .deditoblockh img{
+            margin: 0 5px;
+        }
+        .deditoblockmto{
+            background: none repeat scroll 0% 0% rgb(255, 255, 255);
+            border-right: 1px solid rgb(228, 228, 228);
+            border-left: 1px solid rgb(228, 228, 228);
+            border-top: 1px solid rgb(228, 228, 228);
+            color: rgb(64, 64, 64);
+            /*max-height: 310px;*/
+            overflow-y: auto;
+            padding: 3px;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
+        }
+        .deditoblockm{
+            /*border: 1px solid #eee;*/
+            margin-top: 20px;
+        }
+        .wrtdv,.deditoblockhtrab{             
+            background-color: white;
+            color: rgb(64, 64, 64);
+            cursor: text;
+            padding: 10px;
+            position: relative;
+            vertical-align: top;
+            overflow-y: auto;
+            border: 1px solid rgb(228, 228, 228);
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
+        }
+        .wrtdvh{            
+            min-height: 45px;
+            /*max-height: 68px;*/
+        }
+        .wrtdvha{            
+            min-height: 35px;
+            max-height: 68px;
+        }
+        .wrtdv,.deditousrs{
+        display:inline-block;
+            /*min-height: 35px;*/
+        }
+        .wrtbsic{
+            min-height: 20px;
+        }
+        .deditoblockhtraob{
+            display: none;
+            margin-top: 47px;
+        }
+        .deditoblockhtrab{
+            /*            border: 1px solid #eee;
+                        margin: 5px 0;*/
+        }
+        .deditousrs{
+            border-top: 1px #eee solid;
+        }
+        .deditoblockf{
+            padding: 10px;
+        }
+        .deditoblockfin,.deditoblockhtrain{
+            float: right;
+        }
+        .deditoblockhtrain{
+            margin-top:10px
+        }
+        .deditoblockfin li,.deditoblockhtrain li{
+
+            float: left; 
+        }
+        .attchfilebtn,.deditoblockmina{
+            display: none;
+        }
+        .deditoblockf{
+            /*display: none;*/
+        }
+        .deditoblockm{  font-size: 12px;      
+                        /*display: none;*/
+        }
+        .deditoblockhtrb{
+
+            cursor: pointer;
+            padding:5px 5px;
+            width: 150px;
+        }
+        #tag{
+            margin-left: 5px;
+            width:370px;
+        }
+        .vidpromodv{
+            color:#666;
+            margin: 5px 0 5px 20px;
+            border-top: 1px dashed #eee;
+            padding-top: 10px;
+            padding:2px;
+        }
+        .vidpromoimg{
+            display: inline-block;
+            float: left;
+            border: 1px solid #eee;
+        }
+        .vidpromospn{
+            clear:both;
+        }
+    </style>
+
+    <script type='text/javascript'>
+//        function checkUrl(url) {
+//            var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+//            return (url.match(p)) ? RegExp.$1 : false;
+//        }
+
+        $(document).ready(function() {
+
+            $('.deditoblockminbwrtdvin').val('');
+            $('.attachbtnmn').on('click', function() {
+                $('.attchfilebtn').trigger('click');
+            });
+            $('.deditoblockminbwrtdv').on('click', function() {
+                $(this).prev('.deditoblockmto').css('display', 'block');
+                $(this).next('.deditoblockminbwrtdvin').next('.deditoblockf').css('display', 'block');
+            });
+//            $('.deditoblockminbwrtdv').on('click', function() {
+//
+//                var val = $(this).next('.deditoblockminbwrtdvin').val();
+//                if (val > 0) {
+//                    $(this).text(val);
+//                } else {
+//                    $(this).text('');
+//                }
+//            });
+            $('.deditoblockminbwrtdv').on('keyup', function(e) {
+                //  $(this).keyup(function() {
+                var text = $(this).text();
+                var id = checkUrl(text);
+                var val = $(this).next('.deditoblockminbwrtdvin').val();
+                // alert('r');
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (id && ((code == 86 || code == 118) && e.ctrlKey)) //86 = v 118 = V 
+                {
+
+                    if ((val == id) && (val)) {
+                        return;
+                    }
+                    else {
+                        $(this).next('.deditoblockminbwrtdvin').val(id);
+                        //console.log(checkUrl(text));                    
+                        var parentDiv = document.getElementById('deditoblockminbwrtdv');
+                        var adiv = document.createElement('div');
+                        var aspan = document.createElement('span');
+                        var imagesrc = "http://i1.ytimg.com/vi/" + id + "/default.jpg";
+                        var img = document.createElement('img');
+                        img.setAttribute('src', imagesrc);
+                        adiv.className = 'vidpromodv';
+                        aspan.className = 'vidpromospn';
+                        img.className = 'vidpromoimg';
+                        aspan.appendChild(img);
+                        adiv.appendChild(aspan);
+                        parentDiv.appendChild(adiv);
+                    }
+                } else {
+                    ////       console.log('sd');
+                }
+                //  });
+            });
+            $('.cnclbtnmn').click(function() {
+                $('.deditoblockminbwrtdv').text('');
+                $('.deditoblockmto #tag').val('');
+//                $(this).parents('.deditoblockf').css('display', 'none');
+//                $(this).parents('.deditoblockminb').find('.deditoblockmto').css('display', 'none');
+            });
+            $('.deditoblockhtraoa').hover(function() {
+
+            });
+            $('.deditoblockhtraoa').on('click', function() {
+                $(this).css('display', 'none');
+                $('.deditoblockminb').css('display', 'none');
+                $(this).next('.deditoblockhtraob').css('display', 'block');
+            });
+            $('.deditoblockhtramna').on('click', function() {
+                if ($(this).next('.deditoblockhtramnain').val > 0) {
+
+                } else {
+                    $(this).text('');
+                }
+                $(this).keyup(function() {
+                    text = $(this).text();
+                    $(this).next('.deditoblockhtramnain').val(text);
+                });
+            });
+            $('.cnclbtnmna').click(function() {
+                $(this).parents('.deditoblockhtraob').css('display', 'none');
+                $('.deditoblockminb').css('display', 'block');
+                $(this).parents('.deditoblockhtraob').prev('.deditoblockhtraoa').css('display', 'block');
+            });
+            var frndname = '';
+            $("#autofrndnameul").on('click', 'li', function() {
+
+                $('.dedicboxlblnm').css('min-height', '35px');
+                $('.dedicboxlblnm').css('display', 'block');
+                $('.dedicboxlblnm').css('border-top', '1px dashed #eee');
+                frndname = $('.dedicboxlblnm span').html();
+                $('.dedicbox').html('<span class="addpplspn">+ Dedicate to</span><input id="tag" />');
+                frndname = frndname + " " + "<li>" + $(this).text() + "<span class='crossfrndname'>x</span></li>";
+                $('.dedicboxlblnm').html("<span contenteditable='false'>" + frndname + "</span>");
+                $(this).remove();
+                $("#autofrndnamediv").css('display', 'none');
+            });
+            $('.dedicboxlblnm').on('click', '.crossfrndname', function() {
+                if ($('.dedicboxlblnm span').html == '') {
+                    $('.dedicboxlblnm').css('display', 'none');
+                }
+                $(this).parent('li').remove();
+            });
+            var index = 0;
+            var elems = $("#autofrndnameul li");
+            elems.eq(index);
+            $('#autofrndnamediv ul').on('click', 'li', function() {
+
+            });
+            $('.frndlstcntnrhsrch').on('click', function() {
+                $(this).animate({
+                    width: '135px'
+                });
+
+            });
+            $('.frndlstcntnrhsrch').on('keyup', function(e) {
+                var liel = '';
+
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code > 64 && code < 91) {
+                    $('.frndlstcntnria').css('border-bottom', '1px dashed #eee');
+                    var username = $(this).val();
+                    $.ajax({
+                        url: 'users/getSearchedKeyFriendList/' + username + '/<?php echo $users['id'] ?>',
+                        cache: false,
+                        type: 'Post',
+                        dataType: 'JSON',
+                        success: function(data) {
+
+
+//                           var a =  eval('(' + data + ')');
+
+
+//                            alert(a);
+//                            $.each(data, function(i) {
+//                                liel += "<li class='frndlstid" + data[i].User.Id + "'><div class='frndlstcntnriimg'><img src='" + data[i].ProfileImage.profile_image_link + "' style='width:35px;'/></div><div class='frndlstcntnridv'><div class='frndlstcntnridva'><a href=''>" + data[i].User.first_name + "</a></div><div class='frndlstcntnridvb'><div class='checkbox'></div></div></div></li>";
+//                                
+//                                $(".frndlstcntnria ul").find('.frndlstid'+data[i].User.Id).remove();
+//                           });
+                            //  console.log(data[0].User.id);
+//                            $.each(data, function(i) {
+//                                liel += "<li class='frndlstid" + data[i].User.Id + "'><div class='frndlstcntnriimg'><img src='" + data[i].ProfileImage.profile_image_link + "' style='width:35px;'/></div><div class='frndlstcntnridv'><div class='frndlstcntnridva'><a href=''>" + data[i].User.first_name + "</a></div><div class='frndlstcntnridvb'><div class='checkbox'></div></div></div></li>";
+//
+//                                $(".frndlstcntnria ul").find('.frndlstid' + data[i].User.Id).remove();
+//                            });
+//                            $.each(data, function(i) {
+//                                if (data.User.first_name(new RegExp(/username/i)) != -1) {
+//                                    alert(data.first_name);
+//                                }
+//                            });
+//                            $(".frndlstcntnria ul").html(liel);
+                        }
+
+                    });
+
+
+
+                }
+            });
+//            var friendList = [];
+//            var username = $('.frndlstcntnrhsrch').val();
+//            $(function() {
+//                $.ajax({
+//                    url: 'users/getFriendList/<?php echo $users['id'] ?>',
+//                    cache: false,
+//                    type: 'Post',
+//                    dataType: 'json',
+//                    success: function(data) {
+//                          friendList = data;                          
+//                        console.log(friendList);
+//                    }
+//                });
+//            });
+
+            $('.dedicbox').on('keyup', '#taga', function(event) {
+                var key = event.keyCode || event.charCode || event.which;
+                $("#autofrndnameul li").css("backgroundColor", "#fff").removeClass('Selected');
+
+                var x = event.pageX;
+                var y = event.pageY;
+                var key = event.keyCode;
+                //console.log(key);
+                if (key == 38) {
+
+                }
+                if (key > 64 && key < 91) {
+                    $("#autofrndnamediv").css('left', y);
+                    $("#autofrndnamediv").css('display', 'block');
+                    var username = $(this).val();
+                    $.ajax({
+                        url: 'users/getFriendList/' + username + '/<?php echo $users['id'] ?>',
+                        cache: false,
+                        type: 'GET',
+                        dataType: 'html',
+                        success: function(data) {
+                            $("#autofrndnamediv ul").html(data);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</div>
+<style type='text/css'>
+    .frndlstcntnr{
+        position: absolute;
+        top: 106px;
+        left: 330px;
+        min-width: 150px;
+        min-height: 100px;
+        max-width: 482px;
+        max-height: 200px;
+        overflow: hidden;
+        overflow-y: auto;
+        border-radius: 5px 5px 5px 5px;
+        border:1px solid #eee;
+        background-color: rgba(202,217,230,0.9);
+        color: #fff;
+        padding:40px 5px 5px 5px;
+        z-index: 9999;
+    }
+    .frndlstcntnri{
+        display: inline-block;
+        background-color: rgb(255,255,255);
+    }
+    .frndlstcntnri li{
+        cursor: pointer;
+        background-color: rgb(255,255,255); 
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        width: 135px;
+        height: 45px;
+        font-family: 'Arial',sans-serif;
+        margin: 5px 10px;
+        border-radius: 4px 0 0 4px;
+        border:1px solid rgba(2,2,2,0.2); 
+    }
+    .frndlstcntnri li a{
+
+    }
+    .frndlstcntnriimg{
+        background-color: rgba(202,213,270,0.5);
+        float: left;
+        padding: 5px;
+    }
+    .frndlstcntnri li img{
+        width: 35px;
+        height: 35px;
+        border-radius: 2px 2px 2px 2px;
+        border:none ;
+    }
+    .frndlstcntnridv{
+        padding: 5px;
+        margin-left: 45px;
+    }
+    .frndlstcntnridva{
+        height: 24px;
+    }
+    .frndlstcntnridvb{
+        float: right;
+    }
+    .frndlstcntnrh h1{
+        font-family:MuseoSlab500,Helvetica,Arial;
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: -25px 10px 10px 10px;
+        line-height: 1.05;
+        color: rgba(202,17,30,0.72);
+    }
+    .frndlstcntnrhsrch{
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        padding-left: 25px;
+        height: 20px;
+        line-height: 20px;
+        width: 95px;
+        background-image: url('images/search.png');
+        background-repeat:no-repeat;
+        background-position: 2px 4px;
+        border: 1px solid rgb(202,217,230);
+    }
+    .frndlstcntnria{
+        display: inline-block;
+        width: 100%;
+        background-color: whitesmoke;
+    }
+    .frndlstcntnrib{
+        clear: both;
+        display: inline-block;
+        padding: 5px 5px 10px 5px;
+    }
+    .checkbox{
+        width: 10px;
+        height: 10px;
+        border: 1px groove #eee;
+        background-color: #fff;
+        cursor: pointer;
+    }
+</style>
+headercontainer.phtml
+<div class="frndlstcntnr">
+    <div class='frndlstcntnrh'>
+        <!--<h1>Dedicate to:</h1>-->
+        <input class="frndlstcntnrhsrch" placeholder="Search" />
+    </div>
+    <div class="frndlstcntnri">
+        <div class="frndlstcntnria">
+            <ul></ul>
+        </div>
+        <div class='frndlstcntnrib'>
+            <ul>
+                <?php
+                foreach ($friends as $friend) {
+                    ?>
+                    <li class="<?php echo "frndlstid{$friend['User']['id']}"; ?>">
+                        <div class="frndlstcntnriimg">
+                            <img src="<?php echo $friend['ProfileImage']['profile_image_link']; ?>" style='width:35px;'/>
+                        </div>
+                        <div class='frndlstcntnridv'>
+                            <div class='frndlstcntnridva'>
+                                <a href=''><?php echo $friend['User']['first_name']; ?></a>
+                            </div>                    
+                            <div class='frndlstcntnridvb'>
+                                <div class='checkbox'></div>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>

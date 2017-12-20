@@ -1,0 +1,69 @@
+<style type="text/css">
+    .cnt-tp-lyr{
+        position: absolute;
+        top:33%;
+        left:25%;
+        border: 4px solid rgba(1,1,1,0.4);
+    }
+    .ca-cnt-12{
+        padding: 10px;
+    }
+    .ca-cnt-hdr{
+        background-color: rgba(225,225,252,0.5);
+        border-bottom: 1px solid #999;
+        box-shadow: 1px 1px 1px #999;
+    }
+    .ca-cnt-al-nw input[type='text']{
+        border:none;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        color: #444;
+    }
+</style>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $(".ca-cnt-al-nm").on("click","li",function(){
+                $("li").html($(this).find("label").attr("data-name"));
+            });
+        });
+</script>
+<?php
+$albums = $this->album;
+$link = $this->url;
+?>
+<div class='ca-cnt-12'>
+    <div class='ca-cnt-hdr'>
+        <div class='ca-cnt-al-nm'>
+            <?php if(isset($albums)){ ?>
+                <strong>Add in existing Album</strong>
+                <ul>
+                <?php  foreach($albums as $album){ ?>
+                    <li>
+                        <label data-name="<?php echo $album['name']; ?>"><?php echo $album['name']; ?></label>
+                    </li>
+                <?php } ?>
+                </ul>
+            <?php } ?>
+        </div>
+        <hr/>
+        <div class='ca-cnt-al-nw'>
+            <input type="text" placeholder="Create New Album" />
+            <input type='button' value='create' />
+        </div>
+    </div>
+    <div class='ca-cnt-bd'>
+        <button class='mimgabtn'>+ Add Image</button>
+        <input class='hidden mimgabtnfl' type='file' value=''/>
+        <div class='ca-cnt-bd-frm'>
+            <input type="text" placeholder="Name" />
+        </div>
+        <ul>            
+            <li>
+                <img src='<?php echo $link ?>'/>
+            </li>
+            <li>
+                <img src=''/>
+            </li>
+        </ul>
+    </div>
+</div>

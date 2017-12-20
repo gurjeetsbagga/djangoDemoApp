@@ -1,0 +1,381 @@
+{% load static from staticfiles %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="google-site-verification" content="mindexheaderWEYMaYT3KTDlDb5q7oUIDnf4_f0iOj1FpC68tkD38_g" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="description" content="Let the world know about you. Collect Your Life's Best Thing and Share with Others.login with facebook or Create account.">
+        <meta name="keyword" content="group class office alumni classgroup classes">
+        <link rel="icon" type="image/png"  href="images/icon.png">
+
+        <script src="{% static 'js/jquery-1.10.js' %}"> </script>
+        <script src="{% static 'js/login.js' %}"> </script>
+        <script src="{% static 'js/loginfun.js' %}"> </script>
+
+        <link rel="stylesheet" type="text/css"  href="{% static 'css/login.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
+
+        {%  if userSession.id %}
+            <link rel="stylesheet" type="text/css"  href="{% static 'css/main.css' %}" />
+            <script src="{% static 'js/main.js' %}"> </script>
+            <script src="{% static 'js/mainfun.js' %}"> </script>
+        {% endif %}
+
+        <script src="{% static '/js/loginfun.js' %}"></script>
+        <script src="{% static '/js/login.js' %}"></script>
+        <style type="text/css">
+            .hdrbx{
+                width: 1000px;
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+            }
+            .hdrsearchbox{
+                /*width: 450px;*/
+                /*padding: 10px 0;*/
+                display: inline-block;
+                float: left;
+            }
+            .hdrsearchbtn{
+                float: right;
+                border: 1px solid rgba(0, 0, 0, 0);
+                border-radius: 2px;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 11px;
+                font-weight: bold;
+                height: 28px;
+                line-height: normal;
+                outline: 0 none;
+                padding: 0 10px;
+                text-decoration: none;
+                vertical-align: middle;
+                white-space: nowrap;
+                word-wrap: normal;
+                border: 1px solid #ccc;
+                box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+                background-color: #fff !important;
+            }
+            .hdrsearchbtn{
+                background-color: #eee;
+            }
+            .hdrsearchin{
+                float: left;
+                box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            }
+            .hdrsearchinp{
+                /*width: 352px;*/
+                height: 26px;
+                margin-right: -1px;
+                line-height: 20px;
+                padding: 0 5px;
+                border: 1px solid #eee;
+                /*                -webkit-box-shadow:inset 1px 0 0.1px 0.1px rgba(1,1,1,0.1);
+                                box-shadow:inset 1px 0 0.1px 0.1px rgba(1,1,1,0.1);     */
+            }
+            .hdrusr{
+                float: right;
+                margin: 12px 0;
+                width: 150px;
+            }
+            .hdrusr ul li {
+                float: left;
+                margin: 0 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="status"></div>
+        <div id="container">
+            <div id="header">
+                <div class="oindexheader">
+                    <div class="indexcontainer">
+                        <div class="indexheader">
+                            {%  if userSession.id %}
+                            <div class="lindexheader icon">
+                                <a href="{{ BASE_PATH }}">
+                                    {%  if userSession.currentStatus %}
+                                        <img src="{{ userSession.profileImageLink }}" /><span>{{  userSession.fname  }}{{ userSession.lname }}</span>
+                                    {% else %}
+                                        echo "emoera.com";
+                                    {% endif %}
+                                </a>
+                                <div id='mindexheader' class='mindexheader'>
+                                    <ul>
+                                        <li>
+										{% if userSession.currentStatus %}
+                                            <form id="mindexheaderform" action='action_page.php' method='get'>
+                                                <div class='sth'><p>{{ userSession.currentStatus }}</p></div>
+                                                <input class='hsth' type="hidden" value="{{ userSession.currentStatus }}" />
+                                            </form>
+										{% endif %}
+                                        </li>
+                                        <li>
+                                            <div class="hdrsearchbox">
+                                                <form id="hdrseachform" action="/user/findme">
+                                                    <!--<button class="hdrsearchbtn" type="submit">Search me!</button>-->
+                                                    <div class="hdrsearchin">
+                                                        <input class="hdrsearchinp" placeholder="Search.." type="text">
+                                                        <div class="hdrsearchbtndiv"><ul id="hdrsearchbtnul"></ul></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                <div class='rindexheader'>
+                                    <ul>
+                                        <li><a href="/" class=" mtab usehm"> H </a></li>
+                                        <li><a href="/profile/{{ userSession.id }}" class=" mtab useprof">P </a></li>
+                                        <li><a href="/groups" class=" mtab usegp">G </a></li>
+                                        <li><a href="/logout" class=" mtab useset">L </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content">{{content }}</div>
+            <div class="footer"></div>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        var height = $(window).height();
+//        var curElement = "";
+//        var width = $(window).width();
+//        if (width > 600) {
+//            curElement = $(".lindexheader").find("a").html();
+//            $(".lindexheader").find("a").remove();
+//        } else {
+//            $(".lindexheader").html(curElement);
+//        }
+//        $(window).resize(function () {
+//            width = $(window).width();
+//            if (width > 600) {
+//                curElement = $(".lindexheader").find("a").html();
+//                $(".lindexheader").find("a").remove();
+//            } else {
+//                $(".lindexheader").html(curElement);
+//            }
+//        });
+        $('.incontent').height(height - 100);
+
+
+        $(document.body).click(function (event) {
+            if ($(event.target).parents().index($('.hdrsearchin')) == -1) {
+                if ($('.hdrsearchbtndiv').is(":visible")) {
+                    $('.hdrsearchbtndiv').hide()
+                }
+            }
+        });
+
+        $(".hdrsearchinp").on('keyup', function () {
+            if ($(this).val() == '') {
+                $(".hdrsearchbtndiv ul li").remove();
+                return false;
+            }
+            var liel = '';
+            $('.hdrsearchbtndiv').css('border-bottom', '1px dashed #eee');
+			var searchkey = $(this).val();
+            $.ajax({
+                url: '/user/findme/',
+                type: 'Post',
+                dataType: 'JSON',
+                data: {'searchkey': searchkey, 'limit': 10, 'offset': 0},
+                success: function (data) {
+                    var frndbtnlbl;
+                    $.each(data, function (i) {
+                        switch (data[i].status) {
+                            case '1':
+                                frndbtnlbl = "<input class='addmebtn' type ='button' value='Add me'/>";
+                                break;
+                            case '2':
+                                frndbtnlbl = "<input class='notaddmebtn' type ='button' value='Waiting' />";
+                                break;
+                            case '3':
+                                frndbtnlbl = "";
+                                break;
+                            case '4':
+                                frndbtnlbl = "<input class='notaddmebtn' type ='button' value='Hate you'/>";
+                                break;
+                            default:
+                                frndbtnlbl = "<input class='addmebtn' type ='button' value='Add me'/>";
+                                break;
+                        }
+
+                        liel += "<li class='hdrsearchfrndlstli frndlstid" + data[i].email + "'>\n\
+                                       <div class='hdrsearchfrndlstlidv'>\n\
+                                         <div class='hdrsearchlistdiv'>\n\
+                                                <a href='/" + data[i].id + "'><img src='" + data[i].profile_image_link + "' style='width:35px;'/></a>\n\
+                                                <div class='hdrsearchfrndlstcntnridv'>\n\
+                                                    <div class='frndlstcntnridva'><a href='/" + data[i].id + "'>" + data[i].first_name + "</a>\n\
+                                                    </div>\n\
+                                                    <div class='frndlstcntnridvb'>\n\
+                                                    </div>\n\
+                                                </div>\n\
+                                        </div>\n\
+                                        <div class='addmebtndiv'>" + frndbtnlbl + "<input class='addmeusr' type='hidden' value='" + data[i].id + "_" + data[i].email + "' /><input class='addmeusrname' type='hidden' value='" + data[i].first_name + "' /></div>\n\
+                                    </div> \n\
+                                </li>";
+
+//                                $(".hdrsearchbtndiv ul").find('.frndlstid' + data[i].email).remove();
+                    });
+//                            $.each(data, function(i) {
+//                                if (data.first_name(new RegExp(/username/i)) != -1) {
+//                                    alert(data.first_name);
+//                                }
+//                            });
+                    $(".hdrsearchbtndiv").css('display', 'block');
+                    $(".hdrsearchbtndiv ul").html(liel);
+                }
+            });
+        });
+        $("#hdrsearchbtnul").on('click', '.hdrsearchfrndlstli .addmebtndiv .addmebtn', function () {
+
+            var e = $(this);
+            if ($(this).next(".addmeusr").val() == '') {
+                return false;
+            }
+            var newfrndid = escape($(this).next(".addmeusr").val());
+            $.ajax({
+                url: '/friends/addme/',
+                type: 'Post',
+                data: {'newfrndid': newfrndid},
+                success: function (data) {
+                    e.next(".addmeusr").remove();
+                    e.val('Request Sending');
+                    if (data) {
+                        e.next(".addmeusr").remove();
+                        e.val('Request Sent');
+                    }
+                },
+                error: function () {
+                    //alert('error');
+                }
+            });
+
+        });
+
+        $("#getgooglefriends").on('click', function () {
+            getgooglefriends();
+        });
+    });
+
+    function signInCallback(authResult) {
+//        console.log(authResult['code']);
+        if (authResult['code']) {//
+            gapi.client.load('plus', 'v1', loadProfile);  // Trigger request to get the email address.
+            $.ajax({
+                type: 'POST',
+                url: '/user/oauth2callback/',
+//                contentType: 'application/octet-stream; charset=utf-8',
+//                processData: false,
+                data: {'code': authResult['code']},
+                success: function (result) {
+                    console.log(result);
+                    if (result['profile'] && result['people']) {
+                        $('#results').html('Hello ' + result['profile']['displayName'] + '. You successfully made a server side call to people.get and people.list');
+                    } else {
+                        $('#results').html('Failed to make a server-side call. Check your configuration and console.');
+                    }
+                }
+            });
+        } else if (authResult['error']) {
+            /* There was an error.Possible error codes:
+             1.   "access_denied" - User denied access to your app
+             2.   "immediate_failed" - Could not automatially log in the user */
+
+            console.log('There was an error: ' + authResult['error']);
+        }
+    }
+    /**
+     * Global variables to hold the profile and email data.
+     */
+    var profile, email;
+
+    /*
+     * Triggered when the user accepts the sign in, cancels, or closes the
+     * authorization dialog.
+     */
+
+    /**
+     * Uses the JavaScript API to request the user's profile, which includes
+     * their basic information. When the plus.profile.emails.read scope is
+     * requested, the response will also include the user's primary email address
+     * and any other email addresses that the user made public.
+     */
+    function loadProfile() {
+        var request = gapi.client.plus.people.get({
+            'userId': 'me',
+            'collection': 'visible'
+        });
+        console.log(request);
+        request.execute(loadProfileCallback);
+    }
+
+    /**
+     * Callback for the asynchronous request to the people.get method. The profile
+     * and email are set to global variables. Triggers the user's basic profile
+     * to display when called.
+     */
+    function loadProfileCallback(obj) {
+        profile = obj;
+        console.log(obj);
+
+        var numItems = obj.items.length;
+        for (var i = 0; i < numItems; i++) {
+            console.log(obj.items[i].displayName);
+        }
+
+        /* Filter the emails object to find the user's primary account, which might
+         not always be the first in the array. The filter() method supports IE9+.*/
+
+        /*email = obj['emails'].filter(function(v) {
+         return v.type === 'account'; // Filter out the primary email
+         })[0].value; // get the email from the filtered results, should always be defined.*/
+
+        displayProfile(profile);
+    }
+    /**
+     *
+     * @returns {undefined}
+     */
+    function getMyContacts() {
+        var contactsFeedUri = 'https://www.google.com/m8/feeds/contacts/default/full';
+        var query = new google.gdata.contacts.ContactQuery(contactsFeedUri);
+
+        // Set the maximum of the result set to be 5
+        query.setMaxResults(5);
+
+        contactsService.getContactFeed(query, handleContactsFeed, handleError);
+    }
+
+    /**
+     * Display the user's basic profile information from the profile object.
+     */
+    function displayProfile(profile) {
+        document.getElementById('name').innerHTML = profile['displayName'];
+        document.getElementById('pic').innerHTML = '<img src="' + profile['image']['url'] + '" />';
+        document.getElementById('email').innerHTML = email;
+//        toggleElement('profile');
+    }
+
+    /**
+     * Utility function to show or hide elements by their IDs.
+     */
+    function toggleElement(id) {
+        var el = document.getElementById(id);
+        if (el.getAttribute('class') == 'hide') {
+            el.setAttribute('class', 'show');
+        } else {
+            el.setAttribute('class', 'hide');
+        }
+    }
+</script>

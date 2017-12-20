@@ -1,0 +1,71 @@
+<?php
+$user = $this->user;
+//echo "<pre>".print_r($user,1);exit;
+
+$fname = isset($user['fname'])?$user['fname']:"";
+$lname = isset($user['lname'])?$user['lname']:"";
+$email = isset($user['email'])?$user['email']:"";
+$phoneNumber = isset($user['phone_number'])?$user['phone_number']:"";
+$birthday = isset($user['birthday'])? json_decode($user['birthday']):"";
+
+$day = isset($birthday->day)? $birthday->day:"";
+$month = isset($birthday->month)? $birthday->month:"";
+$year = isset($birthday->year)? $birthday->year:"";
+
+
+$gender = isset($user['gender'])?$user['gender']:"";
+switch ($gender){
+    case 0:
+        $gender = 'male';
+    break;
+    case 1:
+        $gender = 'female';
+    break;
+    case 2:
+        $gender = 'noe';
+    break;
+}
+$city = isset($user['current_city'])?$user['current_city']:"";
+$state = isset($user['current_state'])?$user['current_state']:"";
+$aboutme = isset($user['about_me'])?$user['about_me']:"";
+
+?>
+<div class='userabt mysetting'>
+    <form id='userabtfrm'>
+        <div class='uabcn'>
+            <ul>
+                <li class='uabcnnm'>
+                    <input name='fname' data-fname='<?php echo $fname; ?>' type="text" value='<?php echo $fname; ?>' placeholder='First name' />
+                    <input name='lname' data-lname='<?php echo $fname; ?>' type="text" value='<?php echo $lname; ?>' placeholder='Last name' />
+                    <label>Name</label>
+                </li>
+                <li>
+                    <input name="email"  type="text" value='<?php echo $email; ?>' placeholder='email' /><label>Email</label>
+                </li>
+                <li>
+                    <input name='phone_number' type="text" value='<?php echo $phoneNumber; ?>' placeholder='Phone Number' /><label>Phone Number</label>					
+                </li>
+                <li class="bdycnt">
+                    <input name="birth_day"  type="text" value='<?php echo $day; ?>' placeholder='Day' />
+                    <input name="birth_month" type="text" value='<?php echo $month; ?>' placeholder='Month' />
+                    <input  name='birth_year' type="text" value='<?php echo $year; ?>' placeholder='Year' />
+                    
+                    <label>Birthday</label>					
+                </li>
+                <li class='uabcngdr''>
+                    <input name='gender'  type="text" value='<?php echo $gender; ?>' placeholder='gender' /><label>Gender</label>					
+                </li>
+                <li>
+                    <input name='city' type="text" value='<?php echo $city; ?>' placeholder='City'/>
+                    <input name='state' type="text" value='<?php echo $state; ?>' placeholder='state'/>
+                    <label>Current Place</label>
+                </li>
+            </ul>
+        </div>
+        <div class='uabcn'>
+        <label>About me</label>
+        <textarea name='aboutme' placeholder='About me'><?php echo $aboutme; ?></textarea>
+        </div>
+        <input type="submit" class="mimgafbtn" value='update'>
+    </form>
+</div>

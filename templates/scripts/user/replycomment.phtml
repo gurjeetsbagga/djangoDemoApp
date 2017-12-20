@@ -1,0 +1,12 @@
+<?php 
+$comment = $this->comments['0'];
+//echo "<pre>".print_r($comment,1);exit();
+
+echo "<div class='disqli'><div class='ldisq'><img  src='".$comment['profile_image_link']."' style='width:26px;height:26px;border-radius: 2px 2px 2px 2px;'/></div>
+                            <div class='rdisq'><span class='cmnt'>".$comment['comment']."</span>
+                                <span class='cmntdttm'>".date('D d-m-Y H:i:a', strtotime($comment['created']))."</span>
+                                    <span class='deletecms'>x</span>
+                            </div>
+                            <input class='commentid' type='hidden' value='".$comment['id']."'/>
+                            
+</div>"; ?>

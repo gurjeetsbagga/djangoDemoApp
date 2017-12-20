@@ -1,0 +1,28 @@
+<?php
+/**
+ *
+ */
+?>
+<div class="frgtpwddiv">
+    <div id="oinrec"></div>
+    <div id="inrec">
+        <h1></h1>
+        <form name="mailform" action="mailform.php" method="POST" class="frgtpwd"> 
+            <div class="frgtpwd-dv">
+                <?php
+                echo $this->form->input('emailto', array('label'=>'','placeholder'=>'Your Email Address:', 'type' => 'email', 'style' => 'width:335px;',
+                    'class' => 'sign-in-lntxtbox', 'id' => 'frgtpwdtxtbxid', 'onkeypress' => 'if (event.keyCode == 13) {
+                                submitmail();
+                            }'));
+                ?>
+               
+            </div>
+            <?php /* ?> <div class="rlab">- - - - - - - - - - or - - - - - - - - - -</div>
+              <div class="label">username:</div>
+              <div><input  name="usernameto" type="text" style="width:335px;" class="sign-in-lntxtbox" id="frgtusrtxtbxid" onkeypress="if(event.keyCode==13) {submitmail();}" ></input></div><?php */ ?>
+            <div id="smailerror" ></div>      
+            <div class="lwrdiv-frgt" ><label class="-frgt"><input onclick="submitmail();" type="button" class="btn btn-sbmt" id="frgtpwdbtnid" value ="send.." /></label>  </div>  
+        </form>
+        <div><a href="#" ><img class="fpwdclsimg" src="images/closebtn.png"></img></a></div>
+    </div>
+</div><!--indexcontainer-->

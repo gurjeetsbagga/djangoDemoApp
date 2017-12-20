@@ -1,0 +1,722 @@
+<?php
+/**
+ */
+?>
+<style type="text/css">
+
+    .dedh_rcontainer{
+        margin-left: 45px;
+    }    
+    .block{
+        width: 600px;
+    }
+    .deta-block{
+        min-height: 50px;
+        padding-left: 15px;
+        position: relative;
+        /*background: none repeat scroll 0% 0% rgb(255, 255, 255);*/
+    }
+    .dedh{    
+        background-color: rgb(202, 217, 230);
+
+        /*background: none repeat scroll 0% 0% rgb(202, 217, 230);*/
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+        transition: top 0.15s ease 0s;
+        padding: 10px 10px 0 0;
+    }
+    .dedh_hblock{
+        padding: 2px 0;
+    }
+    .dedh_mblock{      
+        padding: 2px 0;
+    }
+    .dedh_bblock{        
+        padding: 2px 0;
+    }
+
+    .dedicbox{
+        cursor: text;
+        height: 20px;
+    }
+    .disq-block{
+        padding: 0 10px;        /*margin: 20px auto 0px auto;*/
+    }
+    .ldisq{
+        width: 35px;
+        float: left;
+    }
+    .rdisq{
+        padding-left: 5px;
+        margin-left: 26px;
+    }
+    .disqli{
+        clear: both;   
+        margin: 5px 0;
+        display: block;
+        min-height: 35px;
+        padding: 2px;
+    }
+    .cmnt{
+        color: rgb(64, 64, 64);
+    }
+    .txth{
+        line-height: 1.4;
+        min-height: 35px;
+        word-wrap: break-word;
+    }
+    .write{
+        font: 13px/1.4 Roboto,arial,sans-serif;
+    }
+    .writebx{
+        -moz-box-sizing: border-box;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(221, 221, 221);
+        height: auto;
+        padding: 6px 8px;
+        border-radius:2px 2px 2px 2px; 
+    }
+    .hr{
+        border-bottom:1px solid #eee;
+        margin: 0 50% 0 10%;
+        /*margin: 0 auto;*/
+        width: 100%;
+    }
+    .usrcmntbxa:hover .writebx{
+    }
+    .usrcmntbxa{
+        cursor: pointer;
+        padding: 1px;
+        margin: 5px 22px 5px 0px;
+        float: right;
+    }
+    .usrcmntbxa:hover{
+        background-color: #eee;
+    }
+    .usrcmntbxb{
+        cursor: text;
+        display: none;
+        margin:5px 0;
+        height: 80px;
+        width: 485px;
+        padding: 2px;
+        background-color: #eee;
+        border: 1px solid #eee;
+        /*    border-color:#dadada;
+            border-radius:0px;
+            -moz-box-shadow:5px 5px 5px rgba(0,0,0,.15);
+            -webkit-box-shadow:5px 5px 5px rgba(0,0,0,.15);
+            box-shadow:5px 5px 5px rgba(0,0,0, .15);*/
+    }
+    .usrcmntbxb .lusrcmntbx .writebx{
+        height: 80px;
+    }
+    .postbtn{
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        background-color: rgb(83, 169, 63);
+        background-image: -moz-linear-gradient(center top , transparent, transparent);
+        border: 1px solid transparent;
+        color: rgb(255, 255, 255);
+        text-shadow: none;
+    }
+    .attachbtn,.deditoblockhtrb{
+        border: 1px solid rgb(48, 121, 237);
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 1px rgba(0, 0, 0, 0.1);
+        background-color: rgb(77, 144, 254);
+        background-image: -moz-linear-gradient(center top , rgb(77, 144, 254), rgb(71, 135, 237));
+    }
+    .deditoblockminb{
+        clear: both;
+        margin-top: 10px;
+    }
+    .cnclbtn{
+        border: 1px solid #ccc;
+        color: rgb(153, 153, 153);
+        font-family: 'Arial',sans-serif;
+        /*color: rgb(255, 255, 255);*/
+        /*text-shadow: 0px 1px rgba(0, 0, 0, 0.1);*/
+        text-transform: capitalize;
+        background-color: #fff;
+        /*background-image: -moz-linear-gradient(center top , rgb(221, 75, 57), rgb(209, 72, 54));*/
+    }
+    .btn{
+        border-radius: 2px 2px 2px 2px;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        margin-right: 16px;
+        line-height: 22px;
+        display: inline-block;
+        height: 22px;
+        outline: 0px none;
+        padding: 0px 10px;
+    }
+    .rmvbtn{
+        display: none;
+        position: absolute;
+        margin:-10px 0 0 156px;
+    }
+    .lusrcmntbx{
+        width: 365px;
+        float: left;
+    }
+    .rusrcmntbx{
+        width: 120px;
+        /*height: 95px;*/
+        float: right;
+    }
+    .musrcmntbx{
+        height: 55px;
+    }
+    .rusrcmntbx ul{
+        margin-left: 0px;
+    }
+    .rusrcmntbx li{
+        float: left;
+        cursor: pointer;
+        width: 40px;
+        text-align: center;
+        padding: 4px 5px;
+        margin: 2px 0 0 5px;
+    }
+    .brusrcmntbx{
+
+    }
+    .trusrcmntbx{
+        text-align: center;
+        padding-top: 1px;
+
+    }
+    .cmntdttm{
+        font-size: 9px;
+        float: right;
+    }
+    /*
+    * lcontainer
+    */
+
+    .ded{     
+        width: 500px;
+        margin:0 0 25px 0; 
+        color: rgb(115, 115, 115);
+        font-family: 'Arial',sans-serif;  
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        cursor: default;
+        text-align: left;
+        background-color: #fff;
+        border-radius: 5px 5px 0 0;
+        border: 1px solid rgb(202, 217, 220);
+        box-shadow: 0px 0px 4px 0px rgb(221, 221, 221);
+    }
+    .ded:hover{
+        box-shadow: 0px 0px 2px 1px rgb(221, 221, 221);
+    }
+    .dedu{
+
+    }
+    .dedh_lcontainer{
+        width: 60px;
+        float: left;
+    }
+    .dedf{    
+        /*padding: 5px 20px;*/
+        /*margin-left: 60px;*/
+    }
+    .profimg{
+        padding: 2px;
+    }
+    .profname a:hover{ 
+        text-transform: underline;
+        transition: top 0.218s ease 0s;
+    }
+    .profname a{
+        font-weight: bold;
+        text-transform: capitalize;
+        color:#111;
+    }
+    .profdedname a{
+        color: #111;
+    }
+    .dediclbl{
+        display: block;
+    }
+    #autofrndnamediv{
+        display: none;
+        position: absolute;
+        min-width: 100px;
+        z-index: 9999;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        margin-left: 78px
+    }
+    #autofrndnamediv li{
+        display: block;
+        cursor: pointer;
+        padding: 5px 7px;
+
+    }
+    #autofrndnamediv li:hover{
+        background-color: #eee;
+    }
+    .dedicboxlblnm span li {
+        float: left;
+        background-color: #eee;
+        padding: 2px 4px;
+        min-width: 50px;
+        margin: 2px 5px;
+        background: -moz-linear-gradient(center top , #4285F4, #4285F4) repeat scroll 0 0 transparent;
+        border: 1px solid #4285F4;
+        border-radius: 5px 5px 5px 5px;
+        color: #FFFFFF;
+        cursor: default;
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        outline: medium none;
+        vertical-align: middle;
+        white-space: nowrap;
+
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .dedicboxlblnm{
+        display: none;
+    }
+    .dedicbox input{
+        border: none;
+        direction: ltr;
+        cursor: text;
+    }
+    .addpplspn{
+        color: #ece;
+    }
+    .crossfrndname{
+        color: black;
+        margin-left: 10px;
+        background: -moz-linear-gradient(center top ,#4285F4, #4285F4) repeat scroll 0 0 transparent;
+        border: 1px solid #4285F4;
+        border-radius: 5px 5px 5px 5px;
+        padding:2px 5px;
+    }
+    .crossfrndname:hover{
+        background: -moz-linear-gradient(center top , #eee, #eee) repeat scroll 0 0 transparent;
+
+    }
+    .dedic-block-h a{
+        width: 30px;
+        height: 30px;
+    }
+    .data:hover .dedic-block-uhvr{
+        background-color: rgba(255,255,255,0.1);
+    }
+    .dedic-block-uhvr{
+        cursor: pointer;
+        float: left;
+        position: absolute;
+        height: 95px;
+        width: 125px;       
+        background-color: transparent;
+        transition: box-shadow 0.5s ease 0s;
+    }
+    .dedic-block-uhvr a{
+        width:35px;
+        height: 35px;
+        display: block;
+        background-size: cover;
+    }
+    .dedic-block-uhvrb{
+    }
+    .dedic-block-uhvrh{
+        margin: 5px;
+        display: inline-block;
+
+    }
+    .dedic-block-uhvrbplbn{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background-image: url("images/playbtnss.png");
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background-color: rgba(1,1,1,0.42);
+        border-radius: 2px 2px 2px 2px;
+    }
+    .dedic-block-uhvrbplbn:hover{
+        background-color: rgba(1,1,1,1);
+    }
+    .profimg a{
+        width: 50px;
+        height: 50px;
+    }
+    .profimg a,.dedic-block-h a{
+        left: 5px;        
+        box-shadow: none;
+        background-color: rgb(255, 255, 255);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 3px 3px 3px 3px;
+        z-index: 2;
+        top: 5px;
+        position: absolute;
+    }
+    .dedic-block{
+        background: none repeat scroll 0% 0% rgb(255, 255, 255);
+        /*box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.46);*/
+        /*border: 1px solid #eee;*/
+        /*border-radius: 4px 4px 4px 4px;*/
+        margin:0px auto;
+        padding:0;
+        list-style: none outside none;
+    }
+    .dedic-block-h{
+        text-align: left;
+        font-family: arial,sans-serif;
+        color: rgb(68, 68, 68);
+        font-weight: normal;
+        position: relative;
+        overflow: hidden;
+        /*white-space: nowrap;*/
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+        min-height: 26px;
+        line-height: 20px;
+        z-index: 1;
+        padding: 7px 7px 7px 44px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .dedic-block-h-f{
+        /*white-space: nowrap;*/
+        margin-top: -8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .dedic-block-data{
+        padding: 10px;
+        position: relative;
+        background-color:#fff;;
+    }
+    .dedic-block-data .data{
+        z-index: -1;
+    }
+    .clearfx{
+        clear: both;        
+    }
+    .dedic-ytb-inf:hover{
+        text-decoration: none;
+    }
+    .ded:hover .dedic-ytb-inf{
+        color:#111;
+    }
+    .dedic-ytb-inf{
+        color:#111;
+    }
+    .dedic-block:hover .dedic-block-data-info{
+        display: none;
+    }
+    .dedic-block-data-info{
+        display: none;
+        position:absolute;
+        z-index: 99;
+        width: 100%;
+        left: 0;
+        border-radius: 5px 5px 0 0 ;
+        bottom: 0;
+        min-height: 36px;
+        background-color: #111;
+        opacity: 0.5;
+    }
+    .data{
+        padding:2px;
+        display: inline-block;
+        background-color: rgb(245, 245, 245);
+    }
+    .dedic-block-data-img{
+        cursor: pointer;
+        float: left;
+        border: 1px solid #eee;
+        height: 90px;
+        padding: 2px;
+        background-color: #fff;
+    }
+    .dedic-block-hvrimg{
+        min-width:35px;
+        border-radius: 4px 4px 4px 4px;
+        height: 35px;
+        display: block;
+        background-size: cover;
+        position: absolute;
+        z-index: 1;
+        margin: 5px;
+    }
+    .dedic-block-data-about{
+        margin-left: 120px;        
+        padding:5px 0 0 15px 
+    }
+    .dedic-block-data .data{
+        background-color: #fff;
+    }
+    .dediccreated{
+        font-size: 11px;
+        margin-top:5px;
+        margin-left: 45px;
+        font-weight: bold;
+        color:#999;
+        display: inline-block;
+        /*        position: absolute;
+                bottom: 1px;
+                right:2px;*/
+    }
+    .deddicbyus{
+        float: right; 
+        position: relative;
+    }
+    .deddicbyusn{
+        margin:4px 15px;
+    }
+    .deddicbyusl{
+        float: left;
+    }
+    .ded:hover .deddicbyusi{
+        opacity: .9;   
+    }
+    .deddicbyusi{
+        /*display: none;*/
+        margin-right: -10px;
+
+        opacity: .7;
+        border-radius: 3px 3px 3px 3px;
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s, box-shadow 0.218s ease 0s;
+        -moz-user-select: none;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(217, 217, 217);
+        cursor: pointer;
+        height: 21px;
+        outline: medium none;
+        width: auto;
+    }
+    .deddicbyusr{        
+        padding: 0px 2px;
+        display: inline-block;
+        color: #262626;
+        font-family: 'Arial',sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        background-color: #f8f8f8;;
+        line-height: 21px;
+        border-left:1px solid #bfbfbf;
+    }
+    .deddicbyusr:hover{
+        color:#003399;
+
+    }
+    .deddicbyusi:hover{
+        -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+        box-shadow: 0 1px 0 rgba(0,0,0,.1);
+        border-color: #bfbfbf;
+    }
+    .deddicbyusluldv{
+        position:absolute;
+        left: 0;
+        background-color: #fff;
+        width: 124px;
+        border-radius:3px 3px 3px 3px;
+        padding:4px 0px 0px 10px;
+        z-index: 2;
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s, box-shadow 0.218s ease 0s;
+        -moz-user-select: none;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(217, 217, 217);
+    }
+    .deddicbyuslli{
+        padding: 4px 0px;
+        cursor: pointer;
+        width: 95px;
+    }
+    .arrow-up {
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 6px 6px 6px;
+        margin-left: 10px;
+        border-color: transparent transparent #eee transparent;
+        line-height: 0px;
+        _border-color: #000000 #000000 #eee #000000;
+        _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+    }
+</style>
+<?php
+exit("dedicateblock");
+function truncate($str, $len) {
+    $tail = max(0, $len - 10);
+    $trunk = substr($str, 0, $tail);
+    $trunk .= strrev(preg_replace('~^..+?[\s,:]\b|^...~', '...', strrev(substr($str, $tail, $len - $tail))));
+    return $trunk;
+}
+
+//pr($data);
+//pr($dedicatedUserDetails);
+exit('ss');
+$dedicatedUserDetails = "";
+foreach ($dedicatedUserDetails as $dedicatedUserDetail) {
+    ?>
+    <div class='ded'>
+        <div class='rmvbtn'>x</div>
+        <div class='dedh'>
+            <div class='dedh_lcontainer'>
+                <div class='profimg'>
+                    <a href = "<?php echo $dedicatedUserDetail['User']['first_name']; ?>" style = "background-image:url('<?php echo $dedicatedUserDetail['User']['ProfileImage']['profile_image_link']; ?>');"></a>
+                </div>                   
+            </div>
+            <div class='dedh_rcontainer'>
+                <div class='deta-block'>
+                    <div class='dedh_hblock'>
+                        <span class='profname'><a href='<?php echo $dedicatedUserDetail['User']['username']; ?>'><?php echo $dedicatedUserDetail['User']['first_name']; ?></a>&nbsp: Dedicate to </span>
+                        <span class='profdedname'>
+                            <?php
+                            //pr($dedicatedUserDetail);
+                            //  foreach ($dedicatedUserDetail['DedicateUser'] as $dedicateUser) {
+                            //pr($dedicateUser['User']);
+                            ?>
+                            <a href='<?php echo $dedicatedUserDetail['DedicateUser'][0]['User']['username']; ?>'><?php echo $dedicatedUserDetail['DedicateUser'][0]['User']['first_name']; ?></a>
+                            <?php
+                            //}
+                            ?>
+                        </span>
+
+                                                            <!--<div id='deddicbyus' class='deddicbyus' href=''><div class='deddicbyusi'><span class='deddicbyusl'><img src='images/setting-icon.png'/></span><span class='deddicbyusr'>view all dedication</span></div></div>-->
+
+                        <div><span class='dediccreated'><?php echo $dedicatedUserDetail['Dedication']['created']; ?></span></div> 
+                        <input type='hidden' class='currentuserauth' value='<?php echo $dedicatedUserDetail['DedicateUser'][0]['User']['id']; ?>'/>
+                    </div>
+                </div>                                  
+            </div>
+        </div>
+        <div class='dedf'>
+            <div class='dedic-block'>
+                <div class="dedic-block-data">
+                    <div class="data">
+                        <?php 
+                          $json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$dedicatedUserDetail['Song']['link']."?v=2&alt=jsonc"));
+                          echo '<img class="dedic-block-data-img" src="' . $json->data->thumbnail->sqDefault . '">';
+                          ?>
+<!--                        <img class="dedic-block-data-img" src="http://i1.ytimg.com/vi/<?php echo $dedicatedUserDetail['Song']['link']; ?>/default.jpg" />-->
+                        <!--<a class="dedic-block-hvrimg" href='' style='background-image:url("<?php echo $dedicatedUserDetail['DedicateUser'][0]['User']['ProfileImage']['profile_image_link']; ?>")'></a>-->
+                        <div class="dedic-block-uhvr">
+                            <div class='dedic-block-uhvrh'>
+                            </div>
+                            <div class='dedic-block-uhvrb'>
+                                <i class='dedic-block-uhvrbplbn'></i>
+                            </div>
+                        </div>
+                        <div class="dedic-block-data-about">
+                            <div class="dedic-ytb-inf"><?php echo truncate(ucfirst($dedicatedUserDetail['DedicateUser'][0]['dedicated_note']), 280); ?></div>
+                        </div>
+                    </div>
+                    <div class="clearfx"></div>
+                    <div class="dedic-block-data-info">
+                    </div>
+                </div>
+            </div>
+            <div class='disq-block'>
+                <?php foreach ($dedicatedUserDetail['Comment'] as $comment) { ?>                        
+                    <div class='hr'></div>
+                    <div class='disqli'>                       
+                        <div class='ldisq'><img src='<?php echo $comment['User']['ProfileImage']['profile_image_link']; ?>' style='width:26px;'/></div>
+                        <div class='rdisq'><span class='cmnt'><?php echo $comment['comment']; ?></span>
+                            <span class='cmntdttm'><?php echo date('D d-m-Y H:i:a', strtotime($comment['created'])); ?></span>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>            
+        </div>
+        <div class='usrcmntbxa'>
+            <div class='writebx write txth txta'>Add comment ..</div>
+        </div>
+        <div class='usrcmntbxb'>
+            <div class='lusrcmntbx'>
+                <form>
+                    <div class='writebx write txth txtb divtxtar' contenteditable='true'>Add comment ..</div>
+                    <input class='inwrite' type='hidden' value=''/>
+                </form>
+            </div>
+            <div class='rusrcmntbx'>
+                <div class='trusrcmntbx'>
+                    <img src='<?php echo $data[0]['ProfileImage']['profile_image_link'] ?>' style='width:55px;'/>
+
+                </div>
+                <div class='brusrcmntbx'>
+                    <ul>
+                        <li class='btn postbtn'><span>Post</span></li>                      
+                        <li class='btn cnclbtn'><span>Cancel</span></li>
+                        <!--<li class='btn attachbtn'><span>Attach</span></li>-->                        
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <?php ?>
+        <div class="upldblck">
+
+        </div>
+    </div>
+<?php } ?>
+<script>
+    $('.dedic-block-data-img').on('click',function(){
+        alert('n');
+//    $(this).hide();
+//        $(this).next('<iframe scrolling="auto" src="//www.youtube.com/embed/FlsBObg-1BQ?autoplay=1&autohide=1&border=0&wmode=opaque&hl=en&cc_lang_pref=en&enablejsapi=1&authuser=0" style="margin: 0px; vertical-align: bottom; border: medium none; width: 346px; height: 230px;"></iframe>');
+    });
+    $('.deddicbyus').on('click', 'img', function() {
+        var adiv = document.createElement('div');
+        var ardiv = document.createElement('div');
+        var aul = document.createElement('ul');
+        var ali = document.createElement('li');
+        var bli = document.createElement('li');
+        var cli = document.createElement('li');
+
+        adiv.className = 'deddicbyusluldv';
+        ardiv.className = 'arrow-up';
+        aul.className = 'deddicbyuslul';
+        ali.className = 'deddicbyuslli deddicbyusllif';
+        bli.className = 'deddicbyuslli deddicbyusllih';
+        cli.className = 'deddicbyuslli deddicbyusllid';
+
+        ali.innerHTML = 'follow';
+        bli.innerHTML = 'hide feeds';
+        cli.innerHTML = 'add in Favourite';
+//        var parentDiv = document.getElementById('deddicbyus');
+
+        aul.appendChild(ali);
+        aul.appendChild(bli);
+        aul.appendChild(cli);
+        adiv.appendChild(aul);
+        //  parentDiv.appendChild(ardiv);
+        //parentDiv.appendChild(adiv);
+        if ($('.deddicbyusluldv').hasClass('deddicbyusopen')) {
+            $(this).remove();
+        }
+        $(this).parents('.deddicbyus').append(adiv);
+    });
+    $('.deddicbyus').on('click', 'li', function() {
+        var id = $(this).parents('.dedh_hblock').find('.currentuserauth').val();
+        $.ajax({
+            url: '/user/updatefeedfavfol/' + id
+        });
+    });
+//    $('.ded').hover(function() {
+//        $(this).find('.deddicbyusi').css('display', 'block');
+//    }, function() {
+//        $(this).find('.deddicbyusi').css('display', 'none');
+//
+//    });
+</script>

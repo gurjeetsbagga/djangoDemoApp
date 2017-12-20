@@ -1,0 +1,1751 @@
+<?php
+// echo "<pre>".print_r($this->DedicationForm,1);
+//exit(__FILE__);
+?>
+<style type="text/css">
+    div:focus {
+        outline: none;
+    }
+
+    root {
+        display: block;
+    }
+
+    a {
+        transition: color 0.218s ease 0s;
+    }
+
+    ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .mcontainer {
+        clear: both;
+        display: block;
+        padding: 25px 5px;
+        width: 900px;
+        margin: 10px auto;
+    }
+
+    .hcontainer {
+        height: 400px;
+        width: 900px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid #eee;
+        padding: 0;
+        background-color: #fff;
+        border-radius: 5px 5px 5px 5px;
+        border: 1px solid rgb(221, 221, 221);
+        box-shadow: 0px 0px 5px 0px rgb(221, 221, 221);
+    }
+
+    .divtxtar {
+        cursor: text;
+        font: 13px/1.4 Roboto, arial, sans-serif;
+        word-wrap: break-word;
+        outline: 0px;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: rgb(64, 64, 64);
+        white-space: normal;
+        visibility: visible;
+        border: 1px solid #eee;
+    }
+
+    .blhtxtar {
+        width: 450px;
+        max-height: 38px;
+        min-height: 35px;
+    }
+
+    .blhtosugnm {
+        width: 450px;
+        max-height: 368px;
+        min-height: 55px;
+    }
+
+    .lcontainer {
+        width: 350px;
+        float: right;
+    }
+
+    .rcontainer {
+        /*width: 579px;*/
+        float: left;
+    }
+
+    .rhbox {
+        float: right;
+        width: 200px;
+    }
+
+    .lhbox {
+        float: left;
+        width: 700px;
+        padding: 0;
+    }
+
+    .lhbox .hboxli:first-child {
+
+    }
+
+    .lhbox .hboxli {
+        padding: 12px 10px;
+        line-height: 25px;
+        border-top: 1px solid #fff;
+        cursor: pointer;
+        color: #555;
+    }
+
+    .hboxlia {
+        text-transform: capitalize;
+        float: left;
+        font-size: 15px;
+        padding: 0px 1px 0px 15px;
+        color: rgb(68, 68, 68);
+        font-family: MuseoSlab500, Helvetica, Arial;
+    }
+
+    .hboxliab:hover {
+        color: green;
+    }
+
+    .lhbox .hboxli:hover:first-child {
+        border-radius: 5px 0px 0px 0px;
+    }
+
+    .lhbox .hboxli:hover {
+        background-color: rgb(202, 217, 230);
+    }
+
+    .lhbox .hboxli:hover:last-child {
+        border-radius: 0px 0px 0px 5px;
+    }
+
+    .lhbox .hboxli:hover .hboxlia {
+        color: green;
+    }
+
+    .lhbox .hboxli:hover .hboxlib {
+        color: #427fed;
+        font-weight: bold;
+    }
+
+    .hboxlib {
+        font-size: 11px;
+        display: inline;
+        padding-left: 5px;
+        padding-bottom: 6px;
+    }
+
+    .tlhbox {
+        display: inline-block;
+    }
+
+    .mlhbox {
+
+    }
+
+    .blhbox {
+        margin-left: 185px;
+    }
+
+    .usrprofimg {
+        text-align: center;
+        position: relative;
+        padding-top: 15px;
+    }
+
+    .usrprofimg img {
+        padding: 2px;
+        border: 1px solid #eee;
+    }
+
+    .ltlhboxop {
+        /*    width: 170px;
+            height: 200px;
+            position: absolute;
+            background-color: #111;
+            opacity: 0.8;
+            z-index: -1;
+            border: 5px 5px 5px*/
+
+    }
+
+    .ltlhbox li:hover {
+        /*background:  repeat scroll 0% 0% rgb(0, 83, 135);*/
+
+    }
+
+    .ltlhbox {
+        float: left;
+        width: 160px;
+        height: 200px;
+        color: #fff;
+        background-color: rgba(202, 217, 230, 0.8);
+        opacity: 0.8;
+        display: none;
+    }
+
+    .rtlhbox {
+        margin-left: 20px;
+    }
+
+    .dedicbox {
+        min-height: 27px;
+        line-height: 27px;
+        /*        border-width: 1px;
+                border-style: solid;
+                border-color: rgb(228, 228, 228);*/
+        /*border-radius: 5px 5px  0 0;*/
+    }
+
+    .dedicboxlblnmshd {
+        /*box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.2);
+        height: 2px;*/
+
+    }
+
+    .dedicboxlblnm {
+        max-height: 156px;
+        padding: 4px;
+        min-height: 0px;
+        /*min-height: 28px;*/
+        /*min-height: 10px;*/
+        /*margin: 0 5px;*/
+        overflow-y: auto;
+        /*overflow-x: none;
+        background-color: #f5f5f5; 
+        border-left: 1px solid rgb(228, 228, 228);
+        border-right: 1px solid rgb(228, 228, 228);
+        border-bottom: 1px solid rgb(228, 228, 228);*/
+
+        /*border-right: 1px solid rgb(228, 228, 228);*/
+        /*border-left: 1px solid rgb(228, 228, 228);*/
+        /*        border-bottom: 1px solid rgb(228, 228, 228);
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;*/
+        /*border-bottom: 1px solid rgba(0, 0, 0, 0.1)*/
+    }
+
+    .deditoblockminbwrtdvvd {
+        /*        margin: 0 5px;
+        min-height: 10px;
+        background-color: #f5f5f5; border-left: 1px solid rgb(228, 228, 228);
+        border-right: 1px solid rgb(228, 228, 228);
+        border-bottom: 1px solid rgb(228, 228, 228);
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;        */
+
+    }
+    [contenteditable=true]:empty:not(:focus):before{
+        content:attr(data-text);
+        color:#ccc;
+        font-size:20px;
+    }
+    *::-webkit-input-placeholder {
+        color: #ccc;
+    }
+    *:-moz-placeholder {
+        /* FF 4-18 */
+        color: #ccc;
+    }
+    *::-moz-placeholder {
+        /* FF 19+ */
+        color: #ccc;
+    }
+    *:-ms-input-placeholder {
+        /* IE 10+ */
+        color: #ccc;
+    }
+    .deditoblockminbwrtdv {
+        padding: 4px 1%;
+        height:45px;
+        width: 98%;
+        border: none;
+        resize: none;
+    }
+
+    .dedicationIndexForm .deditoblockminbwrtdv {
+        color: graytext;
+    }
+    .uapih{
+        height: 16px;
+        line-height: 16px;
+        background-size: 16px 16px;
+        padding-left: 16px; 
+        margin: 1px 0;
+    }
+    .autofrndnameapi{
+        background-color: #eee;
+        display: table;
+        width: 100%;
+    }
+    .autofrndnameapi li{
+        display: inline-block;
+        float: left;
+        margin: 0 4px;
+    }
+    .logincntnrmh {
+        background-color: rgba(42, 164, 207, 1);
+        padding: 0;
+        color: #fff;
+        font-size: 11px;
+        font-size: 1.1rem;
+        line-height: 44px;
+        height: 44px;
+        max-width: 1440px;
+        margin: auto;
+        height: 50px;
+        -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
+        border-bottom: 1px solid #999;
+    }
+
+    #autofrndnamediv li:hover {
+        /*        background-color: #eee;
+                color:#111;*/
+
+    }
+
+    .autofrndnamedivcp {
+
+    }
+
+    .autofrndnamedivabt {
+        display: none;
+        width: 465px;
+        min-height: 40px;
+        max-height: 100px;
+    }
+
+    #autofrndnamediv {
+        background: none repeat scroll 0 0 #fff;
+        border-color: #ccc;
+        border-style: none;
+        border-width: 1px;
+        box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
+        display: none;
+        left: 8px;
+        margin-left: 38px;
+        max-height: 400px;
+        min-width: 100px;
+        overflow-y: auto;
+        position: absolute;
+        right: 8px;
+        z-index: 9999;
+    }
+
+    .dedicbox .autofrndnamedivl {
+        margin: 2px 4px;
+        background-color: whitesmoke;
+        color: #666;
+        border: 1px solid #eee;
+        border-radius: 4px 4px 4px 4px;
+    }
+
+    .autofrndnamedivli {
+        margin: 4px;
+    }
+
+    .dedicbox  .autofrndnamedivl .autofrndnamedivlimg {
+        height: 28px;
+        max-width: 28px;
+    }
+
+    .dedicboxlblnm .autofrndnamedivl {
+        border: 1px solid #ccc;
+    }
+
+    .autofrndnamedivl {
+        float: left;
+        width: 95px;
+        /*border-radius: 4px 4px 4px 4px;*/
+        display: block;
+        cursor: pointer;
+        /*padding: 2px;*/
+        margin: 4px;
+        background-color: #fff;
+    }
+
+    .autofrndnamedivlimg {
+        float: left;
+        height: 25px;
+        max-width: 25px;
+    }
+
+    .autofrndnamedivldiv {
+        color: #666;
+        font-family: arial;
+        font-size: 12px;
+        font-weight: normal;
+        height: 22px;
+        line-height: 20px;
+        margin-left: 28px;
+        overflow: hidden;
+        padding-left: 2px;
+        text-transform: capitalize;
+        word-wrap: break-word;
+        padding: 1px;
+    }
+
+    .nwsrchdv {
+
+    }
+
+    .getgooglefriends {
+        display: block;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        height: 35px;
+        width: 70px;
+    }
+</style>
+<div class='deditoblock'>
+    <div class='deditoblockm'>
+        <div class='deditoblockminb'>
+            <?php
+            /*
+             *
+             * https://developers.google.com/+/web/signin/server-side-flow
+             */
+            ?>
+            <!--<button id="getgooglefriends" class='getgooglefriends' class="classesToStyleWith">Log in</button>-->
+            <?php //$this->form->create('dedication', array('url' => array('controller' => 'dedications', 'action' => 'sendDedication'), 'id' => 'dedicationform')); ?>
+            <form id="dedicationform" onsubmit=Event.__inlineSubmit action="/dedicationtorfriend" enctype="multipart/form-data"
+                  method="POST">
+                <div class='deditoblockmto'>
+                    <div class='dedicbox'>
+                        <div class="dedicboxdv">
+                            <div class="deditoblockmtoulnk">
+                                    <!--<input type="file" name="uploadimagededication[]" multiple="multiple" value="" class="attchfilebtn"/>-->
+                                <span class="upimgcl"></span>
+                                <!--<span class ="upsscl"></span>-->
+                                <span class="upaudcl"></span> <span class="upvidcl"></span>
+                                <!--<input name="videolink" class='videolink' type="text" placeholder="+ add video link"/></div>-->
+                                <div id="uploadimagededicationdiv"></div>
+                                <input type="text" autocomplete="off" placeholder=" Dedicate to All.. " id="tag" value='' />
+                            </div>
+                            <div id="autofrndnamediv">
+                                <ul id="autofrndnameul"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dedicboxm">
+                        <div class='dedicboxlblnm'>
+                            <span></span>
+                        </div>
+                        <div class='dedicboxlblnmshd'>
+                            <span></span>
+                        </div>
+                        <div class="autofrndnamedivcp"></div>
+                        <div class='autofrndnamedivabt'></div>
+                        <div class='wrtdv'>
+                            <!--<div id="deditoblockminbwrtdv" class='wrtdvh deditoblockminbwrtdv'contenteditable='true' ></div>-->
+                            <div id="deditoblockminbwrtdv" data-text="Say how you feel.."
+                                 class='wrtdvh deditoblockminbwrtdv' contenteditable='true' ></div>
+                              <!--<span id="spanplaceholder">Write whatever in your mind</span>-->
+                            <div id='deditoblockminbwrtdvvd' class='deditoblockminbwrtdvvd'>
+                                <div id="uploadPreview"></div>
+                                <div class="vidimgpriviewbox" id="vidimgpriviewbox">
+                                    <div class="vidimgpriview" id="vidimgpriview">
+                                        <div class="vidprvplaybtndv">
+                                            <textarea name="shorttitle" type="text"
+                                                      placeholder="write anything..." class="vidprvplaybtndv-lbl" ></textarea>
+                                            <i class="vidprvplaybtn" id="vidprvplaybtn"></i>
+                                        </div>
+                                    </div>
+                                    <div class="video"></div>
+                                </div>
+                                <div id="imagePreview" class="imagePreview">
+                                    <div class="imagePreviewh">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div class="imagePreviewb"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php //echo $this->form->input('about', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvin', 'value' => ''));  ?>
+                        <?php //echo $this->form->input('link', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvyvidin', 'value' => ''));  ?>
+                        <?php //echo $this->form->input('linka', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvyvidin', 'value' => 'er')); ?>
+                        <?php //echo $this->form->input('linkb', array('type' => 'hidden', 'class' => 'deditoblockminbwrtdvyvidin', 'value' => 'uy')); ?>
+
+                        <input type="hidden" value="" name="about"
+                               class="deditoblockminbwrtdvin placeholderact" /> <input
+                               type="hidden" value="" name="link"
+                               class="deditoblockminbwrtdvyvidin" /> <input type="hidden"
+                               value="" name="friends" class="" />
+
+
+                    </div>
+                    <div class='deditoblockf'>
+                        <div class='deditoblockfin-'>
+                            <ul>
+                                    <!--li><input width="400" type="button" class='btn cnclbtn cnclbtnmn' value='Cancel'/></li-->
+                                <li><input id='dedicationformsbmt'
+                                           style="width: 200px; padding: 8px 0; font-size: 14px; height: 32px;"
+                                           type="button" class='btn attachbtn attachbtnmn' value="Send" />
+                                </li>
+                                <li><?php //echo $this->form->input('', array('type' => 'file', 'class' => 'attchfilebtn'));                                                                                                                                              ?>
+                                </li>
+                                <li><?php //echo $this->form->input('Post Dedication', array('label' => '', 'type' => 'submit', 'class' => 'btn postbtn postbtnmn'));                                                                                                                                              ?>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class='mlhbox'></div>
+<form id="uploadimagededicationform" action="">
+    <input type="file" name="uploadimagededication[]" multiple="multiple"
+           value="" class="upclicked uploadimagededication"
+           id="uploadimagededication" />
+</form>
+<style type='text/css'>
+    .placeholder {
+        color: #999;
+        text-align: left;
+    }
+
+    .deditoblock {
+        width: 100%;
+        font-size: 11px;
+        color: #999;
+        background-color: #fff;
+        display: inline-block;
+    }
+
+    .deditoblockh {
+        margin-top: 10px;
+        color: #111;
+        outline-offset: -2px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .deditoblockh img {
+        margin: 0 5px;
+    }
+
+    .deditoblockmto {
+        background: repeat scroll 0% 0% rgb(255, 255, 255);
+        color: rgb(64, 64, 64);
+        min-height: 30px;
+        /*overflow-y: auto;*/
+        /*box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.04) inset;*/
+    }
+
+    .deditoblockm {
+        /*border: 1px solid #eee;*/
+        margin: 0 0px 0 10px;
+    }
+
+    .deditoblockmtoulnk {
+        clear: both;
+        color: #999;
+        height: 32px;
+        position: relative;
+        line-height: 30px;
+        /*background-color: rgb(255, 255, 255);*/
+        /*border-radius: 0px 0px 0px 0px;*/
+        border-bottom: 1px solid #E4E4E4;
+        /*
+        padding-left: 20px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;*/
+    }
+
+    .wrtdv, .deditoblockhtrab {
+        background-color: white;
+        color: rgb(64, 64, 64);
+        cursor: text;
+        position: relative;
+        vertical-align: top;
+        /*overflow-y: auto;*/
+    }
+
+    .wrtdv {
+        position: relative;
+
+        /*        border-radius: 0px 0px 4px 4px;
+                border-left: 1px solid rgb(228, 228, 228);
+                border-top: 1px none rgba(228, 228, 228,0.8);
+                border-right: 1px solid rgb(228, 228, 228);
+                border-bottom: 1px solid rgb(228, 228, 228);*/
+    }
+
+    .wrtdv, .deditoblockhtrab {
+
+    }
+
+    .wrtdvh {
+        /*max-height: 68px;*/
+
+    }
+
+    .wrtdvha {
+        min-height: 35px;
+        max-height: 68px;
+    }
+
+    .wrtdv, .deditousrs {
+        /*min-height: 55px;*/
+
+    }
+
+    .wrtbsic {
+        min-height: 20px;
+    }
+
+    .deditoblockhtraob {
+        margin-top: 47px;
+    }
+
+    .deditoblockhtrab {
+        border-left: 1px solid rgb(228, 228, 228);
+        border-top: 1px solid rgb(228, 228, 228);
+        border-right: 1px solid rgb(228, 228, 228);
+        border-bottom: 1px dashed rgb(228, 228, 228);
+        /*            border: 1px solid #eee;
+                    margin: 5px 0;*/
+    }
+
+    .deditousrs {
+        border-top: 1px #eee solid;
+    }
+
+    .deditoblockf {
+        padding: 1px;
+    }
+
+    .deditoblockfin, .deditoblockhtrain {
+        float: right;
+    }
+
+    .deditoblockhtrain {
+        margin-top: 10px
+    }
+
+    .deditoblockfin li, .deditoblockhtrain li {
+        float: left;
+    }
+
+    .attchfilebtn, .deditoblockmina {
+        display: none;
+    }
+
+    .deditoblockf {
+        /*display: ;*/
+
+    }
+
+    .deditoblockm {
+        font-size: 12px;
+    }
+
+    .deditoblockhtrb {
+        cursor: pointer;
+        padding: 5px 5px;
+        width: 150px;
+    }
+
+    #tag {
+        margin-left: 5px;
+        height: 27px;
+        line-height: 14px;
+        color: #666;
+        outline: none;
+        background-color: transparent;
+        width: 300px;
+    }
+    .vidpromodv,.vidpromodv_crsts {
+        color: #111;
+        border-top: 1px dashed #eee;
+        padding-top: 10px;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+    }
+    .vidpromodv {	
+        padding: 15px 0;
+        width: 100%;
+    }
+    .vidpromodv_crsts {
+        padding: 2px 15px;
+        background-color: #f7f7f7;
+        width: 91.4%;
+    }
+    .vidpromoimg_crsts{
+        box-shadow: -6px 0px 9px -4px rgba(0, 0, 0, 0.5), 6px 0px 9px -4px rgba(0, 0, 0, 0.5);
+
+    }
+    .vidpromoimg {
+        display: inline-block;
+        border: 1px solid #eee;
+    }
+
+    .vidpromospn {
+        clear: both;
+    }
+
+    .addpplspn {
+        height: 38px;
+        line-height: 40px;
+        width: 74px;
+        color: #666;
+        float: left;
+        padding: 0 10px;
+        border-right: 1px solid #eee;
+        border-radius: 4px 0px 0px 0px;
+    }
+
+    .imagePreview {
+
+    }
+
+    .imagePreviewh {
+        /*          background-color: #333;
+            box-shadow: 0 1px 2px rgba(1, 1, 1, 0.6) inset;
+            padding: 10px 0;
+        border: 1px solid #eee;*/
+        padding: 4px;
+        margin: 0 4px;
+        text-align: left;
+    }
+
+    .imagePreviewh ul {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .imagePreviewh ul li {
+        background-position: top center;
+        background-repeat: no-repeat;
+        /*border: 1px solid #999;*/
+        float: left;
+        height: 90px;
+        /*margin: 3px;*/
+        overflow: hidden;
+        position: relative;
+        width: 80px;
+        /*box-shadow: 0 1px 3px rgba(1, 1, 1, 0.898);*/
+        cursor: pointer;
+        /*background-color: #fff;*/
+    }
+
+    .clsimgprv {
+        display: none;
+        background-color: rgba(1, 1, 1, 0.5);
+        color: #eee;
+        font-size: 11px;
+        padding: 0 1px;
+        position: absolute;
+        right: 0;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .imagePreviewh ul li:hover  .clsimgprv {
+        display: block;
+        background-color: rgb(1, 1, 1);
+        transition: display 0.15s ease 0s;
+        color: #fff;
+    }
+</style>
+<script type='text/javascript'>
+    function checkUrl(url) {
+        var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+        return (url.match(p)) ? RegExp.$1 : false;
+    }
+    var files;
+    var PrviewImgWidth;
+    var PrviewImgHeight;
+    var PreviewleftImagPosition;
+    var PreviewtopImagPosition;
+    var UNKNOWNDEDICATEUSER;
+    var TEMP_DEDICATED_IMAGE;
+    TEMP_DEDICATED_IMAGE = new Array();
+    UNKNOWNDEDICATEUSER = new Array();
+    var selectedId = []; // used for tracking which user is clicked for dedication
+    var FriendList = [], item;
+    // Grab the files and set them to our variable
+    $("#deditoblockminbwrtdv").on("keyup", function () {
+        //        if ($(this).html() == '') {
+        //            $(this).next('#spanplaceholder').css({
+        //                position: 'absolute',
+        //                display: 'block',
+        //                top: '12px',
+        //                left: '10px',
+        //                fontSize: '12px',
+        //                color: '#999'
+        //            });
+        //        } else {
+        //            $(this).next('#spanplaceholder').css({
+        //                display: 'none',
+        //            });
+        //        }
+        // console.log(text);
+
+        // var code = (e.keyCode ? e.keyCode : e.which);
+        //                if (id && ((code == 86 || code == 118) && e.ctrlKey)) //86 = v 118 = V 
+        //                {
+        //                    if (val == id) {
+        //                        return;
+        //                    }
+        //                    else {
+        //                        getvidimg(id);
+        //                    }
+        //                } 
+        var text = $(this).html();
+        $(".deditoblockminbwrtdvin").val(text);
+        //        if ($(".deditoblockminbwrtdvin").hasClass('placeholderact') && $(".deditoblockminbwrtdvin").val() === '') {
+        //            $(".placeholder").text('').css('display', 'none');
+        //            $(".deditoblockminbwrtdvin").removeClass('placeholderact').addClass('placeholderdeact');
+        //            text = $(this).text();
+        //            $(".deditoblockminbwrtdvin").val(text);
+        //        } else {
+        //            text = $(this).text();
+        //            $(".deditoblockminbwrtdvin").val(text);
+        //        }
+        //        if ($(".deditoblockminbwrtdvin").hasClass('placeholderdeact') && $(".deditoblockminbwrtdvin").val() === '') {
+        //            $(".deditoblockminbwrtdvin").removeClass('placeholderdeact').addClass('placeholderact').val('');
+        //            $(this).find(".placeholder").css('display', 'inline-block').text('share how you feel...');
+        //
+        //        }
+    });
+    $("#dedicationform").submit(function () {
+        return false;
+    });
+    $("#dedicationformsbmt").off('click').on('click', function (event) {
+
+        var key = (event.keyCode ? event.keyCode : event.which);
+        //            console.log(UNKNOWNDEDICATEUSER);
+
+        var ok = false;
+        //                if ($('input.deditoblockminbwrtdvyvidin').val() === '') {
+        //                    alert("link");
+        //                }
+
+        if ($('input.deditoblockminbwrtdvin').val() > 0) {
+            console.log("dedicstion text : " + $('input.deditoblockminbwrtdvin').val());
+            ok = true;
+        }
+        //                console.log(UNKNOWNDEDICATEUSER.length+"--"+selectedId.length);
+        if ((UNKNOWNDEDICATEUSER.length > 0) || (selectedId.length > 0)) {
+            console.log("UNKNOWN USER is : " + UNKNOWNDEDICATEUSER.length);
+            console.log("selected Id length : " + selectedId.length);
+            ok = true;
+        }
+        console.log("ok is : " + ok)
+        if (ok) {
+
+            // var formData = new FormData($("#dedicationform")[0]);
+            // console.log(formData);
+            console.log("link " + $('input.deditoblockminbwrtdvyvidin').val());
+            console.log("imagelink " + TEMP_DEDICATED_IMAGE);
+            console.log("about " + $('input.deditoblockminbwrtdvin').val());
+            console.log("dedicated_user " + selectedId);
+            console.log("dedicated_unknown_user" + UNKNOWNDEDICATEUSER);
+            console.log($('input.deditoblockminbwrtdvyvidin').val());
+            $.ajax({
+                url: '/dedicationtofriend',
+                type: 'Post',
+                //                        async:'true',
+                dataType: 'html',
+                //                    contentType: "application/json",
+                data: {
+                    link: $('input.deditoblockminbwrtdvyvidin').val(),
+                    imagelink: TEMP_DEDICATED_IMAGE,
+                    about: $.trim($('input.deditoblockminbwrtdvin').val()),
+                    dedicated_user: selectedId,
+                    dedicated_unknown_user: UNKNOWNDEDICATEUSER,
+                    shorttitle: $(".vidprvplaybtndv-lbl").val(),
+                    //                        formData:formData,
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data) {
+                        $("#imagePreview > .imagePreviewh > ul").html("");
+                        $("#dedicationform").find(".hidfilenmae").remove();
+                        $(".deditoblockminbwrtdv").val("");
+                        $(".dedicboxlblnm").html("");
+                        TEMP_DEDICATED_IMAGE.length = selectedId.length = 0;
+                        UNKNOWNDEDICATEUSER.length = selectedId.length = 0;
+                        $("#lcontent").prepend(data);
+                    }
+                },
+                error: function () {
+                    alert('error in uploadingdedicationheader');
+                },
+                statusCode: {
+                    404: function () {
+                        alert("page not found");
+                    }
+                }
+            });
+        }
+        return false;
+    });
+    function UploadFiles(event) {
+
+        event.stopPropagation(); // Stop stuff happening
+        event.preventDefault(); // Totally stop stuff happening
+
+        // START A LOADING SPINNER HERE
+
+        // Create a formdata object and add the files
+        var data = new FormData();
+        $.each(files, function (key, value)
+        {
+            data.append(key, value);
+        });
+        $.ajax({
+            url: '/user/uploadimage',
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Don't process the files
+            contentType: 'multipart/form-data', // Set content type to false as jQuery will tell the server its a query string request
+            success: function (data, textStatus, jqXHR)
+            {
+                if (typeof data.error === 'undefined')
+                {
+                    // Success so call function to process the form
+                    // submitForm(event, data);
+                    //console.log(data);
+                }
+                else
+                {
+                    // Handle errors here
+                    //console.log('ERRORS: ' + data.error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                // Handle errors here
+                //console.log('ERRORS: ' + textStatus);
+                // STOP LOADING SPINNER
+            }
+        });
+    }
+
+    function prepareUpload(event)
+    {
+        files = event.target.files;
+        // $('#uploadimagededicationdiv').on('submit', UploadFiles);
+        UploadFiles(event);
+    }
+    function submitForm(event, data, url, type)
+    {
+        // Create a jQuery object from the form
+        $form = $(event.target);
+        // Serialize the form data
+        var formData = $form.serialize();
+        // You should sterilise the file names
+        $.each(data.files, function (key, value)
+        {
+            formData = formData + '&filenames[]=' + value;
+        });
+        $.ajax({
+            url: url,
+            type: type,
+            data: formData,
+            cache: false,
+            dataType: 'json',
+            success: function (data, textStatus, jqXHR)
+            {
+                if (typeof data.error === 'undefined')
+                {
+                    // Success so call function to process the form
+                    //console.log('SUCCESS: ' + data.success);
+                }
+                else
+                {
+                    // Handle errors here
+                    //console.log('ERRORS: ' + data.error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                // Handle errors here
+                //console.log('ERRORS: ' + textStatus);
+            },
+            complete: function ()
+            {
+                // STOP LOADING SPINNER
+            }
+        });
+    }
+
+    $(function () {
+        $('.deditoblockminbwrtdvin').val('');
+        $('.deditoblockminbwrtdvyvidin').val('');
+        $('.attachbtnmn').on('click', function () {
+            $('.attchfilebtn').trigger('click');
+        });
+        $('.deditoblockminbwrtdv').on('onfocus', function () {
+            var val = $(this).next('.deditoblockminbwrtdvin').val();
+            if (val == '') {
+                $('.deditoblockminbwrtdv').append('<span class="placeholder">show how you feel</span>');
+            }
+            //   onblur="if (this.value == '') { this.value = 'Search site'; }" onfocus="if (this.value == 'Search site') { this.value = ''; }" value="Search site"
+        });
+        $('.deditoblockminbwrtdv').on('click', function () {
+            $(this).prev('.deditoblockmto').css('display', 'block');
+            $(this).next('.deditoblockminbwrtdvin').next('.deditoblockf').css('display', 'block');
+        });
+        var link;
+        $('.deditoblockminbwrtdv').on('paste', function (e) {
+            link = e.originalEvent.clipboardData.getData('Text');
+        });
+        $('#deditoblockminbwrtdv').on('paste', function (e) {
+            link = e.originalEvent.clipboardData.getData('Text');
+            var id = checkUrl(link);
+            var val = $('.deditoblockminbwrtdvyvidin').val();
+            if (val == id) {
+                return;
+            }
+            else {
+                $('.deditoblockminbwrtdvyvidin').val(id);
+                getvidimg.onReady(id);
+            }
+        });
+        var getvidimg = {
+            onReady: function (id) {
+                getvidimg.deleteTweet(id);
+                var el;
+                //  $("#deditoblockminbwrtdvvd").on("each", function() {
+                el = document.getElementById("vidpromoimg");
+                // console.log(el);
+                // console.log("hello" + el.src);
+                //  });
+
+                // console.log(el.width);
+                if ($(el).width > 100) {
+                    /**
+                     * till now its not working for every new startup of browser
+                     */
+                    //                    document.getElementById('vidimgpriviewbox').style.display = 'block';
+                    $("#vidimgpriviewbox").fadeIn('slow');
+                    PrviewImgWidth = document.getElementById('vidimgpriview').style.width = img.width - 2 + "px";
+                    PrviewImgHeight = document.getElementById('vidimgpriview').style.height = img.height + "px";
+                    PreviewtopImagPosition = document.getElementById('vidimgpriview').style.top = img.top + 2 + "px";
+                    PreviewleftImagPosition = document.getElementById('vidimgpriview').style.left = 17 + "px";
+                } else {
+                    //                    document.getElementById('vidimgpriviewbox').style.display = 'block'; 
+                    $("#vidimgpriviewbox").fadeIn('slow');
+                    PrviewImgWidth = document.getElementById('vidimgpriview').style.width = "320px"; //img.width - 2 + "px";
+                    PrviewImgHeight = document.getElementById('vidimgpriview').style.height = "40px"; //img.height + "px";
+                    PreviewtopImagPosition = document.getElementById('vidimgpriview').style.top = "150px"; //img.offsetTop + 2 + "px";
+                    PreviewleftImagPosition = document.getElementById('vidimgpriview').style.left = "17px"; //img.offsetLeft + 1 + "px";
+
+                }
+            },
+            deleteTweet: function (id) {
+                ////console.log(checkUrl(text)); 
+                //var textlink = $(this).test();
+                /**
+                 * $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+video_id+'?v=2&alt=jsonc',function(data,status,xhr){
+                 alert(data.data.title);
+                 // data contains the JSON-Object below
+                 });
+                 */
+                var parentDiv = document.getElementById('deditoblockminbwrtdvvd');
+                var adiv = document.createElement('div');
+                var aspan = document.createElement('span');
+                //            var bspan = document.createElement('span');
+                //            var cspan = document.createElement('span');
+                //            var ael = document.createElement('a');
+                getvideoinfo(id);
+                var imagesrc = "http://i1.ytimg.com/vi/" + id + "/mqdefault.jpg";
+                var img = document.createElement('img');
+                img.setAttribute('src', imagesrc);
+                img.setAttribute("id", "vidpromoimg");
+                adiv.className = 'vidpromodv';
+                aspan.className = 'vidpromospn';
+                img.style.boxShadow = '-6px 0 9px -4px rgba(0, 0, 0, 0.5), 6px 0 9px -4px rgba(0, 0, 0, 0.5)';
+                aspan.style.display = "inline-block";
+                //            bspan.className = 'uploadbtnspn';
+                img.className = 'vidpromoimg';
+                //            bspan.style.width = '90px';
+                //            bspan.style.height = '90px';
+                //            bspan.style.display = 'inline-block';
+                //            bspan.style.cssFloat = 'left';
+                //            bspan.style.border = '1px solid #e5e5e5';
+                //            bspan.style.padding = '1px';
+                //            bspan.style.margin = '0 5px 0 0';
+                //            bspan.style.backgroundColor = '#111';
+                //            cspan.style.backgroundColor = '#313131';
+                //            cspan.style.boxShadow = '-6px 0 9px -4px rgba(0, 0, 0, 0.5), 6px 0 9px -4px rgba(0, 0, 0, 0.5)';
+                //            cspan.style.width = '90px';
+                //            cspan.style.height = '90px';
+                //            cspan.style.lineHeight = '90px';
+                //            cspan.style.position = 'absolute';
+                //            cspan.style.textAlign = 'center';
+                //            cspan.style.color = '#fff';
+                //            cspan.setAttribute("class", "aclass addimg");
+                //            ael.setAttribute("class", "addimg");
+                //            ael.style.color = '#848484';
+                //            ael.style.textShadow = '0 1px rgba(0, 0, 0, 0.1)';
+                //            ael.href = '#';
+                //            ael.innerHTML = '+ Add Image';
+                aspan.appendChild(img);
+                //            cspan.style.top =  $(".uploadbtnspn").position().top;
+                //            cspan.style.left = $(".uploadbtnspn").position().left;
+                //            cspan.appendChild(ael);
+                adiv.appendChild(aspan);
+                //            adiv.appendChild(bspan);
+                //            adiv.appendChild(cspan);
+                console.log(img.outerWidth);
+                console.log(img.offsetWidth);
+                console.log($(".vidpromospn").outerWidth());
+                parentDiv.appendChild(adiv);
+                //            ael.style.top = $(".uploadbtnspn").position().top + 3;
+                //            ael.style.left = $(".uploadbtnspn").position().left + 3;
+
+            }
+        };
+        function getvideoinfo(videoid) {
+            $.ajax({
+                url: "http://gdata.youtube.com/feeds/api/videos/" + videoid + "?v=2&alt=json",
+                dataType: "jsonp",
+                success: function (data) {
+                    parseresults(data)
+                }
+            });
+        }
+
+        function parseresults(data) {
+            var title = data.entry.title.$t;
+            var description = data.entry.media$group.media$description.$t;
+            var viewcount = data.entry.yt$statistics.viewCount;
+            var author = data.entry.author[0].name.$t;
+            $(".vidprvplaybtndv-lbl").val(title);
+        }
+
+        function addimageforsend() {
+            //            $('#uploadimagededication').trigger("click");
+        }
+
+        $("#deditoblockminbwrtdvvd").off('.vidpromodv > .vidpromospn > .vidpromoimg').on('.vidpromodv > .vidpromospn > .vidpromoimg', function (event) {
+            if (event.type === 'mouseenter') {
+                $(".vidimgpriview div").css({
+                    width: $(this).width() - 1,
+                    height: $(this).height(),
+                    top: $(this).position().top + 2,
+                    left: $(this).position().left + 8,
+                    zIndex: 99999
+                });
+            } else {
+                $(".vidimgpriview div").css({
+                    width: 00,
+                    top: 0,
+                    left: 0
+                });
+            }
+        });
+        //         $('#uploadimagededication').on('change', prepareUpload);
+        $("#uploadPreview").off('mouseenter mouseleave', '.previewbox').on('mouseenter mouseleave', '.previewbox', function (event) {
+            //console.log(event.type);
+            if (event.type === 'mouseenter') {
+                var imgel = $(this).find('img');
+                var width = $(imgel).width();
+                var height = $(imgel).height();
+                var top = $(imgel).position().top;
+                var left = $(imgel).position().left;
+                $(imgel).prev(".screen").css({
+                    top: top,
+                    left: left,
+                    width: width,
+                    height: height,
+                    display: 'block',
+                    position: 'absolute'
+                });
+                $(".screen").css("background-color", "rgba(1,1,1,0.6)");
+            } else {
+                $(".screen").css({
+                    top: 0,
+                    top: 0,
+                            top: 0,
+                            left: 0,
+                    height: 0,
+                    width: 0,
+                    display: 'none'
+                });
+            }
+        });
+        $('#uploadimagededicationform').off('change', '.upclicked').on('change', '.upclicked', function (event) {
+            var el = $(this);
+            var formData = new FormData($("#uploadimagededicationform")[0]);
+            //console.log(formData)
+            $("#imagePreview > .imagePreviewh > ul").append("<img class='tmpupldimg' src='/images/loading.gif' />");
+            $.ajax({
+                type: "POST",
+                url: "getimagepreview",
+                data: formData,
+                cache: false,
+                //                async: false,
+                //                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data)
+                {
+                    var json = $.parseJSON(data);
+                    $.each(json, function (key, response) {
+                        var width = response.imgwidth;
+                        width = (width > 100) ? 100 : width;
+                        $("#imagePreview > .imagePreviewh > ul").find(".tmpupldimg").remove();
+                        $("#imagePreview > .imagePreviewh > ul").append("<li style='width:" + width + ";background-position:center;background-image:url(" + response.profileimage + ")'><span class='clsimgprv'>remove</span></li>");
+                        //                        $("#imagePreview > .imagePreviewh > ul").append("<li style='width:" + width + "'><img src='"+response.profileimage+"'/><span class='clsimgprv'>remove</span></li>");
+                        $("#dedicationform").append("<input class='hidfilename' type=\"hidden\" value =\"" + response.filename + "\" >");
+                        //                           var response = $.parseJSON(data)[0];
+                        //                                CURRENTSTATUSIMAGE.push(response.smallurl);
+                        //                                var classa = "imga_"+ CURRENTSTATUSIMAGE.length;
+                        //                                var classb = "imgb_"+ CURRENTSTATUSIMAGE.length;
+                        //                                var i = CURRENTSTATUSIMAGE.length;
+                        //                                i--;
+                        //                                $(".imga_"+ i+ ",.currentimage_active").animate(
+                        //                                        {'margin-left' : '-' + 372,}, 2000, function() {
+                        //                                                $(this).fadeOut();
+                        //                                        });										
+                        //                                $("#ststsppdvimgbdya").fadeIn();
+                        //                                $(".currentimage_active").removeClass("currentimage_active");
+                        //                                $("#ststsppdvimgbdya > ul").append("<li id='"+ classa+ "' class='"+ classb+ "' style= \"background:url('/"+ response.smallurl	+ "') no-repeat scroll center center rgba(255, 255, 255, 0.1)\"></li>");
+                        //                                $("#ststsppdvimgbdy > ul").append("<li id='"+ classb+ "' class='"+ classa+ " currentimage_active' style= \" margin-left:0;background:url('/"+ response.url+ "') no-repeat scroll center center rgba(0, 0, 0, 0)\"></li>");
+
+                        TEMP_DEDICATED_IMAGE.push(response.url);
+                    });
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+            return false;
+        });
+        $("#gbutton").on('click', function () {
+
+            $('#myButton').trigger('click');
+        });
+        $(".vidprvplaybtn").on('click', function () {
+            PrviewImgHeight = '180px';
+            $(this).parents(".vidimgpriviewbox")
+                    .find('.video')
+                    .html('<iframe frameborder="0" allowfullscreen src="http://www.youtube.com/embed/' + $(".deditoblockminbwrtdvyvidin").val() + '?rel=0&autoplay=1" width="' + PrviewImgWidth + '" height="' + PrviewImgHeight + '" frameborder="0" allowfullscreen="true">').css({
+                left: PreviewleftImagPosition,
+                top: 17, //PreviewtopImagPosition
+                zIndex: 9999,
+            });
+        });
+        $(".screena span").click(function () {
+            $(this).parent("#uploadPreview")
+        });
+        $('.cnclbtnmn').click(function () {
+            $('.deditoblockminbwrtdv').text('');
+            $('.deditoblockmto #tag').val('');
+            //                $(this).parents('.deditoblockf').css('display', '');
+            //                $(this).parents('.deditoblockminb').find('.deditoblockmto').css('display', '');
+        });
+        $('.deditoblockhtraoa').hover(function () {
+
+        });
+        $('.deditoblockhtraoa').on('click', function () {
+            $(this).css('display', '');
+            $('.deditoblockminb').css('display', '');
+            $(this).next('.deditoblockhtraob').css('display', 'block');
+        });
+        $('.deditoblockhtramna').on('click', function () {
+            if ($(this).next('.deditoblockhtramnain').val > 0) {
+
+            } else {
+                $(this).text('');
+            }
+            
+            var inputValElem = $(this).next('.deditoblockhtramnain');
+            text = $(this).text();
+            replaceTextInElem(this,inputValElem,text);            
+        });
+        $("#imagePreview").off("click", ".clsimgprv").on("click", ".clsimgprv", function () {
+            $(this).parent("li").remove();
+        });
+        $('.cnclbtnmna').click(function () {
+            $(this).parents('.deditoblockhtraob').css('display', '');
+            $('.deditoblockminb').css('display', 'block');
+            $(this).parents('.deditoblockhtraob').prev('.deditoblockhtraoa').css('display', 'block');
+        });
+        $('.dedicboxlblnm').on('click', '.crossfrndname', function () {
+            if ($('.dedicboxlblnm span').html == '') {
+                $('.dedicboxlblnm').css('display', '');
+            }
+            $(this).parent('li').fadeOut().remove();
+        });
+        $('.frndlstcntnrhsrch').on('click', function () {
+            $(this).animate({
+                width: '135px'
+            });
+        });
+        $(".dedicboxlblnm").animate({scrollTop: $(document).height()}, "fast");
+        $(function () {
+            $("#tag").val('');
+            $.ajax({
+                type: "POST",
+                url: '/user/myfriends/',
+                success: function (data) {
+                    var results = $(data);
+                    console.log(results)
+                    $.each(results, function (key, item) {
+                        // $.each( value, function( key, item ) {
+                        //  	console.log("hello "+value.id);
+                        FriendList.push({id: item.id, first_name: item.fname, last_name: item.lname, profile_image_link: item.profile_image_link});
+                        // });
+                    });
+                    //console.log(FriendList);
+                    // for (var i = 0, len = results.length; i < len; i++) {
+                    //     item = results[i];
+                    // FriendList[i]['id']=item.id;
+                    // FriendList[i]['first_name']=item.first_name;
+                    // FriendList[i]['email']=item.email;
+                    // FriendList[i]['status']=item.status;
+                    //FriendList.push({id: item.id, first_name: item.fname, last_name: item.lname, profile_image_square: item.profile_image_link});
+                    //  }
+                },
+                dataType: 'json'
+            });
+            return false;
+        });
+        $("#autofrndnameul").on('click', '#autofrndnamesndrq', function () {
+
+            $.ajax({
+                type: "POST",
+                url: '/sendfriendrequest',
+                success: function (data) {
+                   alert(data);
+                    console.log(data);
+                },
+                data: {
+                    'name': $("#autofrndnameulninl input[name='name']").val(),
+                    'email': $("#autofrndnameulninl input[name='email']").val(),
+                },
+                dataType: 'json'
+            });
+            return false;
+        });
+        var cursorPos = 52;
+        $('#tag').off('keyup').on('keyup', function (event) {
+            var key = (event.keyCode ? event.keyCode : event.which);
+            var val = $(this).val();
+            var w = parseInt($(this).getCursorPosition());
+            var nw = parseInt(w) + parseInt(cursorPos);
+            if (nw >= '106') {
+                nw = 106;
+            }
+
+            if (val.length < 1) {
+                $("#autofrndnamediv ul").html("");
+            }
+            $(".shwhlptxt").remove();
+            //var el ="<div style='left:"+nw+"px;' class ='shwhlptxt'>Press ENTER for adding the name.</div>";
+
+            //$(this).parents(".deditoblockmtoulnk").append(el);
+
+            $(".shwhlptxt")
+                    .animate({
+                        left: nw,
+                    });
+            cursorPos = cursorPos + w;
+            $("#autofrndnameul li.autofrndnamedivli").css("backgroundColor", "#fff").removeClass('Selected');
+            var x = event.pageX;
+            var y = event.pageY;
+            var valElmnt = $("#autofrndnamediv ul").first();
+            var el_frndntexst = "<li id='autofrndnameulninl' class='autofrndnameulninl'>\n\
+    <div style='clear: both; position: relative;height: 17px;line-height: 17px;'>Send an Invite.</div>\n\
+                        <div><input type='hidden' name='name' value='" + $(this).val() + "' /><input tyle='position:relative;' name='email' type='text' placeholder='email' />\n\
+                            <input type='button' id='autofrndnamesndrq' class='btna' style='margin-right:5px;' value='send'/><input type='button'class='btna clsautofrndnameul' value='later'/></div>\n\
+<div style='border-top:1px dashed #ccc;display:block;width: 100%;margin-top:5px;color:dark-grey;'></div><div class='autofrndnameapi'><ul><li>or invite him in</li><li><a href='<?php echo BASE_PATH ?>sendrequest/facebook' class='uapih apicn fbicn'  onclick='window.open(this.href,\"auth\",\"width=700,height=600\");return false; '></a></li><li><a href='<?php echo BASE_PATH ?>sendrequest/google' class='uapih apicn gicn'  onclick = 'window.open(this.href, \'auth\', \' width=700,height=600 \');return false;'></a></li></ul></div></li>";
+
+
+            if (key === 13) {
+                if ($('#autofrndnameul li.selected').length > 0) {
+                    appendData($('#autofrndnameul li.selected'));
+                    return;
+                }
+                //         $(".shwhlptxt").remove();
+                //       cursorPos = 52;
+                //                alert("rrrrr");
+//                if (val.length > 0) {
+//                    $('.dedicboxlblnm').css({
+//                        "backgroundColor": "#f5f5f5",
+//                        "padding": "4px",
+//                        "borderLeft": "1px solid rgb(228, 228, 228)",
+//                        "borderRight": "1px solid rgb(228, 228, 228)",
+//                        "borderBottom": "1px solid rgb(228, 228, 228)",
+//                    });
+                // console.log(valElmnt.length);
+                //var el = "<div class='autofrndnamedivldivlbl autofrndnenamedivldivlbl'><div class='autofrndnenamedivldivlblin'><img src='images/user.gif'/><span class='namelbl'>" + val + "</span><span class='autofrndnenamedivldivlblincls autofrndnamedivldivlblppspnurmv'>x</span></div></div>";
+                //$('.dedicboxlblnm').append(el);
+                //UNKNOWNDEDICATEUSER.push(val);
+                // console.log("unknown " + UNKNOWNDEDICATEUSER);
+                // $(this).val('');
+                // var id = parseInt($(this).attr('id'));
+                // if (!isNaN(id)) {
+                //     selectedId.push(id);
+                //  }
+                //  }
+            } else if ((key > 64 && key < 91) || (key === 8)) {
+                console.log("ssssdsd");
+                $("#autofrndnamediv").css('left', y);
+                var username = $(this).val().toLowerCase();
+                var getName = "";
+                console.log("FriendList: " + FriendList);
+                if ((username.length > 0) && (FriendList.length > 0)) {
+
+                    for (var i = 0; i < FriendList.length; i++) {
+                        /*  if (FriendList[i]['first_name'].indexOf(username) == -1) {                        
+                         getName = el_frndntexst;                    
+                         } else {                            
+                         if (selectedId.indexOf(FriendList[i]['id']) != -1) {
+                         getName = el_frndntexst;
+                         } else {
+                         console.log(FriendList[i]['first_name']);
+                         getName += "<li id='' class='autofrndnamedivli'><img class='autofrndnamedivlimg' src='" + FriendList[i]['profile_image_square'] + "'/><div class='autofrndnamedivldiv'>" + FriendList[i]['first_name'] + "</div></li>";
+                         
+                         }
+                         }*/
+                        var frndId = (FriendList[i]['id']).toString();
+                        console.log("hee" + FriendList[i]['first_name'])
+                        var fName = FriendList[i]['first_name'].toLowerCase();
+                        if ((fName.indexOf(username) != -1) && (selectedId.indexOf(frndId) == -1)) {
+                            getName += "<li id='" + FriendList[i]['id'] + "' class='autofrndnamedivli'><img class='autofrndnamedivlimg' src='" + FriendList[i]['profile_image_link'] + "'/><div class='autofrndnamedivldiv'>" + FriendList[i]['first_name'] + "<input class='selectedId' type='hidden' value=" + FriendList[i]['id'] + " /></div></li>";
+                        }
+                    }
+                    console.log(getName);
+                }
+                else if ((username.length > 2) && (getName.length < 1)) {
+                    getName = el_frndntexst;
+                }
+                $("#autofrndnamediv").fadeIn("fast");
+                $("#autofrndnamediv ul").html(getName);
+                return false;
+            }
+            var $listItems = $("#autofrndnamediv ul li")
+            //---------------------------------
+            console.log("val " + val.length);
+            if (val.length < 1) {
+                $("#autofrndnamediv ul").html("");
+                return false;
+            }
+            // var key = e.keyCode,
+            $selected = $listItems.filter('.selected'),
+                    $current = "";
+            if (key !== 40 && key !== 38)
+                return;
+            $listItems.removeClass('selected');
+            if (key === 40) // Down key
+            {
+                if (!$selected.length || $selected.is(':last-child')) {
+                    $current = $listItems.eq(0);
+                }
+                else {
+                    $current = $selected.next();
+                }
+            }
+            else if (key === 38) // Up key
+            {
+                if (!$selected.length || $selected.is(':first-child')) {
+                    $current = $listItems.last();
+                }
+                else {
+                    $current = $selected.prev();
+                }
+            }
+
+            $current.addClass('selected');
+            ///----------------------------------------------------
+            //
+            //
+            //            else {
+            //                $("#autofrndnamediv").slideUp("fast", function() {
+            //                    $(this).find("ul").html("");
+            //                });
+            //            }   
+            return false;
+        });
+        /**
+         *  
+         */
+
+
+        /**
+         * 
+         */
+        $('.dedicbox').on('hover', '.autofrndnamedivl', function () {
+            $(this).css('color', 'red');
+            console.log('sd');
+        });
+        $('#deditoblockminbwrtdvvd').on('click', '.addimg', function () {
+            addimageforsend();
+        });
+        function appendData(elm) {
+            $("#tag").val("");
+            $('.dedicboxlblnm').css({
+                "backgroundColor": "#f5f5f5",
+                "padding": "4px",
+                "borderLeft": "1px solid rgb(228, 228, 228)",
+                "borderRight": "1px solid rgb(228, 228, 228)",
+                "borderBottom": "1px solid rgb(228, 228, 228)",
+            });
+            var el = "<div class='autofrndnamedivldivlbl autofrndnenamedivldivlbl'><div class='autofrndnenamedivldivlblin'><img src='" + elm.find("img").attr("src") + "'/><span class='namelbl'>" + elm.find("div").html() + "</span><span class='autofrndnenamedivldivlblincls autofrndnamedivldivlblppspnurmv'>x</span></div></div>";
+            $('.dedicboxlblnm').append(el);
+            //  $('.dedicboxlblnm').append("<div class='autofrndnamedivldivlbl'><img src=" + $(this).find("img").attr("src") + "><span class='namelbl'>" + $(this).find("div").html() + "</span></div>");
+            elm.remove();
+            $("#tag").val('');
+            $("#autofrndnamediv").fadeOut('fast');
+            $("#autofrndnamediv ul").html('');
+            var id = elm.attr('id');
+            selectedId.push(id);
+            console.log("sID " + selectedId);
+            // $("#deditoblockminbwrtdv").focus();
+        }
+        $("#autofrndnamediv ul").on('click', 'li.autofrndnamedivli', function () {
+            // $("<div class='autofrndnamedivl'>" + $(this).html() + "</div>").insertBefore('#tag');
+            $(".dedicboxlblnm").animate({scrollTop: $(document).height()}, "fast");
+            appendData($(this));
+        });
+        //         $(".dedicboxlblnm").on("mouseenter mouseleave", ".autofrndnamedivldivlbl", function(event) {
+        //             if (event.type === 'mouseenter') {
+        //                 var val = $(this).find(".namelbl").html();
+        //                 var el = "<div class='autofrndnamedivldivlblpp'><span class='fxnamelbl'>" +  val + "</span><div class='autofrndnamedivldivlblppspn'><span class='autofrndnamedivldivlblppspnurmv'>remove</span><span class='autofrndnamedivldivlblppcls'>x</span></div></div>";
+        //                 $(this).append(el);
+        //             } else {
+        //                  //HIDE FOR TESTING
+        //                  // $(this).find(".autofrndnamedivldivlblpp").remove();
+        //             }
+        //         });
+        //         $(".dedicboxlblnm").on("mouseenter", ".autofrndnenamedivldivlbl", function(event) {
+        //             if (event.type === 'mouseenter') {
+        //                 var val = $(this).find(".namelbl").html();
+        //                 if($(this).addClass("joined")){
+        //                 	 $(this).removeClass("joined");
+        //                     }	
+        //                 else{
+        // 	                var el = "<div class='autofrndnamedivldivlblpp'><input class='autofrndnamedivldivlblppinp' type='text' value='" + val + "' /><div class='autofrndnamedivldivlblppspn'>&nbsp<span class='autofrndnamedivldivlblppspnupdt'>update</span>&nbsp|&nbsp<span class='autofrndnamedivldivlblppspnurmv'>remove</span><span class='autofrndnamedivldivlblppcls'>x</span></div></div>";
+        // 	                $(this).append(el);
+        // 	                $(this).addClass("joined");
+        //                 }
+        //             } else {
+        //                 // $(this).find(".autofrndnamedivldivlblpp").remove();
+        //             }
+        //         });
+        $(".dedicboxlblnm").on("click", ".autofrndnamedivldivlblppspnupdt", function () {
+            var val = $(this).parents(".autofrndnamedivldivlblpp").find(".autofrndnamedivldivlblppinp").val();
+            $(this).parents(".autofrndnenamedivldivlbl").find(".namelbl").html(val);
+        });
+        $(".dedicboxlblnm").on("click", ".autofrndnamedivldivlblppspnurmv", function () {
+            $(this).parents(".autofrndnamedivldivlbl").remove();
+            //console.log($(".dedicboxlblnm").has("div").length === 0);
+            var id = $(this).parents(".autofrndnamedivli").find(".selectedId").val();
+            var idIndex = selectedId.indexOf(id);
+            selectedId.splice(idIndex, 1);
+            if ($(".dedicboxlblnm").has("div").length === 0) {
+                $('.dedicboxlblnm').css({
+                    "backgroundColor": "#fff",
+                    "padding": "0px",
+                    "borderLeft": "none",
+                    "borderRight": "none",
+                    "borderBottom": "none",
+                });
+            }
+        });
+        $("#autofrndnamediv ul").on('click', '.clsautofrndnameul', function () {
+            $(this).parents("#autofrndnamediv").css("display", "none");
+            $(this).parents("#autofrndnameul").find("li").remove();
+            $("#tag").val("");
+        });
+        $("#autofrndnamediv ul").on('click', '#autofrndnamesndrq', function () {
+            $(this).parents("#autofrndnameulninl").html("<div style='background-color:green;;color:#fff;text-shadow:2px 2px #ff0000;text-align:center;'><b>Invitation sent.</div>");
+            $("#autofrndnamediv").fadeOut(1180, function () {
+
+              //  var el = "<div class='autofrndnamedivldivlbl autofrndnenamedivldivlbl'><div class='autofrndnenamedivldivlblin'><img src='images/user.gif'/><span class='namelbl'>" + val + "</span><span class='autofrndnenamedivldivlblincls autofrndnamedivldivlblppspnurmv'>x</span></div></div>";
+             //   $('.dedicboxlblnm').append(el);
+                //  $(this).parent(".dedicboxdv").append(el);               
+               // UNKNOWNDEDICATEUSER.push(val);
+                //                console.log("unknown " + UNKNOWNDEDICATEUSER);
+                $("#tag").val('');
+                var id = $("#tag").attr('id');
+                if (id) {
+                    selectedId.push(id);
+                }
+
+                $(this).parents("#autofrndnamediv").css("display", "none");
+                $(this).parents("#autofrndnameul").find("li").remove();
+            });
+        });
+        $('.deditoblockmtoulnk').off('click', '.upimgcl').on('click', '.upimgcl', function () {
+            $('#uploadimagededication').trigger("click");
+        });
+        $('.deditoblockmtoulnk').off('click', '.upsscl').on('click', '.upsscl', function () {
+            $('.slideshowcontainer').fadeIn('slow');
+        });
+    });
+</script>
+<style type='text/css'>
+    .selected {
+        background: #ccc !important;
+    }
+    .frndlstcntnr {
+        display: none;
+        position: absolute;
+        top: 106px;
+        left: 330px;
+        min-width: 150px;
+        min-height: 100px;
+        max-width: 482px;
+        max-height: 200px;
+        overflow: hidden;
+        overflow-y: auto;
+        border-radius: 5px 5px 5px 5px;
+        border: 1px solid #eee;
+        background-color: rgba(202, 217, 230, 0.9);
+        color: #fff;
+        padding: 40px 5px 5px 5px;
+        z-index: 9999;
+    }
+
+    .frndlstcntnri {
+        display: inline-block;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .frndlstcntnri li {
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        width: 135px;
+        height: 45px;
+        font-family: 'Arial', sans-serif;
+        margin: 5px 10px;
+        border-radius: 4px 0 0 4px;
+        border: 1px solid rgba(2, 2, 2, 0.2);
+    }
+
+    .frndlstcntnri li a {
+
+    }
+
+    .frndlstcntnriimg {
+        background-color: rgba(202, 213, 270, 0.5);
+        float: left;
+        padding: 5px;
+    }
+
+    .frndlstcntnri li img {
+        width: 35px;
+        height: 35px;
+        border-radius: 2px 2px 2px 2px;
+        border: none;
+    }
+
+    .frndlstcntnridv {
+        padding: 5px;
+        margin-left: 45px;
+    }
+
+    .frndlstcntnridva {
+        height: 24px;
+    }
+
+    .frndlstcntnridvb {
+        float: right;
+    }
+
+    .frndlstcntnrh h1 {
+        font-family: MuseoSlab500, Helvetica, Arial;
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: -25px 10px 10px 10px;
+        line-height: 1.05;
+        color: rgba(202, 17, 30, 0.72);
+    }
+
+    .frndlstcntnrhsrch {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        padding-left: 25px;
+        height: 20px;
+        line-height: 20px;
+        width: 95px;
+        background-image: url('images/search.png');
+        background-repeat: no-repeat;
+        background-position: 2px 4px;
+        border: 1px solid rgb(202, 217, 230);
+    }
+
+    .frndlstcntnria {
+        display: inline-block;
+        width: 100%;
+        background-color: whitesmoke;
+    }
+
+    .frndlstcntnrib {
+        clear: both;
+        display: inline-block;
+        padding: 5px 5px 10px 5px;
+    }
+
+    .checkbox {
+        width: 10px;
+        height: 10px;
+        border: 1px groove #eee;
+        background-color: #fff;
+        cursor: pointer;
+    }
+</style>
+<div class="frndlstcntnr">
+    <div class='frndlstcntnrh'>
+        <!--<h1>Dedicate to:</h1>-->
+        <input class="frndlstcntnrhsrch" placeholder="Search" />
+    </div>
+    <div class="frndlstcntnri">
+        <div class="frndlstcntnria">
+            <ul></ul>
+        </div>
+        <div class='frndlstcntnrib'>
+            <ul>
+                <?php
+                if (isset($friends)) :
+                    foreach ($friends as $friend) {
+                        ?>
+                        <li
+                            class="<?php ////echo "frndlstid{$friend['User']['id']}";                                                                                                                                            ?>">
+                            <div class="frndlstcntnriimg">
+                                <img
+                                    src="<?php //echo $friend['ProfileImage']['profile_image_link'];                                                                                                                                              ?>"
+                                    style='width: 35px;' />
+                            </div>
+                            <div class='frndlstcntnridv'>
+                                <div class='frndlstcntnridva'>
+                                    <a href=''><?php //echo $friend['User']['first_name'];                                                                                                                                              ?>
+                                    </a>
+                                </div>
+                                <div class='frndlstcntnridvb'>
+                                    <div class='checkbox'></div>
+                                </div>
+                            </div>
+                        </li>
+                    <?php }endif; ?>
+            </ul>
+        </div>
+    </div>
+</div>

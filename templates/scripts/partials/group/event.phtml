@@ -1,0 +1,92 @@
+
+<style type='text/css'>
+        .evnthdr{}
+        .eventsec > li{
+            clear: both;
+        }
+    .evntseca{
+        float: right;
+    }
+    .evntsecb{
+        clear:both;
+    }
+    .evntsecb{
+        float: right;
+    }
+    .evntbx{
+        position: relative;
+    }
+    .eventsec > li > a{
+        padding: 2px 5px;
+    }
+    .eventsec{
+        color:#fff;
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        background-color: rgba(1,1,1,0.4);
+        width: 100%;
+    }
+    .evntseca,.evntsecb{
+        font-size: 10px;
+        padding-right: 5px;
+    }
+    .evntbx,a.bgmg{
+        height:60px;
+        width: 100%; 
+    }
+    a.evnthdr{
+       color: #fff;    
+       text-transform: capitalize;
+       font-weight: bold;
+       font-size: 12px;
+       padding-bottom: 4px;
+    }
+</style>
+<?php
+$events = $this->events;
+//echo "<pre>".  print_r($events,1);exit;
+/*
+ *        (
+  [id] => 1
+  [title] => bday bash
+  [start_time] => 2015-12-16 00:00:00
+  [end_time] => 2015-12-17 00:00:00
+  [address] => kl  qwqwqw
+  [contactnumber] => qwlk
+  [oraganiser_id] => 1
+  [modified] => 2015-12
+  )
+ */
+foreach ($events as $event) {
+    ?>
+    <div class='wrapper'>
+        <div class='wrapperbx'>
+            <div class='evntbx'>    
+                <ul>
+                    <li>
+                        <a class='bgmg' style="background-image: url('<?php echo "/images/class2.jpg" ?>');background-size: 135px 65px;background-position:center; " href='/profile/<?php echo $event['id'] ?>'></a>
+                        <ul class='eventsec'>
+                            <li>
+                                <a class='evnthdr' href='/profile/<?php echo $event['id'] ?>'><?php echo $event['title'] ?></a>
+                            </li>
+                            <li>
+                                <ul class='evntseca'>
+                                    <li><?php echo $this->TimeDayDate($event['modified'])." at ".$this->TimeAmPm($event['modified']) ?></li>
+                                    
+                               </ul>
+                                <ul class="evntsecb">
+                                    <li>
+                                        <span><?php echo $event['place'].", ".$event['contactnumber'] ?></span>
+                                        <li class='rtr'><?php echo isset($event['price'])?$event['price']:'free'; ?></li>
+                                    </li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<?php } exit; ?>

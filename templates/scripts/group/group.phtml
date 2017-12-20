@@ -1,0 +1,285 @@
+<body>
+    <div class='grpctgr'>
+        <ul>
+            <li>Education</li>
+            <li>Entertainment</li>
+            <li>Family</li>
+            <li></li>
+        </ul>
+    </div>
+    <div class='grpcntnr'>
+        <div class='grphdr'>
+            <ul>
+                <li><input type='text' placeholder="search group" value='' /></li>
+                <?php for($grp=0;$grp<20;$grp++){ ?>
+                <li style="background-image: url(<?php echo _IMAGES_.'/class.jpg' ?>)" >
+                    <span class='grpnm'>Kendriya Vidyalaya No.2</span>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>    
+        <div class='btchcontainer'>
+            <ul>
+                <li>
+                    <div class='btchcontent'>
+                        <ul>
+                            <?php for($i=12;$i>0;$i--){ ?>
+                            <li>
+                                <!--div class='btchnm'><?php echo $i."-A";?></div-->
+                                <div class='btchbx'>
+                                    <div class='lbtchbx'>
+                                    <div class='bcthdsc'>
+                                        <ul>
+                                            <li><span><a target='_blank' href='/class'>Lets Go In!!</a></span></li>
+                                        </ul>
+                                    </div>	
+                                    <div class='btchpc' style='background-image:url("images/class1.jpg")'></div>								
+                                        <div class='btchplc'>
+                                            <ul>
+                                                <li><strong><?php echo $i ?>-A</strong>&nbsp;<i>(40+ members)</i></li>
+                                                <li><i>Kendriya vidyalaya No-2 jalandhar Cantt.</i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class='rbtchbx'>
+                                        <div class='btchmats'>
+                                            <div class='btchmatpr'>																		
+                                                <ul>
+                                                <?php for($j=2;$j<6;$j++){ ?>
+                                                        <li>
+                                                                <a href='#profile'><img src='images/class<?php echo $j ?>.jpg' style='height:45px;width:45px;'/></a>
+                                                        </li>
+                                                <?php } ?>
+                                                        <li><a href='#profile'class='vl'><img src='images/class<?php echo $j ?>.jpg' style='height:45px;width:45px;'/></a></li>
+                                                </ul>
+                                                <input type='text' placeholder='search member' />
+                                                <div class='btchnotif'>
+                                                    <ul>
+                                                        <li> message</li>
+                                                        <li> Post</li>
+                                                        <li> events</li>
+                                                        <li> photos</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<style type='text/css'>
+ul,li{
+list-style:none;
+margin:0;
+padding:0;
+}
+.grpcntnr{
+    width: 100%;
+    margin: 40px auto 0 auto;
+    display: inline-block;
+}
+.grpnm{
+  background-color: rgba(255, 255, 255, 0.8);
+    color: #111;
+    display: inline;
+    padding: 9px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    height: 100%;
+    line-height: 35px;
+    text-align: center;
+    text-shadow: 1px 0 0 rgba(1, 1, 1, 0.1);
+    width: 90%;
+    border-bottom: 1px solid #eee;
+}
+.grphdr {
+    border-right: 1px solid #eee;
+    color: #fff;
+    display: inline-block;
+    float: left;
+    padding: 5px 0;
+    width: 200px;
+}
+.grphdr li{
+    width:194px;
+    height: 35px;
+    margin: 2px;
+    /*box-shadow: 1px 0 2px rgba(1,1,1,0.4);*/
+    overflow: hidden;
+    cursor: pointer;
+}
+.grphdr li:hover .grpnm{
+        background-color: rgba(0,255,0,0.4);
+        color:#111;
+        text-shadow: none;
+    }
+ .btchcontainer{
+         width:785px;
+         float: right;
+ }
+ .btchcontent{
+     width: 446px;
+     margin: 0 auto;
+ }
+ .btchcontent > ul > li{
+         
+ }
+/* .btchcontent > ul > li:nth-child(even){
+     margin-left:88px;
+ }*/
+ .btchnm{
+         float:left;
+ }
+ .btchbx{
+         border: 1px solid skyblue;
+         box-shadow: 0 1px 2px rgba(1, 1, 1, 0.2);
+         display:inline-block;
+         width:100%;
+         height:124px;
+         margin:10px 0;clear: both;
+ }
+ .btchpc{
+         background-position:center;
+         background-size:200px auto;
+         height:75px;
+         position:relative;
+ }
+ .rbtchbx{
+         height: 100%;
+         float: right;
+         background-color:#eee;
+         width: 277px;
+ }
+ .lbtchbx{
+         float:left;
+         width:160px;
+         position:relative;
+         border-right:1px solid #ccc;
+         padding:4px;
+         font-size:11px;
+         text-align:left;
+ }
+ .bcthdsc{
+         background-color: rgba(1, 1, 1, 0.7);
+         bottom: 0px;
+         color: #fff;
+         font-weight:bold;
+         font-size:18px;
+         display: inline-block;
+         left: 0px;
+         right:0;
+         top:0;
+         text-align:center;
+         line-height:84px;
+         padding: 15px;
+         position: absolute;		
+         cursor:pointer;
+         display:none;
+         z-index:111;
+         transition:2s;
+ }
+ .btchbx:hover .lbtchbx > .bcthdsc{
+         display:block;transition:2s;
+ }
+ .bcthdsc span{
+ }
+ .btchplc{
+         font-family: arial;
+         font-size: 9px;
+         height: 35px;
+         overflow: hidden;
+         padding: 4px;
+ }
+ .btchplc strong{
+         font-size:15px;
+         color:navy-blue;
+ }
+ .bcimage{
+
+ }
+ .rbtchbx{
+ }
+
+ .btchmats{
+        height: 100%;
+ }
+ .btchmatpr {
+         display: inline-block;
+         height: 100%;
+         position: relative;
+         width: 100%;
+ }
+ .btchmatpr input, .grphdr input{
+         border: 1px solid skyblue;
+         border-radius: 5px;
+         font-size: 12px;
+         height: 22px;
+         line-height: 20px;
+         margin: 0px 7px;
+         padding: 2px 5px;
+         text-align: center;
+         width: 88%;
+ }
+ 
+ .btchmatpr > ul{
+         padding:5px;
+         overflow:hidden;
+         height:53px;
+ }
+ .btchmatpr > ul > li{
+         float:left;
+         margin:2px;
+ }
+ .btchmatpr > ul > li:last-child{
+         margin:2px;
+ }
+ .btchmatpr li img{
+         border-radius:4px;
+ }
+ .btchnotif{
+         position:absolute;
+         bottom:0;
+         font-weight: bold;
+         color:#666;
+         width:100%;
+         font-size:12px;
+         background-color:rgba(1,1,1,0.2);
+
+         text-transform: lowercase;
+ }
+ .btchnotif > ul > li{
+         float:left;
+         display:inline-block;
+         padding:4px 2px;
+         text-align:center;
+         cursor:pointer;
+         border-right:1px solid #eee;
+         transition:0.6;
+         width:64px;
+ }
+ .btchnotif > ul > li:hover{
+         background-color:#111;
+
+         color:#fff;
+ }	
+ .btchnotif > ul > li:first-child{
+         border-right:1px solid #eee;
+ }
+ .btchnotif > ul > li:last-child{
+         border-right:1px solid transparent;
+ }
+ .vl{
+         font-size:10px;
+         vertical-align:bottom;
+         text-decoration:none;
+ }
+</style>
